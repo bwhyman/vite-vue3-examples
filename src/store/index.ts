@@ -1,6 +1,11 @@
 import type { State, ResultVO, User } from '@/datasource/Types'
 import { listCourses } from '@/datasource/DataSource'
-import { type MutationTree,type ActionTree, createStore, type GetterTree } from 'vuex'
+import {
+  type MutationTree,
+  type ActionTree,
+  createStore,
+  type GetterTree,
+} from 'vuex'
 import axios from '@/axios'
 import * as vxt from './EventTypes'
 import * as consty from '@/datasource/Const'

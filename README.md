@@ -44,7 +44,10 @@ pinia/setup/computed/method/script setup/template/route/directives/composition-a
 
 ### update 
 #### 2022.05.06
-基于vue新项目构建方法重构
+基于vue新项目构建方法重构  
+
+路由基于createWebHistory()函数构建的history在生产环境下需要web容器配置  
+使用基于createWebHashHistory()函数带#符号的路径解决问题  
 
 #### 2022.05.04
 引入新状态管理库pinia

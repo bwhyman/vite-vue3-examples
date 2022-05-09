@@ -1,5 +1,6 @@
 import {
   createRouter,
+  createWebHashHistory,
   createWebHistory,
   type RouteRecordRaw,
 } from 'vue-router'
@@ -195,6 +196,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/homework01',
     component: () => import('@/views/homework01/Homework01.vue'),
   },
+  {
+    props: true,
+    path: '/example14',
+    component: () => import('@/views/example14/Example14-1.vue'),
+  },
+  {
+    props: true,
+    path: '/example15',
+    component: () => import('@/views/example15/Example15-1.vue'),
+  },
   // -------------- homework
   {
     props: true,
@@ -224,15 +235,13 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
-  {
-    props: true,
-    path: '/example14',
-    component: () => import('@/views/example14/Example14-1.vue'),
-  },
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // HTML5 Mode。createWebHistory()函数，生产环境下需要web容器完成转发
+  // createWebHashHistory()函数仍使用#符号，无需配置
+  // history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes,
 })
 

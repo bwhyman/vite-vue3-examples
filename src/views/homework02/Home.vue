@@ -34,7 +34,7 @@ const orders = store.state.orders
 const cost = computed(() =>
   // reduce(callback, index)类似递归函数；callback函数，pre，前一次结果；cur，当前遍历对象
   orders
-    .reduce((pre, cur) => pre + cur.quantity * cur.item.price!, 0)
+    .reduce((pre, cur) => pre + cur.quantity * (cur.item.price ?? 0), 0)
     .toFixed(2)
 )
 </script>

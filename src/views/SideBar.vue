@@ -118,6 +118,12 @@
         <router-link to="/example14">Pinia</router-link>
       </li>
     </ul>
+    <h3>Suspense</h3>
+    <ul>
+      <li>
+        <router-link to="/example15">suspense</router-link>
+      </li>
+    </ul>
     <h3>Proxy</h3>
     <ul>
       <li>
