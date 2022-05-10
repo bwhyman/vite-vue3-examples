@@ -1,11 +1,11 @@
 import {
   createRouter,
   createWebHashHistory,
-  createWebHistory,
   type RouteRecordRaw,
 } from 'vue-router'
 import * as consty from '@/datasource/Const'
 import store from '@/store'
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
