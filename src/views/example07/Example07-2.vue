@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import { listCourses } from '@/datasource/DataSource'
 import type { Course } from '@/datasource/Types'
-import { onBeforeUpdate, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 
 // 模拟曾经选中的数据
 const selectedCourses: Course[] = [{ id: 7 }]
@@ -45,6 +45,7 @@ const selectedCourses: Course[] = [{ id: 7 }]
 // ElementAttrs<HTMLAttributes>
 const checkboxs = ref<HTMLInputElement[]>([])
 const chRefs = (el: HTMLInputElement) => {
+  console.log(el)
   checkboxs.value.push(el)
 }
 
@@ -57,8 +58,5 @@ watch(sCoursesRef, () => {
   checkboxs.value
     .filter((c) => !c.checked)
     .forEach((c) => (c.disabled = checkboxDis))
-})
-onBeforeUpdate(() => {
-  checkboxs.value = []
 })
 </script>

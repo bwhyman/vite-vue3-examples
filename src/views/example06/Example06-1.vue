@@ -20,12 +20,4 @@
 import { defineAsyncComponent, ref } from 'vue'
 const about = defineAsyncComponent(() => import('@/views/example06/About.vue'))
 const showAbout = ref(false)
-
-//
-// export default defineComponent({
-//   components: { about },
-//   data: () => ({
-//     showAbout: false,
-//   }),
-// })
 </script>

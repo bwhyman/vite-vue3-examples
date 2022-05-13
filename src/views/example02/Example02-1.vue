@@ -45,9 +45,20 @@
     <div>
       <h1>watch()</h1>
       <p>
-        watch()函数，用以在响应式数据改变时执行操作(允许执行异步操作)
+        watch()函数，用以在响应式数据改变时执行操作(允许执行异步操作)。
         <br />
-        watch()支持0/1/2个参数，被监听的响应式属性(Ref对象)，传入new/old值的监听回调函数
+        watch()必须监听响应式属性(Ref对象)。支持2/3个参数；
+        默认仅被监听响应式数据改变执行回调，当被监听响应式数据为对象，则对象中属性数据或属性数据对象中的数据改变时不回调。
+        <br />
+        参数1，被监听的响应式数据；
+        <br />
+        参数2，响应式数据改变的回调函数，可传入new/old值；
+        <br />
+        参数3，监听选项对象，对象中可声明deep: true属性，可监听对象中属性的改变
+        <br />
+        <button @click="changeUserRef2">
+          改变响应式对象中的属性中数据，watch()可监听
+        </button>
       </p>
     </div>
   </div>
@@ -75,6 +86,20 @@ const changeUserRef = () => {
 }
 // computed()函数
 const userComputed = computed(() => userRef.value.insertTime?.replace('T', ' '))
-// watch()函数，只能监听响应式数据的变化
-watch(userRef, (newUser) => alert(`watch被激活。用户名被改为: ${newUser.name}`))
+
+// 可监听userRef中对象引用的改变
+watch(userRef, () => alert(`watch被激活。用户对象改变`))
+
+const changeUserRef2 = () => {
+  setTimeout(() => {
+    userRef.value.name = 'ZHOU'
+  }, 1000)
+}
+// 可监听userRef中对象的改变，以及对象中属性数据的变化
+watch(
+  userRef,
+  (newUser) =>
+    alert(`watch被激活。用户对象中属性数据被改变，名被改为: ${newUser.name}`),
+  { deep: true }
+)
 </script>
