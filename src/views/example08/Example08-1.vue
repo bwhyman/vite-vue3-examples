@@ -17,7 +17,7 @@
     </p>
     <hr />
     <p>
-      由于vue3基于proxy代理对象实现响应式，因此几乎可以不使用vuex的同步事件更新state数据。
+      由于vue3基于proxy代理对象实现响应式，因此无需使用vuex的同步事件更新state数据。
     </p>
     <p>
       <input type="text" v-model="myUser.name" />

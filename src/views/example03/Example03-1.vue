@@ -19,11 +19,15 @@
     studentID: {{ props.sid }}
     <br />
     homeworksID: {{ props.hid }}
+    <br />
+    缺少一个首次进入且每次数据更新均执行的函数。
+    <br />
+    声明基于传入数据的逻辑操作，直接调用，且在onBeforeMount()/watch()函数中再次调用
   </div>
 </template>
 <script lang="ts" setup>
-import { watch } from 'vue'
-// 地址参数的属性，必须是string类型
+import { onBeforeMount, onBeforeUpdate, watch } from 'vue'
+// 地址参数的属性，必须是string类型。控制台显式warning
 interface Props {
   sid: string
   hid: string
@@ -35,7 +39,24 @@ console.log(
 )
 
 // 可监听传入参数的改变，基于新参数完成网络请求等逻辑操作
+// 但首次进入不会回调
 watch(props, () => {
-  console.log(`sid: ${props.sid}; hid: ${props.hid}`)
+  console.log(`watch. sid: ${props.sid}; hid: ${props.hid}`)
 })
+// 首次进入不执行，每次数据更新重新渲染前执行回调
+// 与watch()函数相似
+onBeforeUpdate(() => {
+  console.log(`onBeforeUpdate. sid: ${props.sid}; hid: ${props.hid}`)
+})
+// 仅首次进入挂载到dom前执行，数据更新不执行
+onBeforeMount(() => {
+  console.log(`onBeforeMount. sid: ${props.sid}; hid: ${props.hid}`)
+})
+
+// 缺少一个首次进入且每次数据更新均执行的函数
+
+// 声明基于传入数据的逻辑操作，直接调用，且在onBeforeMount()/watch()函数中再次调用
+// const request = () => {
+//   console.log(`模拟异步请求函数`)
+// }
 </script>

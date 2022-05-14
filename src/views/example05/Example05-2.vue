@@ -13,9 +13,9 @@
     <hr />
     <p>也支持直接在事件中声明执行语句</p>
     <p
-      @mouseover="active = true"
-      @mouseleave="active = false"
-      :class="{ 'bg-red': active }"
+      @mouseover="activeRef = true"
+      @mouseleave="activeRef = false"
+      :class="{ 'bg-red': activeRef }"
     >
       元素class属性值与active值绑定， 当鼠标进入/移出时改变active值，
       从而动态改变元素样式
@@ -35,8 +35,8 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 const submitButtonDisabled = ref(true)
-const active = ref(false)
-// 支持0/1/2个参数
+const activeRef = ref(false)
+// 回调函数支持0/1/2个参数
 watch(submitButtonDisabled, (newValue: boolean) =>
   alert(`按钮被禁用 ${newValue}`)
 )

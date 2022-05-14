@@ -77,20 +77,17 @@ ctrl+c
     "endOfLine": "auto"
 }
 ```
+重启vs code
 
 修改.esintrc.cjs，添加规则
 
-```json
+```sh
 rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/multi-word-component-names': 'off',
   },
 ```
-
-
-
-
 
 当前项目.vscode目录下，创建settings.json。声明项目的vscode配置
 
