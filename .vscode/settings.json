@@ -1,12 +1,12 @@
 {
   "editor.fontSize": 16,
-  "window.zoomLevel": 2.0,
+  "window.zoomLevel": 1.0,
   "editor.wordWrap": "on", 
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
   },
   "git.enableSmartCommit": true,
-  // "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Default Light+",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "explorer.confirmDelete": false,
