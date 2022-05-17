@@ -15,15 +15,13 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { State } from '@/datasource/Types'
-import { LIST_COURSES } from '@/store/EventTypes'
+import { useStore } from '@/store'
 import { computed } from 'vue'
-import { useStore } from 'vuex'
 import item from './Item.vue'
-const store = useStore<State>()
-store.dispatch(LIST_COURSES)
-const courses = computed(() => store.state.courses)
+const store = useStore()
+store.listCourses()
+const courses = computed(() => store.courses)
 const changeItem = () => {
-  store.state.courses?.forEach((c) => (c.name = '响应式改变'))
+  store.courses?.forEach((c) => (c.name = '响应式改变'))
 }
 </script>

@@ -43,6 +43,9 @@ pinia/setup/computed/method/script setup/template/route/directives/composition-a
 - https://github.com/bwhyman/flutter_examples
 
 ### update 
+#### 2022.05.17
+重构。移除vuex，完全基于pinia使用全局响应式数据。
+
 #### 2022.05.06
 基于vue新项目构建方法重构  
 

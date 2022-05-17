@@ -16,12 +16,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { State } from '@/datasource/Types'
+import { useStore } from '@/store'
 import { computed } from 'vue'
-import { useStore } from 'vuex'
-import { GETTER_PREMISSION } from '@/store/EventTypes'
 
-const store = useStore<State>()
-const userS = store.state.user
-const premissionGetter = computed(() => store.getters[GETTER_PREMISSION])
+const store = useStore()
+const userS = store.user
+const premissionGetter = computed(() => store.premissionGetter)
 </script>

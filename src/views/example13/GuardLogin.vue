@@ -34,24 +34,19 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { State } from '@/datasource/Types'
+import { useStore } from '@/store'
 import { ref } from 'vue'
-import { useStore } from 'vuex'
 
-interface User {
-  number?: string
-  password?: string
-}
-
-const store = useStore<State>()
-const userForm = ref<User>({})
+const store = useStore()
+const userForm = ref({ number: '', password: '' })
 
 const login = () => {
   const user = {
     number: userForm.value.number,
     password: userForm.value.password,
   }
-  store.dispatch('login-guard', user)
+  store.loginGuard(user)
+
   userForm.value.number = ''
   userForm.value.password = ''
 }

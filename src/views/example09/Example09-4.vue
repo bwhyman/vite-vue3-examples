@@ -37,14 +37,12 @@
 </template>
 <script lang="ts" setup>
 import type { Course } from '@/datasource/Types'
-import type { State } from '@/datasource/Types'
-import { LIST_COURSES } from '@/store/EventTypes'
+import { useStore } from '@/store'
 import { computed, defineAsyncComponent, ref } from 'vue'
-import { useStore } from 'vuex'
 const editbutton3 = defineAsyncComponent(() => import('./EditButton3.vue'))
-const store = useStore<State>()
-store.dispatch(LIST_COURSES)
-const courses = computed(() => store.state.courses)
+const store = useStore()
+store.listCourses()
+const courses = computed(() => store.courses)
 const active = ref(false)
 const courseEditedName = ref('')
 const courseEdit = ref<Course>({})

@@ -1,12 +1,9 @@
 <template>
   <div>
-    <h1>Vuex Actions</h1>
+    <h1>Actions</h1>
+    <p>Actions属性，支持异步操作，可基于async/await，或返回Promise。</p>
     <p>
-      在actions中声明属性，属性名称可通过常量声明便于维护，属性的值为异步函数。
-      函数可接收激活事件传入的参数变量。同时，函数可注入多种对象/函数用于操作。
-    </p>
-    <p>
-      {{ userS?.name }} / {{ userS?.address }}
+      {{ userC?.name }} / {{ userC?.address }}
       <br />
       <input type="text" v-model="myUser.name" />
       <br />
@@ -14,27 +11,41 @@
       <br />
       <button type="button" @click="asyncUpdate">asyncUpdate</button>
     </p>
+    <hr />
+    <h1>$patch()</h1>
+    批量更新，支持函数，可注入state对象。
+    <br />
+    <button @click="patch">patch</button>
+    <hr />
+    Resetting the state, $reset()
+    <br />
+    Modifiable state, mapWritableState()
+    <br />
+    Replacing the state, store.$state
+    <br />
+    Subscribing to the state, $subscribe()
+    <br />
+    Subscribing to actions, store.$onAction()
+    <br />
   </div>
 </template>
 <script lang="ts" setup>
-import type { State, User } from '@/datasource/Types'
+import type { User } from '@/datasource/Types'
 import { computed, type Ref, ref } from 'vue'
-import { Store, useStore } from 'vuex'
-import { UPDATE_USER } from '@/store/EventTypes'
+import { useStore } from '@/store'
 
-function useAsyncUpdateUser(myUser: Ref<User>, store: Store<State>) {
-  const asyncUpdate = () =>
-    store.dispatch(UPDATE_USER, {
-      name: myUser.value.name,
-      address: myUser.value.address,
-    } as User)
-  return {
-    asyncUpdate,
-  }
-}
-
-const store: Store<State> = useStore()
-const userS = computed(() => store.state.user)
+const store = useStore()
+const userC = computed(() => store.user)
 const myUser: Ref<User> = ref({})
-const { asyncUpdate } = useAsyncUpdateUser(myUser, store)
+
+const asyncUpdate = () =>
+  store.updateUser({
+    name: myUser.value.name,
+    address: myUser.value.address,
+  })
+
+const patch = () =>
+  store.$patch((state) => {
+    state.user.name = 'pinia'
+  })
 </script>

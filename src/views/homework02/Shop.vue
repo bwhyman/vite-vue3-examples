@@ -18,25 +18,23 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useStore } from 'vuex'
 import { computed } from 'vue'
 import type { Item } from './homework02'
-import { GET_SHOP } from '@/store/EventTypes'
-import type { State } from '@/datasource/Types'
+import { useH2Store } from './store'
 interface Props {
   sid: string
 }
 const props = defineProps<Props>()
 
-const store = useStore<State>()
+const store = useH2Store()
 // 绑定state数据
 const shop = computed(() =>
-  store.state.shopCache.find((sh) => sh.id == Number.parseInt(props.sid))
+  store.shopCache.find((sh) => sh.id == Number.parseInt(props.sid))
 )
 // 如果不存在(为空)，则模拟异步加载数据
-!shop.value && store.dispatch(GET_SHOP, props.sid)
+!shop.value && store.getShop(Number.parseInt(props.sid))
 // orders数组对象是响应式，添加移除元素是响应式
-const orders = store.state.orders
+const orders = store.orders
 const add = (item: Item) => {
   let order = orders.find((o) => o.item.id == item.id)
   if (order) {

@@ -1,19 +1,41 @@
 <template>
   <div>
-    <h3>useStore()</h3>
+    <h1>Pinia</h1>
+    <img
+      src="https://pinia.vuejs.org/logo.svg"
+      alt="pinia"
+      style="width: 100px"
+    />
+    <br />
+    https://pinia.vuejs.org/introduction.html
+    <br />
+    https://github.com/vuejs/pinia
+    <br />
+    Pinia是替代vuex的下一代状态管理库，更简洁高效。
+    <br />
+    按官方建议，每一个state数据由一个文件维护，利于构建时打包。粒度不用这么细，相关数据聚合在一起即可。
+    <hr />
+    <h1>States</h1>
+    第1个数字没有变化，引入为组件变量后，失去响应。
+    <br />
+    第2个数字，直接绑定state数据，具有响应。
+    <br />
+    {{ countUnresponsive }} / {{ store.count }}
+    <br />
+    与vuex相似，store中state中数据是响应式，因此可直接绑定到视图。
+    <br />
+    <button @click="increment">increment</button>
+    <h1>storeToRefs()</h1>
+    可替代computed()函数，从store对象中解构出state数据并保持响应式。
+    <br />
+    {{ countRef }}
+    <hr />
     <p>
-      useStore()函数必须在setup()中使用。可以传递store对象给自定义use函数。
+      {{ userC?.name }} / {{ userC?.address }}
       <br />
-      组件内声明的user变量必须通过计算属性绑定state user。否则state
-      user更新，组件user变量不会响应式更新。
-    </p>
-    <p>
-      {{ userS?.name }} / {{ userS?.address }}
-      <br />
-
       也可直接绑定到视图，而无需computed()函数引入为本地变量。
       <br />
-      {{ store.state.user?.name }} / {{ store.state.user?.address }}
+      {{ store.user?.name }} / {{ store.user?.address }}
     </p>
     <hr />
     <p>
@@ -29,23 +51,31 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { State, User } from '@/datasource/Types'
+import type { User } from '@/datasource/Types'
 import { computed, ref } from 'vue'
-import { useStore } from 'vuex'
-const store = useStore<State>()
-const userS = computed(() => store.state.user)
+import { useStore } from '@/store'
+import { storeToRefs } from 'pinia'
+const store = useStore()
+// 失去响应
+const countUnresponsive = store.count
+const increment = () => store.count++
+
+// const { count } = storeToRefs(store)
+const countRef = storeToRefs(store).count
+
+const userC = computed(() => store.user)
 // proxy代理对象
-console.log(store.state.user)
+console.log(store.user)
 
 // 创建一个用于双向绑定的响应式对象
 const myUser = ref<User>({})
 
 const updateUser = () => {
-  if (store.state.user) {
+  if (store.user) {
     // 取出双向绑定对象中的属性值，值赋给state中对象的属性
     // 而非直接传递对象
-    store.state.user.name = myUser.value.name
-    store.state.user.address = myUser.value.address
+    store.user.name = myUser.value.name
+    store.user.address = myUser.value.address
 
     // myUser.value的值为proxy代理对象，直接赋值给state后，会变为双向绑定，随输入即时更新
     // store.state.user = myUser.value

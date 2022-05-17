@@ -13,12 +13,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { State } from '@/datasource/Types'
+import { useStore } from '@/store'
 import { computed } from 'vue'
-import { useStore } from 'vuex'
-const store = useStore<State>()
-const exception = computed(() => store.state.exception)
-const close = () => (store.state.exception = '')
+const store = useStore()
+const exception = computed(() => store.exception)
+const close = () => (store.exception = '')
 </script>
 <style scoped>
 .modal {

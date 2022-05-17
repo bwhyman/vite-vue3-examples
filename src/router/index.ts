@@ -4,7 +4,7 @@ import {
   type RouteRecordRaw,
 } from 'vue-router'
 import * as consty from '@/datasource/Const'
-import store from '@/store'
+import { useStore } from '@/store'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -198,11 +198,6 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     props: true,
-    path: '/example14',
-    component: () => import('@/views/example14/Example14-1.vue'),
-  },
-  {
-    props: true,
     path: '/example15',
     component: () => import('@/views/example15/Example15-1.vue'),
   },
@@ -254,7 +249,9 @@ router.beforeEach((to, from, next) => {
 
   if (to.meta.role != sessionStorage.getItem('role')) {
     next({ name: 'login-g' })
-    store.state.exception = '无权限'
+    // 调用函数获取pinia state数据，必须在pinia加载后执行
+    const store = useStore()
+    store.exception = '无权限'
     return
   }
   next()

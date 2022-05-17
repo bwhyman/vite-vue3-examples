@@ -17,13 +17,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useStore } from 'vuex'
 import { computed } from 'vue'
-import { LIST_SHOPS } from '@/store/EventTypes'
-import type { State } from '@/datasource/Types'
-const store = useStore<State>()
-store.dispatch(LIST_SHOPS)
-const shopList = computed(() => store.state.shopList)
+import { useH2Store } from './store'
+const store = useH2Store()
+store.listShops()
+
+const shopList = computed(() => store.shopList)
 </script>
 <style scoped>
 * {

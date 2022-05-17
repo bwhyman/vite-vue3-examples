@@ -25,11 +25,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { State } from '@/datasource/Types'
 import { computed } from 'vue'
-import { useStore } from 'vuex'
-const store = useStore<State>()
-const orders = store.state.orders
+import { useH2Store } from './store'
+
+const store = useH2Store()
+const orders = store.orders
 // 计算orders中的价格，forEach也可
 const cost = computed(() =>
   // reduce(callback, index)类似递归函数；callback函数，pre，前一次结果；cur，当前遍历对象

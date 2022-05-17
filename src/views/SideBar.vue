@@ -58,13 +58,13 @@
       <li><router-link to="/example06-1">Async Component</router-link></li>
       <li><router-link to="/example06-2">keep-alive</router-link></li>
     </ul>
-    <h3>Vuex</h3>
+    <h3>Pinia</h3>
     <ul>
       <li>
         <router-link to="/example08-1">State & Sync Update</router-link>
       </li>
       <li>
-        <router-link to="/example08-2">Actions</router-link>
+        <router-link to="/example08-2">Actions & patch()</router-link>
       </li>
       <li>
         <router-link to="/example08-3">Getters</router-link>
@@ -94,7 +94,7 @@
         <router-link to="/example11-1">axios-mock-adapter</router-link>
       </li>
       <li>
-        <router-link to="/example11-2">axios & mock & vuex</router-link>
+        <router-link to="/example11-2">axios & mock & pinia</router-link>
       </li>
       <li>
         <router-link to="/example11-3">URL passing json params</router-link>
@@ -110,12 +110,6 @@
     <ul>
       <li>
         <router-link to="/example13">Navigation Guards</router-link>
-      </li>
-    </ul>
-    <h3>Pinia</h3>
-    <ul>
-      <li>
-        <router-link to="/example14">Pinia</router-link>
       </li>
     </ul>
     <h3>Suspense</h3>

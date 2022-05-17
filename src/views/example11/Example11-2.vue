@@ -13,8 +13,14 @@
       <br />
       <button title="button" @click="login">Login</button>
       <br />
-      {{ user?.title }}
+      {{ userC?.title }}
     </div>
+    <div>
+      <h3>Pinai</h3>
+      调用函数获取pinia
+      state数据，必须在pinia加载后执行。因此必须置于router/axios等具体执行函数的内部。
+    </div>
+
     <hr />
     <div>
       <p>
@@ -32,38 +38,31 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { State } from '@/datasource/Types'
-import { GET_HOME, LOGIN } from '@/store/EventTypes'
-import { computed, type Ref, ref } from 'vue'
-import { Store, useStore } from 'vuex'
+import { useStore } from '@/store'
+import { computed, ref } from 'vue'
 
 interface User {
-  number?: string
-  password?: string
+  number: string
+  password: string
 }
 
-function useLogin(userForm: Ref<User>, store: Store<State>) {
-  const login = () => {
-    const user = {
-      number: userForm.value.number,
-      password: userForm.value.password,
-    }
-    store.dispatch(LOGIN, user)
-    userForm.value.number = ''
-    userForm.value.password = ''
-  }
-  return {
-    login,
-  }
-}
+const store = useStore()
+const userForm = ref<User>({ number: '', password: '' })
 
-const store: Store<State> = useStore()
-const userForm = ref<User>({})
-const { login } = useLogin(userForm, store)
-const courses = computed(() => store.state.courses)
-const user = computed(() => store.state.user)
+const courses = computed(() => store.courses)
+const userC = computed(() => store.user)
 
 const getHome = () => {
-  store.dispatch(GET_HOME)
+  store.getHome()
+}
+
+const login = () => {
+  const user: User = {
+    number: userForm.value.number,
+    password: userForm.value.password,
+  }
+  store.login(user)
+  userForm.value.number = ''
+  userForm.value.password = ''
 }
 </script>

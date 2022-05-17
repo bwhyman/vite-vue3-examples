@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '@/store'
 import type { ResultVO } from '@/datasource/Types'
+import { useStore } from '@/store'
 
 axios.interceptors.request.use(
   (req) => {
@@ -12,7 +12,8 @@ axios.interceptors.request.use(
     return req
   },
   (error) => {
-    store.state.exception = error.message
+    const store = useStore()
+    store.exception = error.message
     return Promise.reject()
   }
 )
@@ -22,14 +23,17 @@ axios.interceptors.response.use(
     const data: ResultVO = resp.data
     // 全局处理后端返回的异常信息。即，业务状态码不是200
     if (data.code != 200) {
-      store.state.exception = data.message
+      // 调用函数获取pinia state数据，必须在pinia加载后执行。
+      const store = useStore()
+      store.exception = data.message ?? ''
       return Promise.reject()
     }
     return resp
   },
   // 全局处理异常信息。即，http状态码不是200
   (error) => {
-    store.state.exception = error.message
+    const store = useStore()
+    store.exception = error.message
     return Promise.reject()
   }
 )
