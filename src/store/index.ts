@@ -72,6 +72,7 @@ export const useStore = defineStore('state', {
 
   // ------------ getters ------------------
   getters: {
+    doubleCount: (state) => state.count * 2,
     premissionGetter: (state) => (level: number) => state.user?.level == level,
   },
 })

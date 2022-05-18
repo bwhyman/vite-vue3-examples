@@ -1,7 +1,10 @@
 <template>
   <div>
     <h1>Actions</h1>
-    <p>Actions属性，支持异步操作，可基于async/await，或返回Promise。</p>
+    <p>
+      Actions，值为对象。对象中可声明执行的异步业务函数，以及支持修改state数据
+      因为需要通过this获取store对象，因此不能声明为箭头函数。可基于async/await，或返回Promise。
+    </p>
     <p>
       {{ userC?.name }} / {{ userC?.address }}
       <br />
@@ -13,10 +16,15 @@
     </p>
     <hr />
     <h1>$patch()</h1>
-    批量更新，支持函数，可注入state对象。
+    批量更新，对多次响应式数据的更新仅执行一次通知，可注入state对象。
+    <br />
+    函数直接替换了state中user对象，只有通过storeToRefs()函数转为Ref的user对象可感知更新。
+    <br />
+    {{ userRef.name }}
     <br />
     <button @click="patch">patch</button>
     <hr />
+    <h1>Others</h1>
     Resetting the state, $reset()
     <br />
     Modifiable state, mapWritableState()
@@ -31,12 +39,17 @@
 </template>
 <script lang="ts" setup>
 import type { User } from '@/datasource/Types'
-import { computed, type Ref, ref } from 'vue'
+import { ref } from 'vue'
 import { useStore } from '@/store'
+import { storeToRefs } from 'pinia'
 
 const store = useStore()
-const userC = computed(() => store.user)
-const myUser: Ref<User> = ref({})
+// 转为Ref，则state中user引用改变依然可感知
+const userRef = storeToRefs(store).user
+
+// 仅感知属性数据改变
+const userC = store.user
+const myUser = ref<User>({})
 
 const asyncUpdate = () =>
   store.updateUser({
@@ -46,6 +59,7 @@ const asyncUpdate = () =>
 
 const patch = () =>
   store.$patch((state) => {
-    state.user.name = 'pinia'
+    state.user = { name: '直接替换了state中对象' }
+    // state.user.name = 'pinia'
   })
 </script>

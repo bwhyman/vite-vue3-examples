@@ -16,19 +16,18 @@
     按官方建议，每一个state数据由一个文件维护，利于构建时打包。粒度不用这么细，相关数据聚合在一起即可。
     <hr />
     <h1>States</h1>
-    第1个数字没有变化，引入为组件变量后，失去响应。
+    第1个数字没有变化，基本数据类型引入为组件变量后，无响应式。
     <br />
-    第2个数字，直接绑定state数据，具有响应。
+    第2个数字，store是响应式，因此可直接绑定到视图。
     <br />
     {{ countUnresponsive }} / {{ store.count }}
     <br />
-    与vuex相似，store中state中数据是响应式，因此可直接绑定到视图。
-    <br />
     <button @click="increment">increment</button>
+    <hr />
     <h1>storeToRefs()</h1>
     可替代computed()函数，从store对象中解构出state数据并保持响应式。
     <br />
-    {{ countRef }}
+    {{ countRef }} / {{ countC }}
     <hr />
     <p>
       {{ userC?.name }} / {{ userC?.address }}
@@ -38,9 +37,6 @@
       {{ store.user?.name }} / {{ store.user?.address }}
     </p>
     <hr />
-    <p>
-      由于vue3基于proxy代理对象实现响应式，因此无需使用vuex的同步事件更新state数据。
-    </p>
     <p>
       <input type="text" v-model="myUser.name" />
       <br />
@@ -56,29 +52,40 @@ import { computed, ref } from 'vue'
 import { useStore } from '@/store'
 import { storeToRefs } from 'pinia'
 const store = useStore()
-// 失去响应
+// store为proxy代理对象。因此store为响应式对象
+console.log(store)
+
+// 仅获取了执行时store中count数据，且count是普通数据而非响应式数据
 const countUnresponsive = store.count
+// store为响应式，但store中数据不是
+console.log(store.count)
+
 const increment = () => store.count++
 
+// 因此，可通过storeToRefs()函数将state中数据转为Ref响应式类型
+// 解构出
 // const { count } = storeToRefs(store)
+// 或直接获取
 const countRef = storeToRefs(store).count
 
-const userC = computed(() => store.user)
+const countC = computed(() => store.count)
+// Ref类型响应式数据
+console.log(countRef)
+// 与vuex相似，也可通过计算属性绑定
+
+//
+const userC = store.user
 // proxy代理对象
 console.log(store.user)
 
 // 创建一个用于双向绑定的响应式对象
 const myUser = ref<User>({})
-
 const updateUser = () => {
-  if (store.user) {
-    // 取出双向绑定对象中的属性值，值赋给state中对象的属性
-    // 而非直接传递对象
-    store.user.name = myUser.value.name
-    store.user.address = myUser.value.address
-
-    // myUser.value的值为proxy代理对象，直接赋值给state后，会变为双向绑定，随输入即时更新
-    // store.state.user = myUser.value
-  }
+  // 取出双向绑定对象中的属性值，值赋给state中对象的属性
+  // 而非直接传递对象
+  // user为proxy而非Ref，改变引用会失去响应式。可通过storeToRefs()函数改变
+  store.user.name = myUser.value.name
+  store.user.address = myUser.value.address
+  // myUser.value的值为proxy代理对象，直接赋值给state后，会变为双向绑定，随输入即时更新
 }
 </script>
