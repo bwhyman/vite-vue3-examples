@@ -41,7 +41,7 @@ import type { Course } from '@/datasource/Types'
 import { useStore } from '@/store'
 import { computed, defineAsyncComponent, ref } from 'vue'
 
-const editbutton2 = defineAsyncComponent(() => import('./EditButton.vue'))
+const editbutton2 = defineAsyncComponent(() => import('./EditButton2.vue'))
 const store = useStore()
 store.listCourses()
 const courses = computed(() => store.courses)

@@ -16,7 +16,7 @@
     按官方建议，每一个state数据由一个文件维护，利于构建时打包。粒度不用这么细，相关数据聚合在一起即可。
     <hr />
     <h1>States</h1>
-    第1个数字没有变化，基本数据类型引入为组件变量后，无响应式。
+    第1个数字没有变化，基本数据类型直接引入为组件变量后，失去响应性。
     <br />
     第2个数字，store是响应式，因此可直接绑定到视图。
     <br />
@@ -55,25 +55,23 @@ const store = useStore()
 // store为proxy代理对象。因此store为响应式对象
 console.log(store)
 
-// 仅获取了执行时store中count数据，且count是普通数据而非响应式数据
+// 仅获取了执行时store中count数据，非响应式数据
 const countUnresponsive = store.count
-// store为响应式，但store中数据不是
+// store为响应式
 console.log(store.count)
 
 const increment = () => store.count++
 
-// 因此，可通过storeToRefs()函数将state中数据转为Ref响应式类型
+// 可通过storeToRefs()函数将state中数据转为Ref响应式类型
 // 解构出
 // const { count } = storeToRefs(store)
 // 或直接获取
 const countRef = storeToRefs(store).count
-
+// 与vuex相似，也可通过计算属性绑定
 const countC = computed(() => store.count)
 // Ref类型响应式数据
 console.log(countRef)
-// 与vuex相似，也可通过计算属性绑定
 
-//
 const userC = store.user
 // proxy代理对象
 console.log(store.user)

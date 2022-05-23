@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <div class="modal" @click="$emit('emitClose', courseR.name)"> -->
     <div class="modal" @click="close">
       <div class="modal-dialog" @click.stop>
         <div class="modal-header">
@@ -10,7 +9,7 @@
           <p>
             父元素传入的数据可以在子元素渲染显示，但不能在子元素直接改变，即不能直接双向绑定传入的数据(单向数据流)。
             <br />
-            通过vue3.2提供defineEmits()函数，暴露事件。
+            通过vue3.2提供的defineProps()/defineEmits()函数，暴露属性及事件。
             <br />
             从props传入的对象可以直接渲染：
             <b>
@@ -34,12 +33,6 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" @click="submit">Save changes</button>
-          <!-- <button
-            class="btn btn-primary"
-            @click="$emit('emitClose', courseR.name)"
-          > 
-            Save changes
-          </button>-->
         </div>
       </div>
     </div>
@@ -48,32 +41,20 @@
 <script lang="ts" setup>
 import type { Course } from '@/datasource/Types'
 import { ref } from 'vue'
-// 声明对外暴露事件，属性均为函数
-interface EmitType {
-  (e: 'emitSubmit', data: string): void
-  (e: 'emitClose', data: boolean): void
-}
 // 声明接收的属性
 interface Props {
   course: Course
+  close: () => void
+  submit: (name: string) => void
 }
-
 const props = defineProps<Props>()
-const emit = defineEmits<EmitType>()
 // 双向绑定名称，用于传回给父元素
 const courseR = ref<Course>({ name: props.course?.name })
-
 // 声明执行函数，绑定组件中的操作事件
-const submit = () => emit('emitSubmit', courseR.value.name ?? '')
-const close = () => emit('emitClose', false)
+const submit = () => props.submit(courseR.value.name ?? '')
+const close = () => props.close()
 </script>
 <style scoped>
-a.btn {
-  display: inline-block;
-  padding: 5px 10px;
-  background: red;
-}
-
 .modal {
   width: 100vw;
   height: 100vh;
