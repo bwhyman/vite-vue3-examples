@@ -60,4 +60,36 @@ if (user2) {
 
 const l2 = (user2 && users.push(user2)) ?? users.length
 
+// ------------------------------------------------------
+
+new Promise((resolve) => {
+  setTimeout(() => {
+    console.log('dfsf')
+    resolve('done')
+  }, 1000)
+}).then((result) => console.log(result))
+
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('dfsf')
+    reject('error')
+  }, 1000)
+}).catch((error) => console.log(error))
+
+function getPromise() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('in')
+      reject('error')
+    }, 1000)
+  })
+}
+
+const get = async () => {
+  const result = await getPromise()
+  console.log('get')
+  console.log(result)
+}
+get()
+console.log('after get')
 export default { userObj, address }

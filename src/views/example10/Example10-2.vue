@@ -35,24 +35,19 @@
 </template>
 <script lang="ts" setup>
 import type { GithubRepos } from '@/datasource/Types'
-import { type Ref, ref } from 'vue'
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from '@/axios/index'
 
-function useSort(repos: Ref<GithubRepos[]>, reverse: Ref<boolean>) {
-  // 这块代码知道是排序即可
-  const sortR = (propertyName: string) => {
-    repos.value.sort((a: GithubRepos, b: GithubRepos) => {
-      type K = keyof GithubRepos
-      const ar: number | string = a[propertyName as K]!
-      const br: number | string = b[propertyName as K]!
-      return reverse.value ? (ar > br ? 1 : -1) : ar > br ? -1 : 1
-    })
-    reverse.value = !reverse.value
-  }
-  return {
-    sortR,
-  }
+// 这块代码知道是排序即可
+const sortR = (propertyName: string) => {
+  repos.value.sort((a: GithubRepos, b: GithubRepos) => {
+    type K = keyof GithubRepos
+    const ar: number | string = a[propertyName as K]!
+    const br: number | string = b[propertyName as K]!
+    return reverse.value ? (ar > br ? 1 : -1) : ar > br ? -1 : 1
+  })
+  reverse.value = !reverse.value
 }
 
 const url = useRoute().query.url as string
@@ -62,7 +57,6 @@ axios
   .create() // 仅此示例使用
   .get(url)
   .then((resp) => (repos.value = resp.data))
-const { sortR } = useSort(repos, reverse)
 </script>
 <style scoped>
 table,

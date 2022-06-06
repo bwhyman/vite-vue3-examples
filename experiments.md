@@ -1,8 +1,5 @@
 # Experiments
 ### 实验一 Vue组件与路由实验
-**实验原理**  
-基于前端开发技术与设计思想，组件化构建一个前端应用界面
-
 **实验目的**  
 理解前端开发技术的作用与意义  
 掌握前端开发工具的使用方法  
@@ -15,9 +12,6 @@
 基于Web CSS实验，以前端组件化设计思想重新设计，基于Vue实现一个左侧边栏导航及右主要布局空间。再侧边栏设计若干路由导航，切换组件至右区域。  
 
 ### 实验二 Vue双向绑定实验
-**实验原理**  
-基于MVVM设计思想，实现前端应用绑定的响应式数据
-
 **实验目的**  
 理解MVVM设计思想  
 掌握vue响应式数据绑定的方法  
@@ -42,19 +36,17 @@ https://vue3js.cn/docs/zh/guide/class-and-style.html#对象语法-2
 按学期排序显式；右侧显式选择的课程也动态按学期排序。不要在视图实现排序  
 查询数组排序sort()函数  
 
-### 实验三 Vuex单一数据源实验
-**实验原理**  
-基于前端单一数据源设计思想，实现vue不同层级组件间数据的共享。
-
+### 实验三 单一数据源实验
 **实验目的**  
 理解单一数据源设计思想  
 掌握vue组件路由传参的方法  
 掌握嵌套路由的实现方法  
 理解Javascript Proxy代理对象的特点  
-掌握vuex的配置方法  
-掌握组件绑定vuex数据的方法  
-掌握vuex state数据的声明方法  
-掌握vuex同步异步更新方法  
+掌握pinia的配置方法  
+掌握pinia state数据的声明方法  
+掌握pinia异步更新的方法  
+掌握pinia getter的使用方法  
+掌握组件绑定pinia数据的方法  
 
 需求0  
 模拟外卖平台  
@@ -77,8 +69,34 @@ order组件，显示订单详情
 将订单设为路由，路由切换到订单详情  
 
 需求+1  
-将数据加载由vuex执行  
-vuex state声明shopList，foods中shop列表绑定shopList  
+将数据加载由pinia执行  
+pinia state声明shopList，foods中shop列表绑定shopList  
 路由到foods组件时，执行异步事件拉取shoplist，加载时先判断如果state已经存在则不执行加载，没有则加载  
-同理，vuex声明shopCache，用于缓存已经拉取的shop详细信息  
+同理，pinia声明shopCache，用于缓存已经拉取的shop详细信息  
 进入shop组件时，异步加载shop详细信息，当shopCache中已经包含，即曾经加载过，则直接使用；没有则加载，并置于shopcache中  
+
+### 实验四 axios网络请求实验
+**实验目的**  
+掌握基于axios网络请求响应的基本方法  
+掌握axios请求/响应拦截器的声明使用方法  
+掌握axios-mock-adapter模拟响应数据的声明使用方法  
+掌握整合pinia/axios的方法  
+掌握前后端互交接口的设计原则  
+掌握sessionstorage的使用方法  
+
+**实验内容**  
+需求0  
+安装axios依赖，创建基本配置文件  
+基于https://api.github.com/users/bwhyman，编写对应的接口类型  
+编写组件，基于axios发出请求，获取响应结果，并将结果渲染到视图    
+
+需求+1  
+安装axios-mock-adapter依赖至开发环境下，创建基本配置文件  
+在main.ts入口按开发环境引入配置文件  
+创建拦截模拟登录请求函数  
+获取请求对象中的传递的参数，模拟账号密码并判断，相符按约定返回响应对象，并在header返回token/role数据  
+编写登录组件  
+在pinia编写登录函数，并调用axios发出请求  
+将响应header中的token/role数据存入sessionstorage  
+编写axios请求响应拦截器，基于响应业务码判断业务是否异常，并弹出全局警告模态框    
+
