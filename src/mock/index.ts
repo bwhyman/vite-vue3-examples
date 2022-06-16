@@ -29,22 +29,39 @@ const resulVO: ResultVO = {
 
 //reply的参数列表 (status, data, headers)
 //status，http状态码  data是返回的json数据
-mock.onGet('users/12').reply(200, {
-  code: 200,
-  data: { user: { id: 1, name: 'BO' } as User },
-} as ResultVO)
+// mock.onGet('users/12').reply(200, {
+//   code: 200,
+//   data: { user: { id: 1, name: 'BO' } as User },
+// } as ResultVO)
 
-// 等价于 users/任意值
-mock.onGet(path('users/{uid}')).reply(200, {
-  code: 200,
-  data: { user: { id: 2, name: 'SUN' } as User },
-} as ResultVO)
+mock.onGet(path('users/{uid}')).reply((config) => {
+  const url = config.url
+  const result = url?.match(path('users/{uid}'))
+  console.log(result)
+  console.log(result && result[1])
+  return [
+    200,
+    {
+      code: 200,
+      data: { user: { id: 2, name: 'SUN' } as User },
+    } as ResultVO,
+  ]
+})
 
-// users/4/coursess/21
-mock.onGet(path('users/{uid}/courses')).reply(200, {
-  code: 200,
-  data: { courses: listCourses() },
-} as ResultVO)
+// users/4/courses
+mock.onGet(path('users/{uid}/courses')).reply((c) => {
+  const url = c.url
+  const result = url?.match(path('users/{uid}/courses'))
+  console.log(result)
+  console.log(result && result[1])
+  return [
+    200,
+    {
+      code: 200,
+      data: { courses: listCourses() },
+    } as ResultVO,
+  ]
+})
 
 // config，axios config对象。包含请求信息
 // 返回数组，[status, {data对象}, {header对象}]
