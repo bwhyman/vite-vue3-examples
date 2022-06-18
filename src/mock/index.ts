@@ -8,7 +8,12 @@ import * as consty from '@/datasource/Const'
 const mock = new MockAdapter(axios)
 // 过滤http前缀请求
 mock.onAny(/^http/).passThrough()
-mock.onAny(/^\/api\//).passThrough()
+// mock.onAny(/^\/api\//).passThrough()
+
+interface RouteParams {
+  route: string
+  reg: RegExp
+}
 
 // 地址，支持JS正则表达式
 // 正则表达式中 \，由转义符，\/，替代
@@ -16,10 +21,29 @@ mock.onAny(/^\/api\//).passThrough()
 // $，结束。避免匹配多个
 // 整个表达式，置于/  /之间
 // 通用的，将{}占位符的字符串路径，转为正则表达式对象
-// 例如，/users/{uid}; /users/{uid}/courses/{hid}
-function path(p: string) {
-  const reg = p.replace(/{\w+}/g, '(\\w+)').replace(/\//g, '\\/') + '$'
-  return new RegExp(reg)
+// 例如，/users/:uid; /users/:uid/courses/:hid
+function routeToRegExp(p: string): RouteParams {
+  const reg =
+    p
+      .replace(/:\w+\//g, '(\\w+)/')
+      .replace(/:\w+/g, '(\\w+)')
+      .replace(/\//g, '\\/') + '$'
+  return {
+    reg: new RegExp(reg),
+    route: p,
+  }
+}
+// 从regexp中提取出变量名称，从实际路径中提取出数据，动态组装成对象
+function urlParams(url: string, routeParams: RouteParams): any {
+  const reg = /:(\w+)/g
+  const r = routeParams.route.match(reg)
+  const match = url.match(routeParams.reg)
+  const ob: any = {}
+  for (let index = 0; index < r!.length; index++) {
+    const propName = r![index].replace(':', '')
+    ob[propName] = match![index + 1]
+  }
+  return ob
 }
 // ===================================
 const resulVO: ResultVO = {
@@ -34,11 +58,9 @@ const resulVO: ResultVO = {
 //   data: { user: { id: 1, name: 'BO' } as User },
 // } as ResultVO)
 
-mock.onGet(path('users/{uid}')).reply((config) => {
-  const url = config.url
-  const result = url?.match(path('users/{uid}'))
-  console.log(result)
-  console.log(result && result[1])
+mock.onGet(routeToRegExp('users/:uid').reg).reply((config) => {
+  const params = urlParams(config.url ?? '', routeToRegExp('users/:uid'))
+  console.log(params.uid)
   return [
     200,
     {
@@ -49,11 +71,9 @@ mock.onGet(path('users/{uid}')).reply((config) => {
 })
 
 // users/4/courses
-mock.onGet(path('users/{uid}/courses')).reply((c) => {
-  const url = c.url
-  const result = url?.match(path('users/{uid}/courses'))
-  console.log(result)
-  console.log(result && result[1])
+mock.onGet(routeToRegExp('users/:uid/courses').reg).reply((c) => {
+  const params = urlParams(c.url ?? '', routeToRegExp('users/:uid/courses'))
+  console.log(params.uid)
   return [
     200,
     {
