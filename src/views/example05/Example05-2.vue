@@ -8,7 +8,7 @@
         同意以上条款
       </label>
       <br />
-      <button type="button" :disabled="submitButtonDisabled">提交</button>
+      <button type="button" :disabled="submitButtonDisabledRef">提交</button>
     </p>
     <hr />
     <p>也支持直接在事件中声明执行语句</p>
@@ -34,14 +34,14 @@
 </template>
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
-const submitButtonDisabled = ref(true)
+const submitButtonDisabledRef = ref(true)
 const activeRef = ref(false)
 // 回调函数支持0/1/2个参数
-watch(submitButtonDisabled, (newValue: boolean) =>
+watch(submitButtonDisabledRef, (newValue: boolean) =>
   alert(`按钮被禁用 ${newValue}`)
 )
 const setAgree = () =>
-  (submitButtonDisabled.value = !submitButtonDisabled.value)
+  (submitButtonDisabledRef.value = !submitButtonDisabledRef.value)
 
 const colorP = ref('red')
 </script>

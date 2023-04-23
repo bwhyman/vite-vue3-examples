@@ -1,11 +1,6 @@
 <template>
   <div>
-    <h1>script setup</h1>
-    <p>
-      vue3.2提供
-      <code>script setup</code>
-      语法糖，相当于内部声明的数据直接在setup()函数返回，无需再声明组件的创建函数。
-    </p>
+    <h1>Composition-API</h1>
     <p>
       可直接使用：{{ userRef?.name }} / {{ userRef?.insertTime }} /
       {{ userRef.address }}

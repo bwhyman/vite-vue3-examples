@@ -18,49 +18,57 @@ pinia/setup/computed/method/script setup/template/route/directives/composition-a
 开发环境/框架及版本
 
 - VS Code
-- Node.js ^16
-- NPM ^8
+- Node.js ^18
+- NPM ^9.5
 - Vue ^3.2
 - Pinia ^2.0
-- Git ^2.30
+- Git ^2.40
 
 ### Documents
+
 环境配置较复杂，先看这里
 
- - [Home.md](Home.md)
+- [Home.md](Home.md)
 
 ### Course Details
 
-在线课程
+[在线课程](https://mooc1-1.chaoxing.com/course/208931964.html)
 
-- https://mooc1-1.chaoxing.com/course/208931964.html
-
-### Related Courses  
+### Related Courses
 
 - https://github.com/bwhyman/java-course
 - https://github.com/bwhyman/springboot-course
 - https://github.com/bwhyman/vite-vue3-examples
 - https://github.com/bwhyman/flutter_examples
 
-### update 
+### update
+#### 2023.04.22
+更新升级依赖
+
 #### 2022.05.17
+
 重构。移除vuex，完全基于pinia使用全局响应式数据。
 
 #### 2022.05.06
+
 基于vue新项目构建方法重构  
 
 路由基于createWebHistory()函数构建的history在生产环境下需要web容器配置  
 使用基于createWebHashHistory()函数带#符号的路径解决问题  
 
 #### 2022.05.04
+
 引入新状态管理库pinia
 
 #### 2022.04.26
+
 更新vite/vue/vue-router/vuex版本
 
 #### 2021.12.13
+
 使用原生JS+HTML+Proxy代理类，模拟实现视图响应式更新  
 
 #### 2021.11.15
+
 基于vite重构，引入vue3.2 script-setup等特性。  
 由于没有手脚架，许多基本模板文件配置文件得自己写，希望官方尽快完善。

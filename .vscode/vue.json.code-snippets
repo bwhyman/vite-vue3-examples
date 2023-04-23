@@ -1,0 +1,13 @@
+{
+	"vue-component":{
+		"prefix":"vuec",
+		"body": [
+			"<script setup lang=\"ts\">"
+			"$0"
+			"</script>"
+			"<template>"
+			"<div></div>"
+			"</template>"
+		]
+	}
+}

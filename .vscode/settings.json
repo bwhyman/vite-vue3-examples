@@ -11,5 +11,4 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "emmet.triggerExpansionOnTab": true,
 }

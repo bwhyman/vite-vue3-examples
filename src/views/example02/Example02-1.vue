@@ -27,7 +27,8 @@
         ref()函数，支持基本数据类型/数组/对象/数据转为响应式数据，
         在TS中通过value属性获取/修改，在视图模板直接使用自动拆箱。
       </p>
-
+      messageRef: {{ messageRef }}
+      <br />
       <button type="button" @click="changeUserRef">changeUserRef</button>
       <br />
       {{ userRef?.name }} / {{ userRef?.address }} / {{ userRef?.insertTime }}
@@ -61,27 +62,39 @@
         </button>
       </p>
     </div>
+    <div>
+      <h1>watchEffect()</h1>
+      <p>
+        watchEffect()函数，首次初始化组件响应式数据时即时执行回调，同时监听响应式对象属性的改变。类似整合immediate/deep的watch()。
+      </p>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
 import type { User } from '@/datasource/Types'
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, watchEffect } from 'vue'
 
 const message = 'hello'
-const user: User = {
-  name: 'BO',
-  insertTime: '2046-04-09T11:04:25',
-}
-const user2: User = {
+
+const userAsync: User = {
   name: 'SUN',
   insertTime: '2046-04-11T20:24:59',
   address: '956',
 }
+const user: User = {
+  name: 'BO',
+  insertTime: '2046-04-09T11:04:25',
+}
+const messageRef = ref('hello world')
 const userRef = ref(user)
+//
+console.log(messageRef)
+console.log(userRef)
+
 // 视图执行函数
 const changeUserRef = () => {
   setTimeout(() => {
-    userRef.value = user2
+    userRef.value = userAsync
   }, 1000)
 }
 // computed()函数
@@ -102,4 +115,8 @@ watch(
     alert(`watch被激活。用户对象中属性数据被改变，名被改为: ${newUser.name}`),
   { deep: true }
 )
+// 首次进入时即执行回调
+watchEffect(() => {
+  console.log(`watchEffect: ${userRef.value.name}`)
+})
 </script>

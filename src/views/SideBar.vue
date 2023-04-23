@@ -7,7 +7,7 @@
     <ul>
       <li>
         <router-link to="/example02-1">
-          interface & ref() & computed() & watch()
+          interface & ref() & computed() & watch() & watchEffect()
         </router-link>
       </li>
       <li>
@@ -30,11 +30,11 @@
         </router-link>
       </li>
     </ul>
-    <h3>Script Setup</h3>
+    <h3>Composition-API</h3>
     <ul>
       <li>
         <router-link to="/example04-1/students/54/homeworks/14">
-          Script Setup
+          Composition-API
         </router-link>
       </li>
     </ul>

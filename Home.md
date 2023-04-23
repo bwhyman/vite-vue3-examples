@@ -2,13 +2,15 @@
 
 #### Node.js
 
-即使曾经安装过也使用最新版node.js重新安装，自动覆盖。修改到合适分区，例如D:\。其他全部默认，无需安装Chocolatey。
+即使曾经安装过也使用最新版node.js重新安装，自动覆盖。修改到合适分区位置，例如D:\Program Files\nodejs。其他全部默认，无需安装Chocolatey。
 
-windows是中文用户名可能会有影响。
+**windows中文用户名会影响NPM命令的执行**
 
 #### NPM Settings
 
-进入windows命令行模式，设置npm服务器使用aliyun镜像。复制以下命令，在控制台鼠标右键选择粘帖，回车执行。
+`win+R`组合键打开运行，输入`cmd`打开windows控制台
+
+设置npm服务器使用aliyun镜像。复制以下命令，在控制台鼠标右键选择粘帖，回车执行。
 
 ```sh
 npm config set registry http://registry.npmmirror.com
@@ -18,9 +20,9 @@ npm config set registry http://registry.npmmirror.com
 
 https://staging-cn.vuejs.org/guide/quick-start.html#with-build-tools
 
-在合适位置创建vue-workspace工作区目录，存放所有vue项目。
+在合适位置创建workspace-vue工作区目录，存放所有vue项目。
 
-通过命令行，进入工作区，执行项目初始化命令。
+打开工作区目录，在地址栏键入`cmd`打开控制台，直接定位到当前目录，执行项目初始化命令。
 
 ```shell
 npm init vue@latest
@@ -51,13 +53,14 @@ npm init vue@latest
 ```sh
 npm i
 ```
+
 启动项目
 
 ```sh
 npm run dev
 ```
 
-结束运行，在控制台输入组合键
+结束运行，在控制台按组合键
 
 ```sh
 ctrl+c
@@ -67,33 +70,27 @@ ctrl+c
 
 以eslint检查代码规范，以prettier统一代码风格，并在保存文件时自动修复错误
 
-创建，.prettierrc.json。单引号，无分号，不检测文件结束符格式
+修改.prettierrc.json。追加配置，忽略Windows/Linux行结束符`CRLF/LF`的差异
 
 ```json
 {
-    "htmlWhitespaceSensitivity": "ignore",
-    "singleQuote": true,
-    "semi": false,
     "endOfLine": "auto"
 }
 ```
-重启vs code
 
-修改.esintrc.cjs，添加规则
-
-```sh
-rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'vue/multi-word-component-names': 'off',
-  },
-```
-
-当前项目.vscode目录下，创建settings.json。声明项目的vscode配置
+修改.esintrc.cjs，取消跳过自动格式化
 
 ```json
 {
-  "editor.fontSize": 18,
+    '@vue/eslint-config-prettier'
+}
+```
+
+项目.vscode目录下，创建settings.json。声明项目vscode配置
+
+```json
+{
+  "editor.fontSize": 16,
   "window.zoomLevel": 1.0,
   "editor.wordWrap": "on", 
   "editor.codeActionsOnSave": {
@@ -105,16 +102,32 @@ rules: {
   "javascript.updateImportsOnFileMove.enabled": "always",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "emmet.triggerExpansionOnTab": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib",
 }
 ```
 
-#### Others
+项目.vscode目录下，创建vue组件模板文件`vue.json.code-snippets`。实现在vue文件中，输入vuec即可创建以下模板
 
-ts文件仍不支持引入vue组件的自动提示  
-vue3.2引入的script setup标签很方便，且声明的响应式数据/函数等视图终于支持了自动提示  
+```json
+{
+    "vue-component":{
+        "prefix":"vuec",
+        "body": [
+            "<script setup lang=\"ts\">"
+            "$0"
+            "</script>"
+            "<template>"
+            "<div></div>"
+            "</template>"
+        ]
+    }
+}
+```
 
+重启vs code
 
-vue组件规范名称为多单词，单单词可以以单词View为后缀，或使用大驼峰或`-`短横线分割
+#### Component Names
+
+vue组件规范名称为多单词，建议所有组件以View为后缀
 
 https://vuejs.org/v2/style-guide/#Multi-word-component-names-essential
