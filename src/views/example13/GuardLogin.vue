@@ -43,9 +43,9 @@ const userForm = ref({ number: '', password: '' })
 const login = () => {
   const user = {
     number: userForm.value.number,
-    password: userForm.value.password,
+    password: userForm.value.password
   }
-  store.loginGuard(user)
+  store.loginGuardA(user)
 
   userForm.value.number = ''
   userForm.value.password = ''

@@ -19,9 +19,9 @@ import { useStore } from '@/store'
 import { computed } from 'vue'
 import item from './Item.vue'
 const store = useStore()
-store.listCourses()
-const courses = computed(() => store.courses)
+store.listCoursesA()
+const courses = computed(() => store.coursesS)
 const changeItem = () => {
-  store.courses?.forEach((c) => (c.name = '响应式改变'))
+  store.coursesS?.forEach((c) => (c.name = '响应式改变'))
 }
 </script>

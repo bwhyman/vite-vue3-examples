@@ -102,7 +102,6 @@ ctrl+c
   "javascript.updateImportsOnFileMove.enabled": "always",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "typescript.tsdk": "node_modules\\typescript\\lib",
 }
 ```
 

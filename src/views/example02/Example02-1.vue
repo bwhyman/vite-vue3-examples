@@ -14,10 +14,7 @@
     <div>
       <h1>composition-api</h1>
       <p>
-        <a
-          href="https://v3.cn.vuejs.org/guide/composition-api-introduction.html"
-          target="_blank"
-        >
+        <a href="https://v3.cn.vuejs.org/guide/composition-api-introduction.html" target="_blank">
           什么是组合式 API？
         </a>
       </p>
@@ -57,9 +54,7 @@
         <br />
         参数3，监听选项对象，对象中可声明deep: true属性，可监听对象中属性的改变
         <br />
-        <button @click="changeUserRef2">
-          改变响应式对象中的属性中数据，watch()可监听
-        </button>
+        <button @click="changeUserRef2">改变响应式对象中的属性中数据，watch()可监听</button>
       </p>
     </div>
     <div>
@@ -79,11 +74,11 @@ const message = 'hello'
 const userAsync: User = {
   name: 'SUN',
   insertTime: '2046-04-11T20:24:59',
-  address: '956',
+  address: '956'
 }
 const user: User = {
   name: 'BO',
-  insertTime: '2046-04-09T11:04:25',
+  insertTime: '2046-04-09T11:04:25'
 }
 const messageRef = ref('hello world')
 const userRef = ref(user)
@@ -111,8 +106,7 @@ const changeUserRef2 = () => {
 // 可监听userRef中对象的改变，以及对象中属性数据的变化
 watch(
   userRef,
-  (newUser) =>
-    alert(`watch被激活。用户对象中属性数据被改变，名被改为: ${newUser.name}`),
+  (newUser) => alert(`watch被激活。用户对象中属性数据被改变，名被改为: ${newUser.name}`),
   { deep: true }
 )
 // 首次进入时即执行回调

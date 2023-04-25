@@ -4,7 +4,7 @@
     <p>
       count+1，但是声明的doubleCount属性计算count * 2。
       <br />
-      <button @click="store.count++">count++</button>
+      <button @click="store.countS++">count++</button>
       <br />
       {{ dCount }} / {{ store.doubleCount }}
     </p>
@@ -13,8 +13,8 @@
       <br />
       <button @click="changePre">changePre</button>
       <br />
-      <span v-if="premission(1)">用户权限为1显示</span>
-      <span v-if="store.premissionGetter(2)">用户权限为2显示</span>
+      <span v-if="premission(1)">权限为1的普通用户可见</span>
+      <span v-if="store.premissionGetter(2)">权限为2的VIP用户可见</span>
     </p>
   </div>
 </template>
@@ -22,10 +22,11 @@
 import { useStore } from '@/store'
 import { storeToRefs } from 'pinia'
 const store = useStore()
-// 可引入为组件变量。由于数据值为基本数据类型，需保证响应式
+// 可引入为组件变量
+// 返回的计算属性的结果，由于数据值为基本数据类型，需保证响应式
 const dCount = storeToRefs(store).doubleCount
 
-// getter属性返回的是函数，无需保证响应式
+// 返回的是计算属性返回的函数，无需保证响应式
 const premission = store.premissionGetter
-const changePre = () => (store.user.level = store.user.level == 1 ? 2 : 1)
+const changePre = () => (store.userS.level = store.userS.level == 1 ? 2 : 1)
 </script>

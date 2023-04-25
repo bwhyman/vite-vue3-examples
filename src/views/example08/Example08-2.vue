@@ -40,26 +40,27 @@
 <script lang="ts" setup>
 import type { User } from '@/datasource/Types'
 import { ref } from 'vue'
-import { useStore } from '@/store'
+
 import { storeToRefs } from 'pinia'
+import { useStore } from '@/store'
 
 const store = useStore()
 // 转为Ref，则state中user引用改变依然可感知
-const userRef = storeToRefs(store).user
+const userRef = storeToRefs(store).userS
 
 // 仅感知属性数据改变
-const userC = store.user
+const userC = store.userS
 const myUser = ref<User>({})
 
 const asyncUpdate = () =>
-  store.updateUser({
+  store.updateUserA({
     name: myUser.value.name,
-    address: myUser.value.address,
+    address: myUser.value.address
   })
 
 const patch = () =>
   store.$patch((state) => {
-    state.user = { name: '直接替换了state中对象' }
-    // state.user.name = 'pinia'
+    //state.user = { name: '直接替换了state中对象' }
+    state.userS.name = 'pinia'
   })
 </script>

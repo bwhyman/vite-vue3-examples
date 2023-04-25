@@ -1,4 +1,4 @@
-import type { Order, Shop } from '@/views/homework02/homework02'
+import type { Order, Shop } from '@/views/homework02/data/homework02'
 
 export interface State {
   message?: string

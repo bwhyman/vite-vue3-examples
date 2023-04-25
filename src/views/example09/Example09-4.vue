@@ -27,12 +27,7 @@
     </table>
 
     <p>{{ courseEditedName }}</p>
-    <editbutton3
-      v-if="active"
-      :course="courseEdit"
-      :close="closeItem"
-      :submit="submitItem"
-    />
+    <editbutton3 v-if="active" :course="courseEdit" :close="closeItem" :submit="submitItem" />
   </div>
 </template>
 <script lang="ts" setup>
@@ -41,8 +36,8 @@ import { useStore } from '@/store'
 import { computed, defineAsyncComponent, ref } from 'vue'
 const editbutton3 = defineAsyncComponent(() => import('./EditButton4.vue'))
 const store = useStore()
-store.listCourses()
-const courses = computed(() => store.courses)
+store.listCoursesA()
+const courses = computed(() => store.coursesS)
 const active = ref(false)
 const courseEditedName = ref('')
 const courseEdit = ref<Course>({})

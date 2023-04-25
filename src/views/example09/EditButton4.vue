@@ -23,10 +23,7 @@
           <p>
             可通过vue的事件修饰符阻止事件的传播等。
             <br />
-            <a
-              href="https://v3.cn.vuejs.org/guide/events.html#事件修饰符"
-              target="_blank"
-            >
+            <a href="https://v3.cn.vuejs.org/guide/events.html#事件修饰符" target="_blank">
               事件修饰符
             </a>
           </p>

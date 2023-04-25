@@ -48,11 +48,11 @@ interface User {
 const store = useStore()
 const userForm = ref<User>({ number: '', password: '' })
 
-const courses = computed(() => store.courses)
-const userC = computed(() => store.user)
+const courses = computed(() => store.coursesS)
+const userC = computed(() => store.userS)
 
 const getHome = () => {
-  store.getHome()
+  store.getHomeA()
 }
 
 const login = () => {
@@ -60,7 +60,7 @@ const login = () => {
     number: userForm.value.number,
     password: userForm.value.password
   }
-  store.login(user)
+  store.loginA(user)
   userForm.value.number = ''
   userForm.value.password = ''
 }

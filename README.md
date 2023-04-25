@@ -42,6 +42,9 @@ pinia/setup/computed/method/script setup/template/route/directives/composition-a
 - https://github.com/bwhyman/flutter_examples
 
 ### update
+#### 2023.04.25
+Pinia按组合式重构，像一个全局的响应式的没有视图Vue组件
+
 #### 2023.04.22
 更新升级依赖
 
@@ -71,4 +74,4 @@ pinia/setup/computed/method/script setup/template/route/directives/composition-a
 #### 2021.11.15
 
 基于vite重构，引入vue3.2 script-setup等特性。  
-由于没有手脚架，许多基本模板文件配置文件得自己写，希望官方尽快完善。
+由于没有手脚架，许多基本模板文件/配置文件得自己写，希望官方尽快完善。

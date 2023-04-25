@@ -1,11 +1,7 @@
 <template>
   <div>
     <p>附近的美食</p>
-    <div
-      v-for="(shop, index) of shopList"
-      :key="index"
-      style="min-width: 150px"
-    >
+    <div v-for="(shop, index) of shopList" :key="index" style="min-width: 150px">
       <router-link :to="`/homework02/shops/${shop.id}`" class="router">
         <div class="card">
           <h4>{{ shop.name }}</h4>
@@ -20,9 +16,9 @@
 import { computed } from 'vue'
 import { useH2Store } from './store'
 const store = useH2Store()
-store.listShops()
+store.listShopsA()
 
-const shopList = computed(() => store.shopList)
+const shopList = computed(() => store.shopListS)
 </script>
 <style scoped>
 * {

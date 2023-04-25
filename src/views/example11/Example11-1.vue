@@ -30,8 +30,8 @@ axios.get('users/12').then((resp) => {
   user.value = resp.data.data.user
 })
 const store = useStore()
-const coursesC = computed(() => store.mockCourses)
+const coursesC = computed(() => store.mockCoursesS)
 const choseUser = (userId: number) => {
-  store.listMockCourses(userId)
+  store.listMockCoursesA(userId)
 }
 </script>

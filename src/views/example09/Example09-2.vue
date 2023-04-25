@@ -43,8 +43,8 @@ import { computed, defineAsyncComponent, ref } from 'vue'
 
 const editbutton2 = defineAsyncComponent(() => import('./EditButton2.vue'))
 const store = useStore()
-store.listCourses()
-const courses = computed(() => store.courses)
+store.listCoursesA()
+const courses = computed(() => store.coursesS)
 const active = ref(false)
 const courseEditedName = ref('')
 const courseEdit = ref<Course>({})
