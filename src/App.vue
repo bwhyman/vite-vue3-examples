@@ -7,11 +7,9 @@
 import { defineAsyncComponent, computed } from 'vue'
 import sidebar from '@/views/SideBar.vue'
 import { useStore } from './store'
-const alertdialog = defineAsyncComponent(
-  () => import('@/components/AlertDialog.vue')
-)
+const alertdialog = defineAsyncComponent(() => import('@/components/AlertDialog.vue'))
 const store = useStore()
-const exception = computed(() => store.exception)
+const exception = computed(() => store.exceptionS)
 </script>
 
 <style>

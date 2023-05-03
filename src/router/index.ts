@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-rou
 import * as consty from '@/datasource/Const'
 import { useStore } from '@/store'
 
-const routes: Array<RouteRecordRaw> = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('@/views/example01/Example01.vue')

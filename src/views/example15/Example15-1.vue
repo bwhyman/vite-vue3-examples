@@ -2,6 +2,8 @@
 import { defineAsyncComponent } from 'vue'
 
 const asyncview = defineAsyncComponent(() => import('./AsyncView.vue'))
+
+const loadingVue = defineAsyncComponent(() => import('@/components/LoadingVue.vue'))
 </script>
 <template>
   <div>
@@ -20,7 +22,7 @@ const asyncview = defineAsyncComponent(() => import('./AsyncView.vue'))
         <asyncview />
       </template>
       <template #fallback>
-        <div>Loading...</div>
+        <loadingVue />
       </template>
     </suspense>
   </div>

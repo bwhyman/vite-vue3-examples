@@ -16,8 +16,8 @@
 import { useStore } from '@/store'
 import { computed } from 'vue'
 const store = useStore()
-const exception = computed(() => store.exception)
-const close = () => (store.exception = '')
+const exception = computed(() => store.exceptionS)
+const close = () => (store.exceptionS = '')
 </script>
 <style scoped>
 .modal {

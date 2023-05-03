@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Reactive</h1>
+    <h1>reactive()</h1>
     <p>
       reactive()函数，将对象转为响应式对象，不支持基本数据类型，number/boolean等。
       <br />
@@ -27,12 +27,12 @@ import type { User } from '@/datasource/Types'
 import { reactive } from 'vue'
 const user: User = {
   name: 'BO',
-  insertTime: '2046-04-09T11:04:25',
+  insertTime: '2046-04-09T11:04:25'
 }
 const userAsync: User = {
   name: 'SUN',
   insertTime: '2046-04-09T11:04:25',
-  address: '956',
+  address: '956'
 }
 
 let userReact = reactive(user)

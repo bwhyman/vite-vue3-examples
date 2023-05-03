@@ -11,10 +11,10 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/example02-2">composition</router-link>
+        <router-link to="/example02-2">Reactive-02</router-link>
       </li>
       <li>
-        <router-link to="/example02-3">Reactive</router-link>
+        <router-link to="/example02-3">reactive()</router-link>
       </li>
     </ul>
     <h3>Props, route with params</h3>
@@ -27,14 +27,6 @@
       <li>
         <router-link to="/example03-1/students/18/homeworks/18">
           students/18/homeworks/18
-        </router-link>
-      </li>
-    </ul>
-    <h3>Composition-API</h3>
-    <ul>
-      <li>
-        <router-link to="/example04-1/students/54/homeworks/14">
-          Composition-API
         </router-link>
       </li>
     </ul>
@@ -109,7 +101,7 @@
     <h3>Navigation Guards</h3>
     <ul>
       <li>
-        <router-link to="/example13">Navigation Guards</router-link>
+        <router-link to="/example13/login">Navigation Guards</router-link>
       </li>
     </ul>
     <h3>Suspense</h3>

@@ -13,7 +13,7 @@ axios.interceptors.request.use(
   },
   (error) => {
     const store = useStore()
-    store.exception = error.message
+    store.exceptionS = error.message
     return Promise.reject()
   }
 )
@@ -25,7 +25,7 @@ axios.interceptors.response.use(
     if (data.code != 200) {
       // 调用函数获取pinia state数据，必须在pinia加载后执行。
       const store = useStore()
-      store.exception = data.message ?? ''
+      store.exceptionS = data.message ?? ''
       return Promise.reject()
     }
     return resp
@@ -33,7 +33,7 @@ axios.interceptors.response.use(
   // 全局处理异常信息。即，http状态码不是200
   (error) => {
     const store = useStore()
-    store.exception = error.message
+    store.exceptionS = error.message
     return Promise.reject()
   }
 )
