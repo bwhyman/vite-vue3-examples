@@ -1,5 +1,5 @@
 # Homework-02
-![Screenshot](./asserts/homework02.gif)
+![Screenshot](./assets/homework02.gif)
 
 #### 需求0
 模拟外卖平台  
@@ -29,7 +29,7 @@ vuex state声明shopList，foods中shop列表绑定shopList
 进入shop组件时，异步加载shop详细信息，当shopCache中已经包含，即曾经加载过，则直接使用；没有则加载，并置于shopcache中
 
 # Homework-01
-![Screenshot](./asserts/point.gif)
+![Screenshot](./assets/point.gif)
 
 #### 需求0
 为学生提供友好的，动态计算显式选修课学分功能组件  
