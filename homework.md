@@ -10,7 +10,7 @@ foods组件，加载shop列表，每个shop是一个路由导航，点击时路�
 shop组件，基于传入的参数加载shop全部item，循环渲染  
 
 #### 需求+1
-orders包含若干order，每个order包含选定的item以及对应的数量；orders数组保存在vuex  
+orders包含若干order，每个order包含选定的item以及对应的数量；orders数组保存在pinia  
 shop组件，声明add函数，获取orders判断是否包含当前渲染的item，有则修改其数量，没有则创建新order对象加入orders数组  
 声明remove函数，获取orders基于当前渲染的item减少order中数量，0则从orders数组移除对应的item  
 可在组件内直接操作orders数组中元素，仅替换整合数组引用时使用同步/异步事件  

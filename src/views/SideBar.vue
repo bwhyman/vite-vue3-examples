@@ -110,6 +110,12 @@
         <router-link to="/example15">suspense</router-link>
       </li>
     </ul>
+    <h3>Slots</h3>
+    <ul>
+      <li>
+        <router-link to="/example16">Slots</router-link>
+      </li>
+    </ul>
     <h3>Proxy</h3>
     <ul>
       <li>

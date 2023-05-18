@@ -1,36 +1,34 @@
 <template>
-  <div>
-    <div class="modal" @click="close">
-      <div class="modal-dialog" @click.stop>
-        <div class="modal-header">
-          <h3>Modal title</h3>
-        </div>
-        <div class="modal-content">
-          <p>
-            父元素传入的数据可以在子元素渲染显示，但不能在子元素直接改变，即不能直接双向绑定传入的数据(单向数据流)。
-            <br />
-            通过vue3.2提供的defineProps()/defineEmits()函数，暴露属性及事件。
-            <br />
-            从props传入的对象可以直接渲染：
-            <b>
-              {{ course.name }}
-            </b>
-          </p>
-          <p>
-            双向绑定时，需要取出props中数据，填充至新创建的响应式对象(类似getter出来再setter进去)
-            <input v-model="courseR.name" />
-          </p>
-          <p>
-            可通过vue的事件修饰符阻止事件的传播等。
-            <br />
-            <a href="https://v3.cn.vuejs.org/guide/events.html#事件修饰符" target="_blank">
-              事件修饰符
-            </a>
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" @click="submit">Save changes</button>
-        </div>
+  <div class="modal" @click="close">
+    <div class="modal-dialog" @click.stop>
+      <div class="modal-header">
+        <h3>Modal title</h3>
+      </div>
+      <div class="modal-content">
+        <p>
+          父元素传入的数据可以在子元素渲染显示，但不能在子元素直接改变，即不能直接双向绑定传入的数据(单向数据流)。
+          <br />
+          通过vue3.2提供的defineProps()/defineEmits()函数，暴露属性及事件。
+          <br />
+          从props传入的对象可以直接渲染：
+          <b>
+            {{ course.name }}
+          </b>
+        </p>
+        <p>
+          双向绑定时，需要取出props中数据，填充至新创建的响应式对象(类似getter出来再setter进去)
+          <input v-model="courseR.name" />
+        </p>
+        <p>
+          可通过vue的事件修饰符阻止事件的传播等。
+          <br />
+          <a href="https://v3.cn.vuejs.org/guide/events.html#事件修饰符" target="_blank">
+            事件修饰符
+          </a>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" @click="submit">Save changes</button>
       </div>
     </div>
   </div>

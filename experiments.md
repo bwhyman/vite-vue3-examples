@@ -1,5 +1,7 @@
 # Experiments
+
 ### 实验一 Vue组件与路由实验
+
 **实验目的**  
 理解前端开发技术的作用与意义  
 掌握前端开发工具的使用方法  
@@ -12,6 +14,7 @@
 基于Web CSS实验，以前端组件化设计思想重新设计，基于Vue实现一个左侧边栏导航及右主要布局空间。再侧边栏设计若干路由导航，切换组件至右区域。  
 
 ### 实验二 Vue双向绑定实验
+
 **实验目的**  
 理解MVVM设计思想  
 掌握vue响应式数据绑定的方法  
@@ -35,8 +38,10 @@ https://vue3js.cn/docs/zh/guide/class-and-style.html#对象语法-2
 返回的课程不是按学期排序，加入选择数组也是按选择顺序而非学期，体验不好  
 按学期排序显式；右侧显式选择的课程也动态按学期排序。不要在视图实现排序  
 查询数组排序sort()函数  
+![Screenshot](./assets/point.gif)
 
 ### 实验三 单一数据源实验
+
 **实验目的**  
 理解单一数据源设计思想  
 掌握vue组件路由传参的方法  
@@ -74,8 +79,10 @@ pinia state声明shopList，foods中shop列表绑定shopList
 路由到foods组件时，执行异步事件拉取shoplist，加载时先判断如果state已经存在则不执行加载，没有则加载  
 同理，pinia声明shopCache，用于缓存已经拉取的shop详细信息  
 进入shop组件时，异步加载shop详细信息，当shopCache中已经包含，即曾经加载过，则直接使用；没有则加载，并置于shopcache中  
+![Screenshot](./assets/homework02.gif)
 
 ### 实验四 axios网络请求实验
+
 **实验目的**  
 掌握基于axios网络请求响应的基本方法  
 掌握axios请求/响应拦截器的声明使用方法  
@@ -99,4 +106,3 @@ pinia state声明shopList，foods中shop列表绑定shopList
 在pinia编写登录函数，并调用axios发出请求  
 将响应header中的token/role数据存入sessionstorage  
 编写axios请求响应拦截器，基于响应业务码判断业务是否异常，并弹出全局警告模态框    
-

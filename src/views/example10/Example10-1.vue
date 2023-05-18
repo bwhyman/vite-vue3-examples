@@ -3,7 +3,7 @@
     <p>
       https://api.github.com/users/bwhyman
       <br />
-      <img :src="user.avatar_url" alt="" style="width: 30%" />
+      <img :src="user.avatar_url" alt="" style="width: 200px; border-radius: 50%" />
       <br />
       login: {{ user?.login }}
       <br />

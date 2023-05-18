@@ -105,6 +105,14 @@ ctrl+c
 }
 ```
 
+#### Volar Takeover
+
+为使用Volar提供的TS服务，需禁用vscode默认的TS支持。
+
+打开插件标签搜索，`@builtin typescript`，选择`TypeScript and JavaScript Language Features`插件，禁用。reload vscode，当文件为vue/ts时，右下角出现`takeover`标签生效。
+
+#### Vue Snippet
+
 项目.vscode目录下，创建vue组件模板文件`vue.json.code-snippets`。实现在vue文件中，输入vuec即可创建以下模板
 
 ```json

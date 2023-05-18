@@ -197,6 +197,11 @@ const routes: RouteRecordRaw[] = [
     path: '/example15',
     component: () => import('@/views/example15/Example15-1.vue')
   },
+  {
+    props: true,
+    path: '/example16',
+    component: () => import('@/views/example16/Example16View.vue')
+  },
   // -------------- homework
   {
     props: true,
@@ -236,21 +241,19 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   // 排除，没有声明角色权限的路由
   if (!to.meta.role) {
-    next()
-    return
+    return true
   }
 
   if (to.meta.role != sessionStorage.getItem('role')) {
-    next({ name: 'login-g' })
     // 调用函数获取pinia state数据，必须在pinia加载后执行
     const store = useStore()
     store.exceptionS = '无权限'
-    return
+    return { name: 'login-g' }
   }
-  next()
+  return true
 })
 
 export default router

@@ -7,7 +7,7 @@ China, Northeast Forestry University, Software Engineering, Frameworks for Web A
 Web系统框架，是东北林业大学软件工程专业第6学期的一门专业选修课。  
 主讲教师：王波老师
 
-课程前部分，基于Vite/Vue3.0框架的前端MVVM设计模式、组件化设计与单页面开发技术。  
+课程前部分，基于Vite/Vue3框架的前端MVVM设计模式、组件化设计与单页面开发技术。  
 课程后部分，基于springboot/spring-cloud框架的后端微服务架构、设计思想与实现技术。  
 
 Contents:  
@@ -41,7 +41,10 @@ pinia/setup/computed/method/script setup/template/route/directives/composition-a
 - https://github.com/bwhyman/vite-vue3-examples
 - https://github.com/bwhyman/flutter_examples
 
-### update
+### Update
+#### 2023.05.18
+基于Slot插槽自定义全局权限组件
+
 #### 2023.04.25
 Pinia按组合式重构，像一个全局的响应式的没有视图Vue组件
 
