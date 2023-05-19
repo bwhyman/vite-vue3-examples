@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 export const useExample16Store = defineStore('example16', () => {
   // 模拟绑定/切换权限值测试
-  const roleS = ref(USER)
+  const roleS = ref('')
   const changeRoleA = () => {
     roleS.value = roleS.value == USER ? ADMIN : USER
   }

@@ -251,6 +251,7 @@ router.beforeEach((to, from) => {
     // 调用函数获取pinia state数据，必须在pinia加载后执行
     const store = useStore()
     store.exceptionS = '无权限'
+    // 支持返回路由对象
     return { name: 'login-g' }
   }
   return true

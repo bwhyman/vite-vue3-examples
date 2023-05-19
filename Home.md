@@ -44,7 +44,7 @@ npm init vue@latest
 
 #### VS Vode
 
-下载压缩版vscode，解压运行。安装volar/TypeScript Vue Plugin/eslint，3个插件，重启vs code。
+下载压缩版vscode，解压运行。安装`volar/TypeScript Vue Plugin/eslint/Auto Rename Tag`插件，重启vs code。
 
 打开项目目录，打开vs code控制台，crtl+`
 
@@ -65,6 +65,14 @@ npm run dev
 ```sh
 ctrl+c
 ```
+
+#### Volar Takeover
+
+为使用Volar提供的TS服务，需禁用vscode默认的TS支持。
+
+打开vs code插件标签搜索，`@builtin typescript`，选择`TypeScript and JavaScript Language Features`插件，禁用。reload vscode，当文件为vue/ts时，右下角出现`takeover`标签生效。
+
+[搭配 TypeScript 使用 Vue | Vue.js](https://cn.vuejs.org/guide/typescript/overview.html#volar-takeover-mode)
 
 #### eslint/prettier
 
@@ -98,22 +106,16 @@ ctrl+c
   },
   "git.enableSmartCommit": true,
   "workbench.colorTheme": "Default Light+",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "vue.updateImportsOnFileMove.enabled": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-}
+  "editor.suggest.snippetsPreventQuickSuggestions": false
+} 
 ```
-
-#### Volar Takeover
-
-为使用Volar提供的TS服务，需禁用vscode默认的TS支持。
-
-打开插件标签搜索，`@builtin typescript`，选择`TypeScript and JavaScript Language Features`插件，禁用。reload vscode，当文件为vue/ts时，右下角出现`takeover`标签生效。
 
 #### Vue Snippet
 
-项目.vscode目录下，创建vue组件模板文件`vue.json.code-snippets`。实现在vue文件中，输入vuec即可创建以下模板
+项目.vscode目录下，创建vue组件模板文件`vue.json.code-snippets`。实现在vue文件中，输入`vuec`即可创建以下模板
 
 ```json
 {
@@ -135,6 +137,6 @@ ctrl+c
 
 #### Component Names
 
-vue组件规范名称为多单词，建议所有组件以View为后缀
+vue组件规范名称为多单词，建议所有视图组件以View为后缀，通用组件以vue为后缀
 
 https://vuejs.org/v2/style-guide/#Multi-word-component-names-essential

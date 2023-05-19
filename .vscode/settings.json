@@ -7,8 +7,8 @@
   },
   "git.enableSmartCommit": true,
   "workbench.colorTheme": "Default Light+",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "vue.updateImportsOnFileMove.enabled": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "editor.suggest.snippetsPreventQuickSuggestions": false
 }
