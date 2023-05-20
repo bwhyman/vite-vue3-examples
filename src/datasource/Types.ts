@@ -1,17 +1,3 @@
-import type { Order, Shop } from '@/views/homework02/data/homework02'
-
-export interface State {
-  message?: string
-  exception?: string
-  user?: User
-  courses?: Course[]
-  userCourses?: Course[]
-  // homework02
-  shopList: Shop[]
-  shopCache: Shop[]
-  orders: Order[]
-}
-
 export interface Course {
   id?: number
   name?: string

@@ -34,10 +34,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useStore } from '@/store'
 import { ref } from 'vue'
+import { useExample13Store } from './Example13Store'
 
-const store = useStore()
+const store = useExample13Store()
 const userForm = ref({ number: '', password: '' })
 
 const login = () => {

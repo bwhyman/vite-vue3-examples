@@ -37,15 +37,15 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useStore } from '@/store'
 import { computed, ref } from 'vue'
+import { useExample11Store } from './Example11Store'
 
 interface User {
   number: string
   password: string
 }
 
-const store = useStore()
+const store = useExample11Store()
 const userForm = ref<User>({ number: '', password: '' })
 
 const courses = computed(() => store.coursesS)

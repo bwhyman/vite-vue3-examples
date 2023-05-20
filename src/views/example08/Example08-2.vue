@@ -42,9 +42,9 @@ import type { User } from '@/datasource/Types'
 import { ref } from 'vue'
 
 import { storeToRefs } from 'pinia'
-import { useStore } from '@/store'
+import { useExample08Store } from './Example08Store'
 
-const store = useStore()
+const store = useExample08Store()
 // 转为Ref，则state中user引用改变依然可感知
 const userRef = storeToRefs(store).userS
 

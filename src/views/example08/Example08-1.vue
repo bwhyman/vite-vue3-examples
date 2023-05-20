@@ -45,9 +45,9 @@
 <script lang="ts" setup>
 import type { User } from '@/datasource/Types'
 import { computed, ref } from 'vue'
-import { useStore } from '@/store'
 import { storeToRefs } from 'pinia'
-const store = useStore()
+import { useExample08Store } from './Example08Store'
+const store = useExample08Store()
 // store为proxy代理对象。因此store为响应式对象
 console.log(store)
 

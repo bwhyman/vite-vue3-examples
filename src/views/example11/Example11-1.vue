@@ -21,15 +21,15 @@
 <script lang="ts" setup>
 import axios from '@/axios'
 import type { User } from '@/datasource/Types'
-import { useStore } from '@/store'
 import { computed, ref } from 'vue'
+import { useExample11Store } from './Example11Store'
 
 const user = ref<User>({})
 // 发出异步请求，获取结果。没有置于state
 axios.get('users/12').then((resp) => {
   user.value = resp.data.data.user
 })
-const store = useStore()
+const store = useExample11Store()
 const coursesC = computed(() => store.mockCoursesS)
 const choseUser = (userId: number) => {
   store.listMockCoursesA(userId)
