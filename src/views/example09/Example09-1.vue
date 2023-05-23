@@ -9,19 +9,19 @@
     <p>
       传入的参数可以是代理对象。因此父组件改变数据时，子组件支持响应式改变。
       <br />
-      <button @click="changeItem">changeItem</button>
+      <button @click="changeItemF">changeItem</button>
     </p>
-    <item v-for="(c, index) of courses" :key="index" :course="c" />
+    <item v-for="(c, index) of coursesC" :key="index" :course="c" />
   </div>
 </template>
 <script lang="ts" setup>
-import { useStore } from '@/store'
 import { computed } from 'vue'
 import item from './Item.vue'
-const store = useStore()
+import { useExample09Store } from './Example09Store'
+const store = useExample09Store()
 store.listCoursesA()
-const courses = computed(() => store.coursesS)
-const changeItem = () => {
+const coursesC = computed(() => store.coursesS)
+const changeItemF = () => {
   store.coursesS?.forEach((c) => (c.name = '响应式改变'))
 }
 </script>

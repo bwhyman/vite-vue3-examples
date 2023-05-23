@@ -53,7 +53,7 @@
     <h3>Pinia</h3>
     <ul>
       <li>
-        <router-link to="/example08-1">State & Sync Update</router-link>
+        <router-link to="/example08-1">State</router-link>
       </li>
       <li>
         <router-link to="/example08-2">Actions & patch()</router-link>

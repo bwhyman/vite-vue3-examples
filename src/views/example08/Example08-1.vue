@@ -24,27 +24,10 @@
     可替代computed()函数，从store对象中解构出state数据并保持响应式。
     <br />
     {{ countRef }} / {{ countC }}
-    <hr />
-    <p>
-      {{ userC?.name }} / {{ userC?.address }}
-      <br />
-      也可直接绑定到视图，而无需computed()函数引入为本地变量。
-      <br />
-      {{ store.userS?.name }} / {{ store.userS?.address }}
-    </p>
-    <hr />
-    <p>
-      <input type="text" v-model="myUser.name" />
-      <br />
-      <input type="text" v-model="myUser.address" />
-      <br />
-      <button type="button" @click="updateUser">update</button>
-    </p>
   </div>
 </template>
 <script lang="ts" setup>
-import type { User } from '@/datasource/Types'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useExample08Store } from './Example08Store'
 const store = useExample08Store()
@@ -67,19 +50,4 @@ const countRef = storeToRefs(store).countS
 const countC = computed(() => store.countS)
 // Ref类型响应式数据
 console.log(countRef)
-
-const userC = store.userS
-// proxy代理对象
-console.log(store.userS)
-
-// 创建一个用于双向绑定的响应式对象
-const myUser = ref<User>({})
-const updateUser = () => {
-  // 取出双向绑定对象中的属性值，值赋给state中对象的属性
-  // 而非直接传递对象
-  // user为proxy而非Ref，改变引用会失去响应式。可通过storeToRefs()函数改变
-  store.userS.name = myUser.value.name
-  store.userS.address = myUser.value.address
-  // myUser.value的值为proxy代理对象，直接赋值给state后，会变为双向绑定，随输入即时更新
-}
 </script>

@@ -14,37 +14,37 @@
         <td>createTime</td>
         <td>operation</td>
       </tr>
-      <tr v-for="(c, index) of courses" :key="index">
+      <tr v-for="(c, index) of coursesC" :key="index">
         <td>{{ index + 1 }}</td>
         <td>
           {{ c.name }}
         </td>
         <td>{{ c.createTime }}</td>
         <td>
-          <button @click=";(courseEdit = c), (active = true)">edit</button>
+          <button @click=";(courseEditR = c), (activeR = true)">edit</button>
         </td>
       </tr>
     </table>
 
-    <p>{{ courseEditedName }}</p>
-    <editbutton3 v-if="active" :course="courseEdit" :close="closeItem" :submit="submitItem" />
+    <p>{{ courseEditedNameR }}</p>
+    <editbutton3 v-if="activeR" :course="courseEditR" :close="closeItem" :submit="submitItem" />
   </div>
 </template>
 <script lang="ts" setup>
 import type { Course } from '@/datasource/Types'
-import { useStore } from '@/store'
 import { computed, defineAsyncComponent, ref } from 'vue'
+import { useExample09Store } from './Example09Store'
 const editbutton3 = defineAsyncComponent(() => import('./EditButton4.vue'))
-const store = useStore()
+const store = useExample09Store()
 store.listCoursesA()
-const courses = computed(() => store.coursesS)
-const active = ref(false)
-const courseEditedName = ref('')
-const courseEdit = ref<Course>({})
+const coursesC = computed(() => store.coursesS)
+const activeR = ref(false)
+const courseEditedNameR = ref('')
+const courseEditR = ref<Course>({})
 
-const closeItem = () => (active.value = false)
+const closeItem = () => (activeR.value = false)
 const submitItem = (name: string) => {
-  courseEditedName.value = name
-  active.value = false
+  courseEditedNameR.value = name
+  activeR.value = false
 }
 </script>

@@ -1,16 +1,13 @@
 <template>
   <div>
     <h1>Actions</h1>
-    <p>
-      Actions，值为对象。对象中可声明执行的异步业务函数，以及支持修改state数据
-      因为需要通过this获取store对象，因此不能声明为箭头函数。可基于async/await，或返回Promise。
-    </p>
+    <p>Store中可声明执行的异步业务函数，以及响应式修改state数据</p>
     <p>
       {{ userC?.name }} / {{ userC?.address }}
       <br />
-      <input type="text" v-model="myUser.name" />
+      <input type="text" v-model="myUserR.name" />
       <br />
-      <input type="text" v-model="myUser.address" />
+      <input type="text" v-model="myUserR.address" />
       <br />
       <button type="button" @click="asyncUpdate">asyncUpdate</button>
     </p>
@@ -40,22 +37,31 @@
 <script lang="ts" setup>
 import type { User } from '@/datasource/Types'
 import { ref } from 'vue'
-
 import { storeToRefs } from 'pinia'
 import { useExample08Store } from './Example08Store'
 
 const store = useExample08Store()
 // 转为Ref，则state中user引用改变依然可感知
 const userRef = storeToRefs(store).userS
-
-// 仅感知属性数据改变
 const userC = store.userS
-const myUser = ref<User>({})
+// proxy代理对象
+console.log(store.userS)
 
+// 创建一个用于双向绑定的响应式对象
+const myUserR = ref<User>({})
+
+const updateUser = () => {
+  // 取出双向绑定对象中的属性值，值赋给state中对象的属性
+  // 而非直接传递对象
+  // user为proxy而非Ref，改变引用会失去响应式。可通过storeToRefs()函数改变
+  store.userS.name = myUserR.value.name
+  store.userS.address = myUserR.value.address
+  // myUser.value的值为proxy代理对象，直接赋值给state后，会变为双向绑定，随输入即时更新
+}
 const asyncUpdate = () =>
   store.updateUserA({
-    name: myUser.value.name,
-    address: myUser.value.address
+    name: myUserR.value.name,
+    address: myUserR.value.address
   })
 
 const patch = () =>

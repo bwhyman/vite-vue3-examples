@@ -22,11 +22,17 @@
 import { storeToRefs } from 'pinia'
 import { useExample08Store } from './Example08Store'
 const store = useExample08Store()
+
+// 仅等于当前调用时计算的结果
+console.log(store.doubleCountG)
 // 可引入为组件变量
 // 返回的计算属性的结果，由于数据值为基本数据类型，需保证响应式
 const dCount = storeToRefs(store).doubleCountG
+console.log(dCount)
 
-// 返回的是计算属性返回的函数，无需保证响应式
-const premission = store.premissionG
+// 自动封装为组件计算属性
+const premission = storeToRefs(store).premissionG
+console.log(premission)
+
 const changePre = () => (store.userS.level = store.userS.level == 1 ? 2 : 1)
 </script>
