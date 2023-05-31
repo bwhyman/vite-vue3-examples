@@ -1,7 +1,9 @@
 <template>
-  <sidebar id="sidebar" />
-  <router-view id="router" />
-  <alertdialog v-if="exception && exception.length > 0" />
+  <div id="row">
+    <sidebar id="sidebar" />
+    <router-view id="router" />
+  </div>
+  <alertdialog v-if="exception.length > 0" />
 </template>
 <script lang="ts" setup>
 import { defineAsyncComponent, computed } from 'vue'
@@ -14,7 +16,10 @@ const exception = computed(() => store.exceptionS)
 
 <style>
 #app {
-  margin-top: 10px;
+  width: 960px;
+  margin: 10px auto;
+}
+#row {
   display: flex;
 }
 

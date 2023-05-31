@@ -30,7 +30,7 @@ function routeToRegExp(p: string): RouteParams {
       .replace(/\//g, '\\/') + '$'
   return {
     reg: new RegExp(reg),
-    route: p,
+    route: p
   }
 }
 // 从regexp中提取出变量名称，从实际路径中提取出数据，动态组装成对象
@@ -48,7 +48,7 @@ function urlParams(url: string, routeParams: RouteParams): any {
 // ===================================
 const resulVO: ResultVO = {
   code: 200,
-  data: {},
+  data: {}
 }
 
 //reply的参数列表 (status, data, headers)
@@ -65,8 +65,8 @@ mock.onGet(routeToRegExp('users/:uid').reg).reply((config) => {
     200,
     {
       code: 200,
-      data: { user: { id: 2, name: 'SUN' } as User },
-    } as ResultVO,
+      data: { user: { id: 2, name: 'SUN' } as User }
+    } as ResultVO
   ]
 })
 
@@ -78,8 +78,8 @@ mock.onGet(routeToRegExp('users/:uid/courses').reg).reply((c) => {
     200,
     {
       code: 200,
-      data: { courses: listCourses() },
-    } as ResultVO,
+      data: { courses: listCourses() }
+    } as ResultVO
   ]
 })
 
@@ -99,8 +99,8 @@ mock.onPost('login').reply((c) => {
       resulVO,
       {
         token:
-          '744193c872b677aab12a0ced447882f4cf9fca92a09d428a26ed145ed2ed2eec665c8824ebc353042ba2be136efcb5c6',
-      },
+          '744193c872b677aab12a0ced447882f4cf9fca92a09d428a26ed145ed2ed2eec665c8824ebc353042ba2be136efcb5c6'
+      }
     ]
   }
   resulVO.code = 401
@@ -151,8 +151,8 @@ mock.onPost('login-guard').reply((c) => {
       {
         token:
           '744193c872b677aab12a0ced447882f4cf9fca92a09d428a26ed145ed2ed2eec665c8824ebc353042ba2be136efcb5c6',
-        role: consty.USER,
-      },
+        role: consty.USER
+      }
     ]
   }
   if (number == 'admin' && password == 'admin') {
@@ -163,8 +163,8 @@ mock.onPost('login-guard').reply((c) => {
       {
         token:
           '744193c872b677aab12a0ced447882f4cf9fca92a09d428a26ed145ed2ed2eec665c8824ebc353042ba2be136efcb5c6',
-        role: consty.ADMIN,
-      },
+        role: consty.ADMIN
+      }
     ]
   }
   resulVO.code = 401
@@ -172,12 +172,20 @@ mock.onPost('login-guard').reply((c) => {
   return [200, resulVO]
 })
 
-// mock.onGet(path("courses/{cid}")).reply(c => {
-//   // 默认不支持从正则表达式提取变量，可手动实现
-//   const reg = /courses\/(\d+)/;
-//   const cid = c.url?.match(reg)![1];
-//   const course = listCourses().find(h => h.id == cid);
-//   resulVO.code = 200;
-//   resulVO.data = { course: course };
-//   return [200, resulVO];
-// });
+// Example15
+// 模拟2m延迟
+mock.onGet('courses').reply(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([
+        200,
+        {
+          code: 200,
+          data: {
+            courses: listCourses()
+          }
+        }
+      ])
+    }, 2000)
+  })
+})

@@ -27,14 +27,14 @@
     </table>
 
     <p>{{ courseEditedNameR }}</p>
-    <editbutton3 v-if="activeR" :course="courseEditR" :close="closeItem" :submit="submitItem" />
+    <editbutton4 v-if="activeR" :course="courseEditR" :close="closeItem" :submit="submitItem" />
   </div>
 </template>
 <script lang="ts" setup>
 import type { Course } from '@/datasource/Types'
 import { computed, defineAsyncComponent, ref } from 'vue'
 import { useExample09Store } from './Example09Store'
-const editbutton3 = defineAsyncComponent(() => import('./EditButton4.vue'))
+const editbutton4 = defineAsyncComponent(() => import('./EditButton4.vue'))
 const store = useExample09Store()
 store.listCoursesA()
 const coursesC = computed(() => store.coursesS)

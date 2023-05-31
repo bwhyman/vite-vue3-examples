@@ -1,4 +1,5 @@
 <template>
+  <!-- 视图可直接使用props中属性。也可通过props.close调用 -->
   <div class="modal" @click="close">
     <div class="modal-dialog" @click.stop>
       <div class="modal-header">
@@ -28,7 +29,7 @@
         </p>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" @click="submit">Save changes</button>
+        <button class="btn btn-primary" @click="submit(courseR.name ?? '')">Save changes</button>
       </div>
     </div>
   </div>
@@ -37,17 +38,15 @@
 import type { Course } from '@/datasource/Types'
 import { ref } from 'vue'
 // 声明接收的属性
+// 属性可在组件内直接使用。也可基于props对象调用
 interface Props {
   course: Course
   close: () => void
   submit: (name: string) => void
 }
 const props = defineProps<Props>()
-// 双向绑定名称，用于传回给父元素
+// 双向绑定名称，用于传回其中数据给父元素
 const courseR = ref<Course>({ name: props.course?.name })
-// 声明执行函数，绑定组件中的操作事件
-const submit = () => props.submit(courseR.value.name ?? '')
-const close = () => props.close()
 </script>
 <style scoped>
 .modal {

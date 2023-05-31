@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { defineAsyncComponent } from 'vue'
 
-const asyncview = defineAsyncComponent(() => import('./AsyncView.vue'))
+const asyncview = defineAsyncComponent(() => import('./CoursesView.vue'))
 
 const loadingVue = defineAsyncComponent(() => import('@/components/LoadingVue.vue'))
 </script>
