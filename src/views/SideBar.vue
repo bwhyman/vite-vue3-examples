@@ -104,10 +104,13 @@
         <router-link to="/example13/login">Navigation Guards</router-link>
       </li>
     </ul>
-    <h3>Suspense</h3>
+    <h3>Loading Components</h3>
     <ul>
       <li>
         <router-link to="/example15">suspense</router-link>
+      </li>
+      <li>
+        <router-link to="/example15-2">component/v-if</router-link>
       </li>
     </ul>
     <h3>Slots</h3>
