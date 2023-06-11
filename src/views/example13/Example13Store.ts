@@ -11,7 +11,7 @@ export const useExample13Store = defineStore('example13', () => {
   const loginGuardA = async (data: { number: string; password: string }) => {
     // try可避免控制台的未捕获异常信息
     try {
-      const resp = await axios.post<ResultVO>('login-guard', data)
+      const resp = await axios.post<ResultVO<{ user: User }>>('login-guard', data)
       sessionStorage.setItem('token', resp.headers.token)
       sessionStorage.setItem('role', resp.headers.role)
       userS.value = resp.data.data.user

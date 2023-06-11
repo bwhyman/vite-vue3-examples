@@ -1,5 +1,5 @@
 import { listCourses } from '@/datasource/DataSource'
-import type { User } from '@/datasource/Types'
+import type { Course, User } from '@/datasource/Types'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import type { ResultVO } from '@/datasource/Types'
@@ -46,7 +46,7 @@ function urlParams(url: string, routeParams: RouteParams): any {
   return ob
 }
 // ===================================
-const resulVO: ResultVO = {
+const resulVO: ResultVO<{}> = {
   code: 200,
   data: {}
 }
@@ -66,7 +66,7 @@ mock.onGet(routeToRegExp('users/:uid').reg).reply((config) => {
     {
       code: 200,
       data: { user: { id: 2, name: 'SUN' } as User }
-    } as ResultVO
+    } as ResultVO<{ user: User }>
   ]
 })
 
@@ -79,7 +79,7 @@ mock.onGet(routeToRegExp('users/:uid/courses').reg).reply((c) => {
     {
       code: 200,
       data: { courses: listCourses() }
-    } as ResultVO
+    } as ResultVO<{ courses: Course[] }>
   ]
 })
 

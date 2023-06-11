@@ -41,8 +41,8 @@ export interface GithubRepos {
   stargazers_count?: number
 }
 
-export interface ResultVO {
+export interface ResultVO<T> {
   code: number
   message?: string
-  data?: any
+  data: T
 }

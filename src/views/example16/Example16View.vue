@@ -2,7 +2,7 @@
 import MyAuthVue from './MyAuthVue.vue'
 import MyButtonVue from './MyButtonVue.vue'
 import MyCardVue from './MyCardVue.vue'
-import { useExample16Store, USER, ADMIN } from './store'
+import { useExample16Store, USER, ADMIN } from './Example16Store'
 
 const store = useExample16Store()
 </script>
