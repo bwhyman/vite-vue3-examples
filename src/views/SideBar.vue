@@ -83,7 +83,7 @@
         <router-link to="/example10-1">Axios Github-API</router-link>
       </li>
       <li>
-        <router-link to="/example11-1">axios-mock-adapter</router-link>
+        <router-link to="/example11-1">mriage</router-link>
       </li>
       <li>
         <router-link to="/example11-2">axios & mock & pinia</router-link>

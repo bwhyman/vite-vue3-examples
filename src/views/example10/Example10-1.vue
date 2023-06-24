@@ -1,6 +1,10 @@
 <template>
   <div>
     <p>
+      当前引入的mriage
+      passthrough()函数，在拦截axios请求时无法更新Promise对象中的通知标。因此，需在入口关闭引入mock文件。
+    </p>
+    <p>
       https://api.github.com/users/bwhyman
       <br />
       <img :src="user.avatar_url" alt="" style="width: 200px; border-radius: 50%" />

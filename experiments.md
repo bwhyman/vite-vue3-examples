@@ -94,7 +94,7 @@ pinia state声明shopList，foods中shop列表绑定shopList
 **实验内容**  
 需求0  
 安装axios依赖，创建基本配置文件  
-基于https://api.github.com/users/bwhyman，编写对应的接口类型  
+基于[https://api.github.com/users/bwhyman](https://api.github.com/users/bwhyman)，编写对应的接口类型  
 编写组件，基于axios发出请求，获取响应结果，并将结果渲染到视图    
 
 需求+1  
