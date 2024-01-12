@@ -119,6 +119,12 @@
         <router-link to="/example16">Slots</router-link>
       </li>
     </ul>
+    <h3>Functional Components</h3>
+    <ul>
+      <li>
+        <router-link to="/example17">Functional Components</router-link>
+      </li>
+    </ul>
     <h3>Proxy</h3>
     <ul>
       <li>

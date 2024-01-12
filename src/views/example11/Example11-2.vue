@@ -13,7 +13,7 @@
       <br />
       <button title="button" @click="login">Login</button>
       <br />
-      {{ userC?.title }}
+      {{ userR?.title }}
     </div>
     <div>
       <h3>Pinai</h3>
@@ -31,36 +31,37 @@
       <button type="button" @click="getHome">home</button>
       <br />
       <ul>
-        <li v-for="(c, index) of courses" :key="index">{{ c.name }}</li>
+        <li v-for="(c, index) of coursesR" :key="index">{{ c.name }}</li>
       </ul>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { useExample11Store } from './Example11Store'
+import { getHomeService, loginService } from './Example11Service'
+import { storeToRefs } from 'pinia'
 
 interface User {
   number: string
   password: string
 }
 
-const store = useExample11Store()
 const userForm = ref<User>({ number: '', password: '' })
 
-const courses = computed(() => store.coursesS)
-const userC = computed(() => store.userS)
+const coursesR = storeToRefs(useExample11Store()).coursesS
+const userR = storeToRefs(useExample11Store()).userS
 
-const getHome = () => {
-  store.getHomeA()
+const getHome = async () => {
+  await getHomeService()
 }
 
-const login = () => {
+const login = async () => {
   const user: User = {
     number: userForm.value.number,
     password: userForm.value.password
   }
-  store.loginA(user)
+  await loginService(user)
   userForm.value.number = ''
   userForm.value.password = ''
 }

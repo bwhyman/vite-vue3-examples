@@ -5,5 +5,7 @@
   "singleQuote": true,
   "printWidth": 100,
   "trailingComma": "none",
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "htmlWhitespaceSensitivity": "ignore",
+  "bracketSameLine": true
 }

@@ -2,9 +2,9 @@
   <div>
     <div>
       <!-- 基于名称的路由，等效于/homework02/foods -->
-      <router-link :to="{ name: 'foods' }" style="text-decoration: none"> 美食 </router-link>
+      <router-link :to="{ name: 'foods' }" style="text-decoration: none">美食</router-link>
       |
-      <router-link to="/homework02/location" style="text-decoration: none"> 本地 </router-link>
+      <router-link to="/homework02/location" style="text-decoration: none">本地</router-link>
       |
       <a href="" @click.prevent style="text-decoration: none">跑腿</a>
     </div>

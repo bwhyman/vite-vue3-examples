@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
 import * as consty from '@/datasource/Const'
-import { useStore } from '@/store'
+import { createAlertDialog } from '@/components/message'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -207,6 +207,11 @@ const routes: RouteRecordRaw[] = [
     path: '/example16',
     component: () => import('@/views/example16/Example16View.vue')
   },
+  {
+    props: true,
+    path: '/example17',
+    component: () => import('@/views/example17/Example17View.vue')
+  },
   // -------------- homework
   {
     props: true,
@@ -253,9 +258,7 @@ router.beforeEach((to, from) => {
   }
 
   if (to.meta.role != sessionStorage.getItem('role')) {
-    // 调用函数获取pinia state数据，必须在pinia加载后执行
-    const store = useStore()
-    store.exceptionS = '无权限'
+    createAlertDialog('无权限')
     // 支持返回路由对象
     return { name: 'login-g' }
   }

@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-import { useExample15Store } from './Example15Store'
+import { listCoursesService1 } from './Example15Service'
 
-const store = useExample15Store()
 // 预支持Suspense，必须包含await阻塞函数，异步加载组件
 // 可基于具体逻辑决定是否使用store中的缓存数据。
-const courses = await store.listCoursesA1()
-// const courses = await store.listCoursesA()
+const courses = await listCoursesService1()
 </script>
 <template>
   <div>

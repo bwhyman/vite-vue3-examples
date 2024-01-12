@@ -34,9 +34,10 @@
 import type { Course } from '@/datasource/Types'
 import { computed, defineAsyncComponent, ref } from 'vue'
 import { useExample09Store } from './Example09Store'
+import { listCoursesService } from './Example09Service'
 const editbutton4 = defineAsyncComponent(() => import('./EditButton4.vue'))
 const store = useExample09Store()
-store.listCoursesA()
+listCoursesService()
 const coursesC = computed(() => store.coursesS)
 const activeR = ref(false)
 const courseEditedNameR = ref('')

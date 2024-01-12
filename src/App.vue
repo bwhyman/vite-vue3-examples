@@ -3,15 +3,9 @@
     <sidebar id="sidebar" />
     <router-view id="router" />
   </div>
-  <alertdialog v-if="exception.length > 0" />
 </template>
 <script lang="ts" setup>
-import { defineAsyncComponent, computed } from 'vue'
 import sidebar from '@/views/SideBar.vue'
-import { useStore } from './store'
-const alertdialog = defineAsyncComponent(() => import('@/components/AlertDialog.vue'))
-const store = useStore()
-const exception = computed(() => store.exceptionS)
 </script>
 
 <style>

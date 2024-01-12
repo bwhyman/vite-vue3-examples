@@ -17,8 +17,8 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 - VS Code
 - Node.js ^18
 - NPM ^9.5
-- Vue ^3.2
-- Pinia ^2.0
+- Vue ^3
+- Pinia ^2
 - Git ^2.40
 
 ### Documents
@@ -39,6 +39,9 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 - https://github.com/bwhyman/flutter_examples
 
 ### Update
+#### 2024.01.13
+store仅用于响应式数据缓存，创建service封装包含网络请求的业务处理。   
+更新版本。  
 
 #### 2023.06.23 API Mocking
 API Mocking移植到mriage

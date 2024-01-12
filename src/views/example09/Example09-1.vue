@@ -18,8 +18,11 @@
 import { computed } from 'vue'
 import item from './Item.vue'
 import { useExample09Store } from './Example09Store'
+import { listCoursesService } from './Example09Service'
+
+listCoursesService()
 const store = useExample09Store()
-store.listCoursesA()
+
 const coursesC = computed(() => store.coursesS)
 const changeItemF = () => {
   store.coursesS?.forEach((c) => (c.name = '响应式改变'))

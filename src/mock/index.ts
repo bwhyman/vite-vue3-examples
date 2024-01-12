@@ -26,6 +26,7 @@ server.get('users/:uid/courses', () => {
 })
 
 server.post('login', (_schema, request) => {
+  // 从请求对象中获取参数，反序列化为JS对象。解构
   const { number, password } = JSON.parse(request.requestBody)
 
   const resultVO: ResultVO<{}> = { code: 200, data: {} }

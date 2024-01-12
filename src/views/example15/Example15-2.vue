@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 import { defineAsyncComponent, ref } from 'vue'
-import { useExample15Store } from './Example15Store'
+import { listCoursesService2 } from './Example15Service'
 const courseView2 = defineAsyncComponent(() => import('./CoursesView2.vue'))
 const loadingVue = defineAsyncComponent(() => import('@/components/LoadingVue.vue'))
 
-const store = useExample15Store()
 // 切换组件的响应式数据
 const activeR = ref(false)
-store.listCourses2A().then((r) => (activeR.value = r))
+listCoursesService2().then((r) => (activeR.value = r))
 </script>
 <template>
   <div>

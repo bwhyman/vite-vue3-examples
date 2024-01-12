@@ -13,12 +13,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { useH2Store } from './store'
-const store = useH2Store()
-store.listShopsA()
+import { listShopsService } from './service/index'
+import { storeToRefs } from 'pinia'
 
-const shopList = computed(() => store.shopListS)
+listShopsService()
+const shopList = storeToRefs(useH2Store()).shopListS
 </script>
 <style scoped>
 * {

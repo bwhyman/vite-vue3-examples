@@ -13,10 +13,20 @@
       <component :is="toggle ? namelogin : emaillogin" />
     </keep-alive>
     <br />
+
     <!-- <keep-alive>
       <namelogin v-if="change" />
       <emaillogin v-if="!change" />
     </keep-alive> -->
+    <p>
+      需要整合router-view实现基于路由地址的keepalive
+      <br />
+      <RouterView v-slot="{ Component }">
+        <KeepAlive>
+          <component :is="Component" :key="$route.path" />
+        </KeepAlive>
+      </RouterView>
+    </p>
   </div>
 </template>
 <script lang="ts" setup>

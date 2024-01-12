@@ -35,18 +35,16 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useExample13Store } from './Example13Store'
+import { loginGuardService } from './Example13Service'
 
-const store = useExample13Store()
 const userForm = ref({ number: '', password: '' })
 
-const login = () => {
+const login = async () => {
   const user = {
     number: userForm.value.number,
     password: userForm.value.password
   }
-  store.loginGuardA(user)
-
+  await loginGuardService(user)
   userForm.value.number = ''
   userForm.value.password = ''
 }

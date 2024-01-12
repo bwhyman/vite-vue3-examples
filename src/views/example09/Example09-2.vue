@@ -32,18 +32,18 @@
       v-if="activeR"
       :course="courseEditR"
       @emitClose="activeR = false"
-      @emitSubmit="onEmitSubmit"
-    />
+      @emitSubmit="onEmitSubmit" />
   </div>
 </template>
 <script lang="ts" setup>
 import type { Course } from '@/datasource/Types'
 import { computed, defineAsyncComponent, ref } from 'vue'
 import { useExample09Store } from './Example09Store'
+import { listCoursesService } from './Example09Service'
 
 const editbutton2 = defineAsyncComponent(() => import('./EditButton2.vue'))
 const store = useExample09Store()
-store.listCoursesA()
+listCoursesService()
 const coursesC = computed(() => store.coursesS)
 const activeR = ref(false)
 const courseEditedNameR = ref('')

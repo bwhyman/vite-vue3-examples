@@ -30,9 +30,9 @@ const store = useExample16Store()
         <br />
         <MyCardVue>
           <template #default="props">Header, 为默认插槽传值。{{ props.slotProps }}</template>
-          <template #content="cprops"
-            >Content, 为指定插槽传值。Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Tempora, est? <br />
+          <template #content="cprops">
+            Content, 为指定插槽传值。
+            <br />
             子组件从插槽content传出的参数color，作用范围仅在指定插槽内部: {{ cprops.color }}
           </template>
         </MyCardVue>
@@ -48,8 +48,8 @@ const store = useExample16Store()
 
         <button @click="store.changeRoleA">切换角色</button>
         <br />
-        <MyAuthVue :role="USER"> `USER`角色可见</MyAuthVue>
-        <MyAuthVue :role="ADMIN"> `ADMIN`角色可见</MyAuthVue>
+        <MyAuthVue :role="USER">`USER`角色可见</MyAuthVue>
+        <MyAuthVue :role="ADMIN">`ADMIN`角色可见</MyAuthVue>
       </p>
     </div>
   </div>

@@ -22,7 +22,7 @@
       <tr v-for="(c, index) of courses" :key="index">
         <td>{{ index + 1 }}</td>
         <td>{{ c.name }}</td>
-        <td>{{ formatDate(c.createTime!) }}</td>
+        <td>{{ formatDate(c.createTime ?? '') }}</td>
         <td>
           <button type="button" @click="removeItem(index)">remove item</button>
         </td>
@@ -37,40 +37,19 @@ import { computed, type Ref, ref } from 'vue'
 
 import { listCourses } from '@/datasource/DataSource'
 import type { Course } from '@/datasource/Types'
-
-/**
- * 抽取出独立的，对指定时间格式化的逻辑
- */
-function useDateFormat() {
-  const formatDate = computed(
-    () => (date: string) => date.replace('T', ' ').substring(0, 16)
-  )
-  return {
-    formatDate,
-  }
-}
-/**
- * 抽取出独立的，对homework的增删逻辑
- */
-function useCourses(courses: Ref<Course[]>) {
-  const addItem = () => {
-    courses.value.push({
-      id: courses.value.length + 1,
-      name: 'Vue 3.0',
-      createTime: new Date().toISOString(),
-    })
-  }
-  const removeItem = (index: number) => {
-    // splice()参数，预删除元素索引，删除之后的几个
-    courses.value.splice(index, 1)
-  }
-  return {
-    addItem,
-    removeItem,
-  }
-}
-
 const courses: Ref<Course[]> = ref(listCourses())
-const { formatDate } = useDateFormat()
-const { addItem, removeItem } = useCourses(courses)
+
+const formatDate = computed(() => (date: string) => date.replace('T', ' ').substring(0, 16))
+
+const addItem = () => {
+  courses.value.push({
+    id: courses.value.length + 1,
+    name: 'Vue 3.0',
+    createTime: new Date().toISOString()
+  })
+}
+const removeItem = (index: number) => {
+  // splice()参数，预删除元素索引，删除之后的几个
+  courses.value.splice(index, 1)
+}
 </script>

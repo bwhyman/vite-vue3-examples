@@ -18,19 +18,20 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
-import type { Item } from './data/homework02'
+import { computed, ref } from 'vue'
+import type { Item, Shop } from './data/homework02'
 import { useH2Store } from './store'
+import { getShopService } from './service'
 interface Props {
   sid: string
 }
 const props = defineProps<Props>()
+const shop = ref<Shop>()
 
+getShopService(Number.parseInt(props.sid)).then((sh) => {
+  shop.value = sh
+})
 const store = useH2Store()
-// 绑定state数据
-const shop = computed(() => store.shopCacheS.find((sh) => sh.id == Number.parseInt(props.sid)))
-// 如果不存在(为空)，则模拟异步加载数据
-!shop.value && store.getShopA(Number.parseInt(props.sid))
 // orders数组对象是响应式，添加移除元素是响应式
 const orders = store.ordersS
 const add = (item: Item) => {
