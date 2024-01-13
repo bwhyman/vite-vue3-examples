@@ -1,4 +1,16 @@
-# Homework-02
+# Homework
+
+### Homework-03
+<img src="./assets/homework03.gif" width=253 height=170 />  
+
+#### 需求0
+在多个功能中均需要定位部门下的教师，但获取到教师后的业务操作却不同。  
+即，需要定位教师重置密码，移动到不同部门，移除等操作。
+因此通过创建独立内聚的子组件，实现加载所有专业以下拉菜单渲染，当选择专业时，异步加载专业下全部教师，以一个新下拉菜单渲染。   
+当选择教师时，组件将该教师数据对象暴露供外部父组件使用。  
+从而，独立子组件封装独立功能，w无需关心父组件如何使用返回的数据对象。  
+
+### Homework-02
 ![Screenshot](./assets/homework02.gif)
 
 #### 需求0
@@ -28,7 +40,7 @@ vuex state声明shopList，foods中shop列表绑定shopList
 同理，vuex声明shopCache，用于缓存已经拉取的shop详细信息  
 进入shop组件时，异步加载shop详细信息，当shopCache中已经包含，即曾经加载过，则直接使用；没有则加载，并置于shopcache中
 
-# Homework-01
+### Homework-01
 ![Screenshot](./assets/point.gif)
 
 #### 需求0

@@ -9,9 +9,7 @@
       通过defineAsyncComponent()函数声明延迟加载的组件，函数同时提供延迟时间，过渡组件等声明。
     </p>
     <p>
-      <button type="button" @click="showAbout = !showAbout">
-        show about component
-      </button>
+      <button type="button" @click="showAbout = !showAbout">show about component</button>
     </p>
     <about v-if="showAbout" />
   </div>

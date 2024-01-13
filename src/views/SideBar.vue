@@ -139,6 +139,9 @@
       <li>
         <router-link to="/homework02">Homework - 2</router-link>
       </li>
+      <li>
+        <router-link to="/homework03">Homework - 3</router-link>
+      </li>
     </ul>
   </div>
 </template>
