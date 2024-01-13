@@ -28,6 +28,7 @@ const coursesR = ref<Course[]>(listCourses())
       既然基于Vue模板的组件文件最终仍会被编译为使用渲染函数渲染，为什么不推荐直接使用基于渲染函数的JSX？
       <br />
       <a
+        target="_blank"
         href="https://cn.vuejs.org/guide/extras/rendering-mechanism.html#templates-vs-render-functions">
         模板 vs. 渲染函数
       </a>

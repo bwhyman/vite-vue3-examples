@@ -24,22 +24,13 @@
           <p>
             可通过vue的事件修饰符阻止事件的传播等。
             <br />
-            <a
-              href="https://v3.cn.vuejs.org/guide/events.html#事件修饰符"
-              target="_blank"
-            >
+            <a href="https://v3.cn.vuejs.org/guide/events.html#事件修饰符" target="_blank">
               事件修饰符
             </a>
           </p>
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" @click="submit">Save changes</button>
-          <!-- <button
-            class="btn btn-primary"
-            @click="$emit('emitClose', courseR.name)"
-          > 
-            Save changes
-          </button>-->
         </div>
       </div>
     </div>
@@ -48,24 +39,18 @@
 <script lang="ts" setup>
 import type { Course } from '@/datasource/Types'
 import { ref } from 'vue'
-// 声明对外暴露事件，属性均为函数
-interface EmitType {
-  (e: 'emitSubmit', data: string): void
-  (e: 'emitClose', data: boolean): void
-}
-// 声明接收的属性
-interface Props {
-  course: Course
-}
-
-const props = defineProps<Props>()
-const emit = defineEmits<EmitType>()
+const props = defineProps<{ course: Course }>()
 // 双向绑定名称，用于传回给父元素
 const courseR = ref<Course>({ name: props.course?.name })
-
+// 声明对外暴露事件，属性均为函数
+const emit = defineEmits<{
+  (e: 'emitSubmit', data: string): void
+  (e: 'emitClose'): void
+}>()
 // 声明执行函数，绑定组件中的操作事件
+// 声明2个事件，及传递的参数
 const submit = () => emit('emitSubmit', courseR.value.name ?? '')
-const close = () => emit('emitClose', false)
+const close = () => emit('emitClose')
 </script>
 <style scoped>
 .modal {
@@ -84,7 +69,9 @@ const close = () => emit('emitClose', false)
   top: 30px;
   position: relative;
   border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 /* 加条下线，作为分割线 */
 .modal .modal-header {

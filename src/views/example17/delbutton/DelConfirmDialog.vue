@@ -14,7 +14,11 @@ const close = () => {
         <div class="modal-header">
           <h3>Confirm</h3>
         </div>
-        <div class="modal-content">确定删除，{{ props.course.name }}，课程么?</div>
+        <div class="modal-content">
+          确定删除，
+          <span style="color: red; font-weight: bold">{{ props.course.name }}</span>
+          ，课程么?
+        </div>
         <div class="modal-footer">
           <button>Confirm</button>
         </div>
@@ -39,7 +43,9 @@ const close = () => {
   top: 30px;
   position: relative;
   border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 /* 加条下线，作为分割线 */
 .modal-header {

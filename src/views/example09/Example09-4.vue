@@ -14,7 +14,7 @@
         <td>createTime</td>
         <td>operation</td>
       </tr>
-      <tr v-for="(c, index) of coursesC" :key="index">
+      <tr v-for="(c, index) of coursesR" :key="index">
         <td>{{ index + 1 }}</td>
         <td>
           {{ c.name }}
@@ -32,17 +32,15 @@
 </template>
 <script lang="ts" setup>
 import type { Course } from '@/datasource/Types'
-import { computed, defineAsyncComponent, ref } from 'vue'
-import { useExample09Store } from './Example09Store'
-import { listCoursesService } from './Example09Service'
+import { defineAsyncComponent, ref } from 'vue'
+
+import { listCoursesService2 } from './Example09Service'
 const editbutton4 = defineAsyncComponent(() => import('./EditButton4.vue'))
-const store = useExample09Store()
-listCoursesService()
-const coursesC = computed(() => store.coursesS)
+const coursesR = ref<Course[]>([])
+listCoursesService2().then((cs) => (coursesR.value = cs))
 const activeR = ref(false)
 const courseEditedNameR = ref('')
 const courseEditR = ref<Course>({})
-
 const closeItem = () => (activeR.value = false)
 const submitItem = (name: string) => {
   courseEditedNameR.value = name

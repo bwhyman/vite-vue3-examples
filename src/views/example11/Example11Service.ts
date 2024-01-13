@@ -1,6 +1,5 @@
 import axios from '@/axios'
 import type { Course, ResultVO, User } from '@/datasource/Types'
-import { ref } from 'vue'
 import { useExample11Store } from './Example11Store'
 import { storeToRefs } from 'pinia'
 

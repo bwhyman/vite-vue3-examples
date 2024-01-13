@@ -15,7 +15,7 @@
         <td>createTime</td>
         <td>operation</td>
       </tr>
-      <tr v-for="(c, index) of coursesC" :key="index">
+      <tr v-for="(c, index) of coursesR" :key="index">
         <td>{{ index + 1 }}</td>
         <td>
           {{ c.name }}
@@ -37,17 +37,21 @@
 </template>
 <script lang="ts" setup>
 import type { Course } from '@/datasource/Types'
-import { computed, defineAsyncComponent, ref } from 'vue'
-import { useExample09Store } from './Example09Store'
-import { listCoursesService } from './Example09Service'
-
+import { defineAsyncComponent, ref } from 'vue'
+import { listCoursesService2 } from './Example09Service'
 const editbutton2 = defineAsyncComponent(() => import('./EditButton2.vue'))
-const store = useExample09Store()
-listCoursesService()
-const coursesC = computed(() => store.coursesS)
-const activeR = ref(false)
-const courseEditedNameR = ref('')
+// 响应式数据，用于当业务逻辑异步返回数据后，更新组件数据
+const coursesR = ref<Course[]>([])
+// 获取异步返回数据并响应式更新数据
+listCoursesService2().then((cs) => (coursesR.value = cs))
+// 动态绑定点击的课程对象，传入对话框组件
 const courseEditR = ref<Course>({})
+// 对话框组件是否显示
+const activeR = ref(false)
+// 对话框组件传回的数据
+const courseEditedNameR = ref('')
+// 监听回调函数
+// 当对话框组件指定事件被激活时，回调指定监听函数
 const onEmitSubmit = (name: string) => {
   activeR.value = false
   courseEditedNameR.value = name

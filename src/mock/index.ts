@@ -16,14 +16,18 @@ server.get('users/:uid', () => {
   return resultVO
 })
 
-server.get('users/:uid/courses', () => {
-  const resultVO: ResultVO<{ courses: Course[] }> = {
-    code: 200,
-    data: { courses: listCourses() }
-  }
+server.get(
+  'users/:uid/courses',
+  () => {
+    const resultVO: ResultVO<{ courses: Course[] }> = {
+      code: 200,
+      data: { courses: listCourses() }
+    }
 
-  return resultVO
-})
+    return resultVO
+  },
+  { timing: 2000 }
+)
 
 server.post('login', (_schema, request) => {
   // 从请求对象中获取参数，反序列化为JS对象。解构

@@ -25,14 +25,13 @@ import { ref } from 'vue'
 import { listCoursesService } from './Example11Service'
 
 const userR = ref<User>({})
-const coursesR = ref<Course[]>([])
 // 发出异步请求，获取结果。没有置于state
 axios.get('users/12').then((resp) => {
   userR.value = resp.data.data.user
 })
-
+//
+const coursesR = ref<Course[]>([])
 const choseUserF = async (userId: number) => {
-  const courses = await listCoursesService(userId)
-  coursesR.value = courses
+  coursesR.value = await listCoursesService(userId)
 }
 </script>
