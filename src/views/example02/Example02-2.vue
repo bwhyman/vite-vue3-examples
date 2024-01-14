@@ -3,7 +3,8 @@
     <div>
       <h1>新添加属性</h1>
       <p>
-        基于Proxy代理对象能够感知新添加的属性。<br />
+        基于Proxy代理对象能够感知新添加的属性。
+        <br />
         <button type="button" @click="changeAddress">changeAddress</button>
         <br />
         {{ userRef.name }} / {{ userRef.insertTime }} / {{ userRef.address }}
@@ -13,8 +14,10 @@
     <div>
       <h1>计算属性返回函数</h1>
       <p>
-        正常computed()函数绑定计算的结果。但，当需要基于获取的数据，动态绑定计算结果时。 <br />
-        正常渲染结果： {{ userRef.insertTime }}<br />
+        正常computed()函数绑定计算的结果。但，当需要基于获取的数据，动态绑定计算结果时。
+        <br />
+        正常渲染结果： {{ userRef.insertTime }}
+        <br />
 
         计算属性返回函数：{{ formatDateFunc(userRef.insertTime || '') }}
       </p>
@@ -33,7 +36,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { User } from '@/datasource/Types'
+import type { User } from '@/type'
 import { computed, ref } from 'vue'
 // 初始化组件数据
 const user: User = {

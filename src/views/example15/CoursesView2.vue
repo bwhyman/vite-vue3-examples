@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia'
 import { useExample15Store } from './Example15Store'
-const store = useExample15Store()
-const coursesR = storeToRefs(store).coursesS
+const coursesR = useExample15Store().coursesS
 </script>
 <template>
   <div>

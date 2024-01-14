@@ -1,53 +1,31 @@
 <template>
   <div>
-    <h1>Pinia</h1>
-    <img src="https://pinia.vuejs.org/logo.svg" alt="pinia" style="width: 100px" />
+    <h1>VueUse</h1>
+    <img src="https://www.vueusejs.com/favicon.svg" alt="vueusejs" style="width: 100px" />
     <br />
-    https://pinia.vuejs.org/introduction.html
+    https://www.vueusejs.com/
     <br />
-    https://github.com/vuejs/pinia
-    <br />
-    Pinia是替代vuex的下一代状态管理库，更简洁高效。
-    <br />
-    按官方建议，每一个state数据由一个文件维护，利于构建时打包。粒度不用这么细，相关数据聚合在一起即可。
+    vueusejs是一款基于组合式API，整合封装了包括，数据状态管理/网络请求/事件监听等一系列Vue常用功能的函数集合。
     <hr />
     <h1>States</h1>
-    第1个数字没有变化，基本数据类型直接引入为组件变量后，失去响应性。
+    与Pinia不同，从store获取转为本地的数据仍具有响应式。
     <br />
-    第2个数字，store是响应式，因此可直接绑定到视图。
+    第1个数字，引入为本地变量仍为Ref响应式数据；第2个数字，直接绑定store数据到视图。
     <br />
-    {{ countUnresponsive }} / {{ store.countS }}
+    {{ countR }} / {{ store.countS }}
     <br />
     <button @click="increment">increment</button>
-    <hr />
-    <h1>storeToRefs()</h1>
-    可替代computed()函数，从store对象中解构出state数据并保持响应式。
-    <br />
-    {{ countRef }} / {{ countC }}
   </div>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
 import { useExample08Store } from './Example08Store'
 const store = useExample08Store()
-// store为proxy代理对象。因此store为响应式对象
+// 与pinia不同，store为普通对象。
 console.log(store)
+// 与pinia不同，获取到的仍为Ref包裹的基本数据类型
+const countR = store.countS
+console.log(countR)
 
-// 仅获取了执行时store中count数据，非响应式数据
-const countUnresponsive = store.countS
-// store为响应式
-console.log(store.countS)
-
-const increment = () => store.countS++
-
-// 可通过storeToRefs()函数将state中数据转为Ref响应式类型
-// 解构出
-// const { count } = storeToRefs(store)
-// 或直接获取
-const countRef = storeToRefs(store).countS
-// 与vuex相似，也可通过计算属性绑定
-const countC = computed(() => store.countS)
-// Ref类型响应式数据
-console.log(countRef)
+// 可直接响应式修改
+const increment = () => store.countS.value++
 </script>

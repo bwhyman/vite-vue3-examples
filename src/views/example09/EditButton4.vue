@@ -35,7 +35,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 import { ref } from 'vue'
 // 声明接收的属性
 // 属性可在组件内直接使用。也可基于props对象调用
@@ -65,7 +65,9 @@ const courseR = ref<Course>({ name: props.course?.name })
   top: 30px;
   position: relative;
   border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 /* 加条下线，作为分割线 */
 .modal .modal-header {

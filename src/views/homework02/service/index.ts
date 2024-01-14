@@ -1,9 +1,8 @@
-import { storeToRefs } from 'pinia'
 import { getShop, listShops, type Shop } from '../data/homework02'
 import { useH2Store } from '../store/index'
 
 export const listShopsService = async () => {
-  const shopListS = storeToRefs(useH2Store()).shopListS
+  const shopListS = useH2Store().shopListS
   if (shopListS.value.length == 0) {
     setTimeout(() => {
       shopListS.value = listShops()
@@ -12,7 +11,7 @@ export const listShopsService = async () => {
 }
 
 export const getShopService = async (sid: number) => {
-  const shopCacheS = storeToRefs(useH2Store()).shopCacheS
+  const shopCacheS = useH2Store().shopCacheS
   let shop = shopCacheS.value.find((sh) => sh.id == sid)
   if (shop) return shop
 

@@ -1,39 +1,40 @@
 <template>
   <div>
-    <p>
-      当前引入的mriage
-      passthrough()函数，在拦截axios请求时无法更新Promise对象中的通知标。因此，需在入口关闭引入mock文件。
-    </p>
+    <p>mriage passthrough()函数过滤原生github请求。</p>
     <p>
       https://api.github.com/users/bwhyman
       <br />
-      <img :src="user.avatar_url" alt="" style="width: 200px; border-radius: 50%" />
+      <img
+        :src="userR.avatar_url"
+        alt=""
+        style="width: 150px; border-radius: 50%; border: 2px solid red" />
       <br />
-      login: {{ user?.login }}
+      login: {{ userR?.login }}
       <br />
-      company: {{ user?.company }}
+      company: {{ userR?.company }}
       <br />
       repos_url:
       <!-- :to="{ name: 'example09-02', query: { url: user.repos_url } }" -->
-      <router-link :to="`/example10-2?url=${user.repos_url}`">
-        {{ user.repos_url }}
+      <router-link :to="`/example10-2?url=${userR.repos_url}`">
+        {{ userR.repos_url }}
       </router-link>
       <br />
-      public_repos: {{ user?.public_repos }}
+      public_repos: {{ userR?.public_repos }}
       <br />
-      followers: {{ user?.followers }}
+      followers: {{ userR?.followers }}
       <br />
     </p>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import axios from '@/axios/index'
-import type { GithubUser } from '@/datasource/Types'
-const user = ref<GithubUser>({})
-// 创建新axios对象，避免与声明了配置的axios冲突
-axios
-  .create() // 仅此示例使用
-  .get('https://api.github.com/users/bwhyman')
-  .then((resp) => (user.value = resp.data))
+import type { GithubUser } from '@/type'
+import { useFetch } from '@vueuse/core'
+const userR = ref<GithubUser>({})
+
+// 创建新Fetch对象，避免与声明了配置的useFetch冲突
+useFetch('https://api.github.com/users/bwhyman')
+  .get()
+  .json<GithubUser>()
+  .then((resp) => resp.data.value && (userR.value = resp.data.value))
 </script>

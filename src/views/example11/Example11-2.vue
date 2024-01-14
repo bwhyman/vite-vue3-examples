@@ -11,7 +11,7 @@
       <br />
       <input type="password" v-model="userForm.password" />
       <br />
-      <button title="button" @click="login">Login</button>
+      <button title="button" @click="loginF">Login</button>
       <br />
       {{ userR?.title }}
     </div>
@@ -30,6 +30,8 @@
       </p>
       <button type="button" @click="getHome">home</button>
       <br />
+      <button @click="clearSessionStorageF">清空SessionStorage用于测试</button>
+      <br />
       <ul>
         <li v-for="(c, index) of coursesR" :key="index">{{ c.name }}</li>
       </ul>
@@ -40,7 +42,6 @@
 import { ref } from 'vue'
 import { useExample11Store } from './Example11Store'
 import { getHomeService, loginService } from './Example11Service'
-import { storeToRefs } from 'pinia'
 
 interface User {
   number: string
@@ -48,15 +49,14 @@ interface User {
 }
 
 const userForm = ref<User>({ number: '', password: '' })
+const userR = useExample11Store().userS
 
-const coursesR = storeToRefs(useExample11Store()).coursesS
-const userR = storeToRefs(useExample11Store()).userS
-
+const coursesR = useExample11Store().coursesS
 const getHome = async () => {
   await getHomeService()
 }
 
-const login = async () => {
+const loginF = async () => {
   const user: User = {
     number: userForm.value.number,
     password: userForm.value.password
@@ -64,5 +64,10 @@ const login = async () => {
   await loginService(user)
   userForm.value.number = ''
   userForm.value.password = ''
+}
+
+const clearSessionStorageF = () => {
+  sessionStorage.clear()
+  coursesR.value.length = 0
 }
 </script>

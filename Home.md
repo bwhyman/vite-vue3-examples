@@ -40,25 +40,27 @@ npm config set registry http://mirrors.cloud.tencent.com/npm/
 npm init vue@latest
 ```
 
-选择安装以下配置：TypeScript/router/pinia/eslint/prettier
+选择安装以下配置：TypeScript/router/eslint/prettier。后期引入VueUse，因此无需安装Pinia。
 
 ```sh
-✔ Project name: … <your-project-name>
-✔ Add TypeScript? … Yes
-✔ Add JSX Support? … No
-✔ Add Vue Router for Single Page Application development? … Yes
-✔ Add Pinia for state management? … Yes
-✔ Add Vitest for Unit testing? … No
-✔ Add Cypress for both Unit and End-to-End testing? … No
-✔ Add ESLint for code quality? … Yes
-✔ Add Prettier for code formatting? … Yes
+√ 请输入项目名称： ... vue-test
+√ 是否使用 TypeScript 语法？ ... 是
+√ 是否启用 JSX 支持？ ... 否
+√ 是否引入 Vue Router 进行单页面应用开发？ ... 是
+√ 是否引入 Pinia 用于状态管理？ ... 否
+√ 是否引入 Vitest 用于单元测试？ ... 否
+√ 是否要引入一款端到端（End to End）测试工具？ » 不需要
+√ 是否引入 ESLint 用于代码质量检测？ ... 是
+√ 是否引入 Prettier 用于代码格式化？ ... 是
 ```
 
 ### VS Vode
 
 下载压缩版vscode，解压运行。
 
-安装`volar/TypeScript Vue Plugin/eslint`插件，重启vs code。
+安装`Vue - Official/eslint`插件，重启vs code。
+
+2024.03.04. vue引入最新vs code插件`vue-official`替代`volar`，取消了TS的take over接管模式以提高性能。
 
 vs code打开项目目录，crtl+`，打开vs code控制台。
 
@@ -79,14 +81,6 @@ npm run dev
 ```shell
 ctrl+c
 ```
-
-### Volar Takeover
-
-为使用Volar提供的TS服务，需禁用vscode默认的TS支持。
-
-打开vs code插件标签，搜索`@builtin typescript`，选择`TypeScript and JavaScript Language Features`插件，禁用。reload vscode，当文件为vue/ts时，右下角出现`takeover`标签生效。
-
-[搭配 TypeScript 使用 Vue | Vue.js](https://cn.vuejs.org/guide/typescript/overview.html#volar-takeover-mode)
 
 ### eslint/prettier
 
@@ -118,7 +112,7 @@ ctrl+c
   "window.zoomLevel": 1.0,
   "editor.wordWrap": "on", 
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": explicit,
   },
   "git.enableSmartCommit": true,
   "workbench.colorTheme": "Default Light+",

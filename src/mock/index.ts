@@ -1,13 +1,13 @@
 import { createServer, Response } from 'miragejs'
 import { listCourses } from '@/datasource/DataSource'
-import type { Course, User } from '@/datasource/Types'
-import type { ResultVO } from '@/datasource/Types'
+import type { Course, User, ResultVO } from '@/type'
 import * as consty from '@/datasource/Const'
 
 const server = createServer({})
 server.namespace = 'api'
 
-server.get('users/:uid', () => {
+server.get('users/:uid', (_schema, request) => {
+  console.log(request.params.uid)
   const resultVO: ResultVO<{ user: User }> = {
     code: 200,
     data: { user: { id: 2, name: 'SUN' } }
@@ -124,5 +124,5 @@ server.get(
   },
   { timing: 2000 }
 )
-// 当前无效
+// 过滤原生github请求
 server.passthrough('https://api.github.com/users/**')

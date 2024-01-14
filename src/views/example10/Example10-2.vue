@@ -10,7 +10,7 @@
       const url = useRoute().query.url;
     </p>
     <hr />
-    <p>点击表格的size/forks/stars/updated标题，可以正倒排序。</p>
+    <p>点击表格的size/forks/stars/pushed_at标题，可以正倒排序。</p>
     <table>
       <tr>
         <td>#</td>
@@ -19,29 +19,29 @@
         <td @click="sortR('size')">size</td>
         <td @click="sortR('forks')">forks</td>
         <td @click="sortR('stargazers_count')">stars</td>
-        <td @click="sortR('updated_at')">updated_at</td>
+        <td @click="sortR('pushed_at')">pushed_at</td>
       </tr>
-      <tr v-for="(repo, index) in repos" :key="index">
+      <tr v-for="(repo, index) in reposR" :key="index">
         <td>{{ index + 1 }}</td>
         <td>{{ repo?.name }}</td>
         <td>{{ repo?.language }}</td>
         <td>{{ repo?.size }}</td>
         <td>{{ repo?.forks }}</td>
         <td>{{ repo?.stargazers_count }}</td>
-        <td>{{ repo?.updated_at }}</td>
+        <td>{{ repo?.pushed_at }}</td>
       </tr>
     </table>
   </div>
 </template>
 <script lang="ts" setup>
-import type { GithubRepos } from '@/datasource/Types'
+import type { GithubRepos } from '@/type'
+import { useFetch } from '@vueuse/core'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import axios from '@/axios/index'
 
 // 这块代码知道是排序即可
 const sortR = (propertyName: string) => {
-  repos.value.sort((a: GithubRepos, b: GithubRepos) => {
+  reposR.value.sort((a: GithubRepos, b: GithubRepos) => {
     type K = keyof GithubRepos
     const ar: number | string = a[propertyName as K]!
     const br: number | string = b[propertyName as K]!
@@ -51,12 +51,13 @@ const sortR = (propertyName: string) => {
 }
 
 const url = useRoute().query.url as string
-const repos = ref<GithubRepos[]>([])
+const reposR = ref<GithubRepos[]>([])
 const reverse = ref(false)
-axios
-  .create() // 仅此示例使用
-  .get(url)
-  .then((resp) => (repos.value = resp.data))
+
+useFetch(url)
+  .get()
+  .json()
+  .then((resp) => (reposR.value = resp.data.value))
 </script>
 <style scoped>
 table,

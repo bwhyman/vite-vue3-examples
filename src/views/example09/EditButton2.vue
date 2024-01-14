@@ -37,7 +37,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 import { ref } from 'vue'
 const props = defineProps<{ course: Course }>()
 // 双向绑定名称，用于传回给父元素

@@ -1,4 +1,4 @@
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 import { defineAsyncComponent, h, render } from 'vue'
 
 export const createDelConfirmDialog = (course: Course) => {

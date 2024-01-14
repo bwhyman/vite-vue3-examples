@@ -36,7 +36,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 import { defineAsyncComponent, ref } from 'vue'
 import { listCoursesService2 } from './Example09Service'
 const editbutton2 = defineAsyncComponent(() => import('./EditButton2.vue'))

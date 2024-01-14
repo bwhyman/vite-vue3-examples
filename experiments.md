@@ -47,11 +47,11 @@ https://vue3js.cn/docs/zh/guide/class-and-style.html#对象语法-2
 掌握vue组件路由传参的方法  
 掌握嵌套路由的实现方法  
 理解Javascript Proxy代理对象的特点  
-掌握pinia的配置方法  
-掌握pinia state数据的声明方法  
-掌握pinia异步更新的方法  
-掌握pinia getter的使用方法  
-掌握组件绑定pinia数据的方法  
+掌握Store的配置方法  
+掌握Store state数据的声明方法  
+掌握Store异步更新的方法  
+掌握Store getter的使用方法  
+掌握组件绑定Store数据的方法  
 
 需求0  
 模拟外卖平台  
@@ -74,35 +74,39 @@ order组件，显示订单详情
 将订单设为路由，路由切换到订单详情  
 
 需求+1  
-将数据加载由pinia执行  
-pinia state声明shopList，foods中shop列表绑定shopList  
+将数据加载由Store执行  
+Store state声明shopList，foods中shop列表绑定shopList  
 路由到foods组件时，执行异步事件拉取shoplist，加载时先判断如果state已经存在则不执行加载，没有则加载  
-同理，pinia声明shopCache，用于缓存已经拉取的shop详细信息  
+同理，Store声明shopCache，用于缓存已经拉取的shop详细信息  
 进入shop组件时，异步加载shop详细信息，当shopCache中已经包含，即曾经加载过，则直接使用；没有则加载，并置于shopcache中  
 ![Screenshot](./assets/homework02.gif)
 
-### 实验四 axios网络请求实验
+### 实验四 网络请求实验
 
 **实验目的**  
-掌握基于axios网络请求响应的基本方法  
-掌握axios请求/响应拦截器的声明使用方法  
-掌握axios-mock-adapter模拟响应数据的声明使用方法  
-掌握整合pinia/axios的方法  
+掌握基于网络请求响应的基本方法  
+掌握请求/响应拦截器的声明使用方法  
+掌握封装Fetch请求的方法  
+掌握基于miragejs库mock数据的使用方法  
+掌握整合VueUse store/useFetch()的方法  
 掌握前后端互交接口的设计原则  
 掌握sessionstorage的使用方法  
 
 **实验内容**  
-需求0  
-安装axios依赖，创建基本配置文件  
-基于[https://api.github.com/users/bwhyman](https://api.github.com/users/bwhyman)，编写对应的接口类型  
-编写组件，基于axios发出请求，获取响应结果，并将结果渲染到视图    
 
-需求+1  
-安装axios-mock-adapter依赖至开发环境下，创建基本配置文件  
+安装miragejs依赖至开发环境下，创建基本配置文件  
 在main.ts入口按开发环境引入配置文件  
-创建拦截模拟登录请求函数  
-获取请求对象中的传递的参数，模拟账号密码并判断，相符按约定返回响应对象，并在header返回token/role数据  
-编写登录组件  
-在pinia编写登录函数，并调用axios发出请求  
-将响应header中的token/role数据存入sessionstorage  
-编写axios请求响应拦截器，基于响应业务码判断业务是否异常，并弹出全局警告模态框    
+声明基于约定的ResultVO接口  
+实现Fetch基本配置  
+实现Fetch请求/响应拦截器  
+实现get/post请求的封装  
+
+需求0   
+创建miragejs mock登录请求函数  
+模拟校验用户输入的账号密码，组装ResultVO对象，错误则返回登录失败业务码；成功则在body返回用户信息，header返回token/role数据  
+编写service层登录业务函数，调用Fetch相应函数实现网络请求    
+登录成功将响应header中的token/role数据存入sessionstorage  
+编写全局警告模态框    
+编写登录组件，调用service登录函数  
+
+

@@ -31,10 +31,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 import { defineAsyncComponent, ref } from 'vue'
-
 import { listCoursesService2 } from './Example09Service'
+
 const editbutton4 = defineAsyncComponent(() => import('./EditButton4.vue'))
 const coursesR = ref<Course[]>([])
 listCoursesService2().then((cs) => (coursesR.value = cs))

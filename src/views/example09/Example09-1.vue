@@ -18,13 +18,11 @@
 import item from './Item.vue'
 import { useExample09Store } from './Example09Store'
 import { listCoursesService } from './Example09Service'
-import { storeToRefs } from 'pinia'
 // 组件发起业务处理请求
 listCoursesService()
-// 数据响应式绑定到store数据
 // 初始时，store中为空数组。
 // 1s后service响应式更新store数据，数组也响应式更新
-const coursesR = storeToRefs(useExample09Store()).coursesS
+const coursesR = useExample09Store().coursesS
 // 组件中，直接响应式更新store数据
 const changeItemF = () => {
   coursesR.value.forEach((c, index) => index % 2 == 0 && (c.name = '响应式改变'))

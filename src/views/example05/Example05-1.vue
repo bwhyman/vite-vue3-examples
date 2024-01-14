@@ -21,7 +21,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { User } from '@/datasource/Types'
+import type { User } from '@/type'
 import { ref } from 'vue'
 const userRef = ref<User>({ name: 'BO', level: 5 })
 const closeRef = ref(true)

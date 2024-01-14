@@ -15,10 +15,9 @@
 <script lang="ts" setup>
 import { useH2Store } from './store'
 import { listShopsService } from './service/index'
-import { storeToRefs } from 'pinia'
 
 listShopsService()
-const shopList = storeToRefs(useH2Store()).shopListS
+const shopList = useH2Store().shopListS
 </script>
 <style scoped>
 * {
@@ -34,6 +33,8 @@ const shopList = storeToRefs(useH2Store()).shopListS
   padding: 5px;
 }
 .card:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>

@@ -26,6 +26,7 @@
       <input type="password" v-model="userForm.password" />
       <br />
       <button title="button" @click="login">Login</button>
+      <button @click="clearSessionStorageF">清空SessionStorage用于测试</button>
     </div>
     <router-link to="/example13/user">
       在未登录状态下，试图向user/admin权限地址路由，直接路由至登录组件，且可配置全局警告框。类似基于servlet
@@ -47,5 +48,8 @@ const login = async () => {
   await loginGuardService(user)
   userForm.value.number = ''
   userForm.value.password = ''
+}
+const clearSessionStorageF = () => {
+  sessionStorage.clear()
 }
 </script>

@@ -36,7 +36,7 @@
 import { computed, type Ref, ref } from 'vue'
 
 import { listCourses } from '@/datasource/DataSource'
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 const courses: Ref<Course[]> = ref(listCourses())
 
 const formatDate = computed(() => (date: string) => date.replace('T', ' ').substring(0, 16))

@@ -1,20 +1,17 @@
+<script setup lang="ts">
+import SidebarView from '@/views/SidebarView.vue'
+</script>
 <template>
-  <div id="row">
-    <sidebar id="sidebar" />
-    <router-view id="router" />
+  <div style="display: flex">
+    <SidebarView id="sidebar" />
+
+    <RouterView id="router" />
   </div>
 </template>
-<script lang="ts" setup>
-import sidebar from '@/views/SideBar.vue'
-</script>
-
 <style>
 #app {
-  width: 960px;
+  width: 1200px;
   margin: 10px auto;
-}
-#row {
-  display: flex;
 }
 
 #sidebar {

@@ -4,7 +4,7 @@ import { useExample16Store } from './Example16Store'
 
 const props = defineProps<{ role: string }>()
 const store = useExample16Store()
-const showC = computed(() => props.role === store.roleS)
+const showC = computed(() => props.role === store.roleS.value)
 </script>
 <template>
   <slot v-if="showC"></slot>

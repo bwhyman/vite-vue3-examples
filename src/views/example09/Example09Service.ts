@@ -1,10 +1,9 @@
 import { listCourses } from '@/datasource/DataSource'
 import { useExample09Store } from './Example09Store'
-import { storeToRefs } from 'pinia'
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 
 export const listCoursesService = () => {
-  const coursesS = storeToRefs(useExample09Store()).coursesS
+  const coursesS = useExample09Store().coursesS
   // 模拟业务逻辑处理，网络延迟获取数据
   // 获取到数据后响应式改变store中数据
   setTimeout(() => (coursesS.value = listCourses()), 1000)

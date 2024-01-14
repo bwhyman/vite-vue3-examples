@@ -66,7 +66,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { User } from '@/datasource/Types'
+import type { User } from '@/type'
 import { computed, ref, watch, watchEffect } from 'vue'
 
 const message = 'hello'

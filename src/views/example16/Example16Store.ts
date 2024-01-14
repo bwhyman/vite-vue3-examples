@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia'
+import { createGlobalState } from '@vueuse/core'
 import { ref } from 'vue'
 
-export const useExample16Store = defineStore('example16', () => {
+export const useExample16Store = createGlobalState(() => {
   // 模拟绑定/切换权限值测试
   const roleS = ref('')
   const changeRoleA = () => {

@@ -50,13 +50,13 @@
       <li><router-link to="/example06-1">Async Component</router-link></li>
       <li><router-link to="/example06-2">keep-alive</router-link></li>
     </ul>
-    <h3>Pinia</h3>
+    <h3>Global Store</h3>
     <ul>
       <li>
         <router-link to="/example08-1">State</router-link>
       </li>
       <li>
-        <router-link to="/example08-2">Actions & patch()</router-link>
+        <router-link to="/example08-2">Actions</router-link>
       </li>
       <li>
         <router-link to="/example08-3">Getters</router-link>
@@ -71,22 +71,22 @@
         <router-link to="/example09-2">defineEmits()</router-link>
       </li>
       <li>
-        <router-link to="/example09-4">defineProps() Functions</router-link>
+        <router-link to="/example09-4">Passing Functions</router-link>
       </li>
       <li>
         <router-link to="/example09-3">defineExpose()</router-link>
       </li>
     </ul>
-    <h3>Axios & Mock</h3>
+    <h3>Network</h3>
     <ul>
       <li>
-        <router-link to="/example10-1">Axios Github-API</router-link>
+        <router-link to="/example10-1">VueUse useFetch</router-link>
       </li>
       <li>
-        <router-link to="/example11-1">mriage</router-link>
+        <router-link to="/example11-1">Mock & mriage</router-link>
       </li>
       <li>
-        <router-link to="/example11-2">axios & mock & pinia</router-link>
+        <router-link to="/example11-2">Login</router-link>
       </li>
       <li>
         <router-link to="/example11-3">URL passing json params</router-link>
@@ -134,13 +134,16 @@
     <h3>Homwork</h3>
     <ul>
       <li>
-        <router-link to="/homework01">Homework - 1</router-link>
+        <router-link to="/homework01">Homework01 - 响应式数据</router-link>
       </li>
       <li>
-        <router-link to="/homework02">Homework - 2</router-link>
+        <router-link to="/homework02">Homework02 - 综合</router-link>
       </li>
       <li>
-        <router-link to="/homework03">Homework - 3</router-link>
+        <router-link to="/homework03">Homework03 - 组件封装与暴露属性</router-link>
+      </li>
+      <li>
+        <router-link to="/homework04">Homework04 - 基于Slot的组件内容扩展</router-link>
       </li>
     </ul>
   </div>

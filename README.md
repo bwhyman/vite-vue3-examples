@@ -15,11 +15,9 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 开发环境/框架及版本
 
 - VS Code
-- Node.js ^18
-- NPM ^9.5
+- Node.js ^20
 - Vue ^3
-- Pinia ^2
-- Git ^2.40
+- VueUse ^10 (替代Pinia/Axios)
 
 ### Documents
 
@@ -39,10 +37,21 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 - https://github.com/bwhyman/flutter_examples
 
 ### Update
+#### 2024.03.04
+必须安装Node ^20。   
+vue更新至3.4。  
+更新vs code插件及配置。vue引入最新vs code插件`vue-official`替代`volar`，取消了TS的take over接管模式以提高性能。
+
+#### 2024.01.22
+重构。引入VueUse替代Pinia/Axios。
+基于useFetch()函数的全局异常处理比axios麻烦，需要封装。      
+几乎所有数据对象都是响应式的，会不会太重没必要？  
+
 #### 2024.01.13
 store仅用于响应式数据缓存，创建service封装包含网络请求的业务处理。   
-更新版本。  
-Homework-03  
+更新依赖。  
+Homework03，组件封装与暴露属性。    
+Homework04，基于Slot的组件内容扩展。  
 
 #### 2023.06.23 API Mocking
 API Mocking移植到mriage

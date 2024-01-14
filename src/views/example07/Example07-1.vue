@@ -40,19 +40,21 @@
 </template>
 <script lang="ts" setup>
 import { listCourses, listTitles } from '@/datasource/DataSource'
-import type { User } from '@/datasource/Types'
+import type { User } from '@/type'
 import { ref } from 'vue'
 
 const userR = ref<User>({ courses: [] })
-const fileR = ref({ fileName: '', fileSize: '' })
 const titles = listTitles()
 const courses = listCourses()
-
+//
+const fileR = ref({ fileName: '', fileSize: '' })
 const fileChangeF = (event: Event) => {
   const element = event.target as HTMLInputElement
   if (!element || !element.files) {
     return
   }
+  console.log(event)
+  console.log(element)
   fileR.value.fileName = element.files[0].name
   fileR.value.fileSize = `${(element.files[0].size / 1024 / 1024).toFixed(2)} MB`
 }

@@ -1,27 +1,22 @@
-import axios from '@/axios'
-import type { Course, ResultVO, User } from '@/datasource/Types'
+import type { Course, User } from '@/type'
 import { useExample11Store } from './Example11Store'
-import { storeToRefs } from 'pinia'
+import { useGet, usePost } from '@/fetch'
 
+// example11-1
 export const listCoursesService = async (userId: number) => {
-  const resp = await axios.get<ResultVO<{ courses: Course[] }>>(`users/${userId}/courses`)
-  return resp.data.data?.courses
+  const { data } = await useGet<{ courses: Course[] }>(`users/${userId}/courses`)
+  return data.value?.data.courses ?? []
 }
-
-export const loginService = async (data: { number: string; password: string }) => {
-  // try可避免控制台的未捕获异常信息
-  try {
-    const resp = await axios.post<ResultVO<{ user: User }>>('login', data)
-    console.log(resp.headers.token)
-    sessionStorage.setItem('token', resp.headers.token)
-    const userS = storeToRefs(useExample11Store()).userS
-    userS.value = resp.data.data?.user
-  } catch (error) {
-    // eslint默认禁止空执行体。加一段注释或关闭该检测
-  }
+// example11-2
+export const loginService = async (user: { number: string; password: string }) => {
+  const resp = await usePost<{ user: User }>('login', user)
+  const token = resp.response.value?.headers.get('token')
+  token && sessionStorage.setItem('token', token)
+  const userS = useExample11Store().userS
+  resp.data.value?.data && (userS.value = resp.data.value?.data.user)
 }
+// example11-2
 export const getHomeService = async () => {
-  // 未捕获异常，请求失败在控制台输出信息
-  const resp = await axios.get<ResultVO<{ courses: Course[] }>>('home')
-  return resp.data.data?.courses
+  const resp = await useGet<{ courses: Course[] }>('home')
+  useExample11Store().coursesS.value = resp.data.value?.data.courses ?? []
 }

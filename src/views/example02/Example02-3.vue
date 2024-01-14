@@ -23,7 +23,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { User } from '@/datasource/Types'
+import type { User } from '@/type'
 import { reactive } from 'vue'
 const user: User = {
   name: 'BO',

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 import { render } from 'vue'
 
 const props = defineProps<{ course: Course }>()

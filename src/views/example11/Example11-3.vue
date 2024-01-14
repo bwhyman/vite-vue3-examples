@@ -27,8 +27,8 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { useFetch } from '@vueuse/core'
 import { ref } from 'vue'
-import axios from '@/axios'
 interface Address {
   id?: number
   detail?: string
@@ -39,10 +39,9 @@ const addresses = ref<Address[]>([])
 const passParams = () => {
   // 对象转json字符串
   const s = JSON.stringify(address.value)
-  // 地址栏`?`传参的get()方法参数列表。get(url, {params: {}})
-  axios.get('/search', { params: { address: s } }).then((resp) => {
-    console.log(resp.data.data)
-    addresses.value = resp.data.data
-  })
+  useFetch(`search?address=${s}`)
+    .get()
+    .json()
+    .then((resp) => (addresses.value = resp.data.value?.data))
 }
 </script>

@@ -6,7 +6,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 // 声明接收的属性类型
 const props = defineProps<{ course: Course }>()
 </script>

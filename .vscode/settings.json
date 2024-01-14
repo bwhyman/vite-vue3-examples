@@ -3,7 +3,7 @@
   "window.zoomLevel": 1.0,
   "editor.wordWrap": "on", 
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": "explicit"
   },
   "git.enableSmartCommit": true,
   "workbench.colorTheme": "Default Light+",

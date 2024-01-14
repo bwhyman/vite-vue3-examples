@@ -29,7 +29,7 @@
 </template>
 <script lang="ts" setup>
 import { listCourses } from '@/datasource/DataSource'
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 import { onMounted, ref, watch } from 'vue'
 
 // 模拟曾经选中的数据

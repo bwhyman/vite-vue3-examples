@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { listCourses } from '@/datasource/DataSource'
-import type { Course } from '@/datasource/Types'
+import type { Course } from '@/type'
 import { ref } from 'vue'
 import { createDelConfirmDialog } from './delbutton/index'
 
