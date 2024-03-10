@@ -68,13 +68,16 @@
         <router-link to="/example09-1">defineProps()</router-link>
       </li>
       <li>
-        <router-link to="/example09-2">defineEmits()</router-link>
-      </li>
-      <li>
         <router-link to="/example09-4">Passing Functions</router-link>
       </li>
       <li>
+        <router-link to="/example09-5">defineModel()</router-link>
+      </li>
+      <li>
         <router-link to="/example09-3">defineExpose()</router-link>
+      </li>
+      <li>
+        <router-link to="/example09-2">defineEmits()</router-link>
       </li>
     </ul>
     <h3>Network</h3>
