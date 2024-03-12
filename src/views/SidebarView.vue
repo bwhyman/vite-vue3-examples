@@ -140,6 +140,9 @@
         <router-link to="/homework01">Homework01 - 响应式数据</router-link>
       </li>
       <li>
+        <router-link to="/homework05">Homework05 - 组件动态切换</router-link>
+      </li>
+      <li>
         <router-link to="/homework02">Homework02 - 综合</router-link>
       </li>
       <li>

@@ -52,6 +52,14 @@ vuex state声明shopList，foods中shop列表绑定shopList
 同理，vuex声明shopCache，用于缓存已经拉取的shop详细信息  
 进入shop组件时，异步加载shop详细信息，当shopCache中已经包含，即曾经加载过，则直接使用；没有则加载，并置于shopcache中
 
+### Homework-05
+<img src="./assets/homework05.gif" width=224 height=71 />
+
+#### 需求0
+在视图组件内，无需配置路由实现功能组件的切换。  
+将组件功能名称以可点击的上导航渲染，当点击指定功能时切换组件，并特殊显式当前激活组件名称。
+
+
 ### Homework-01
 ![Screenshot](./assets/homework01.gif)
 
