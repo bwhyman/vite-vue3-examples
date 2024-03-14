@@ -25,7 +25,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { listCourses, type Course } from './homework01'
+import { listCourses, type Course } from './services'
 import { ref, watch } from 'vue'
 
 const requiredPoint = 12
@@ -50,3 +50,4 @@ watch(courseSelects, () => {
   vertical-align: top;
 }
 </style>
+./exp01 ./services

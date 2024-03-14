@@ -2,7 +2,7 @@
   <div>
     <p>附近的美食</p>
     <div v-for="(shop, index) of shopList" :key="index" style="min-width: 150px">
-      <router-link :to="`/homework02/shops/${shop.id}`" class="router">
+      <router-link :to="`/exp03/shops/${shop.id}`" class="router">
         <div class="card">
           <h4>{{ shop.name }}</h4>
           评分：{{ shop.point }}

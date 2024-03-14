@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { defineAsyncComponent, ref } from 'vue'
-import type { Teacher } from './type'
-const departmentVue = defineAsyncComponent(() => import('./DepartmentTeacherVue.vue'))
-const loadingVue = defineAsyncComponent(() => import('@/components/LoadingVue.vue'))
-// 响应式绑定组件暴露的数据对象
-const departExpose = ref<{ teacher: Teacher }>()
+import { listCourses } from './service'
+import CourseTableVue from './CourseTableVue.vue'
+import { ref } from 'vue'
+import type { Course } from './type'
+const courses = listCourses()
+const selectCourseR = ref<Course>()
 </script>
 <template>
   <div>
-    <h1>Homework03 - 封装暴露组件数据对象</h1>
+    <h1>Homework04 - Slot插槽</h1>
     <p>
-      选择的教师：
-      <span v-if="departExpose?.teacher.id">
-        {{ departExpose?.teacher.name }} / {{ departExpose?.teacher.id }}
-      </span>
+      选择的课程：
+      <span style="color: red; font-weight: bold">{{ selectCourseR?.name }}</span>
     </p>
-    <div>
-      <suspense>
-        <template #default>
-          <!-- 通过ref属性绑定组件暴露的数据对象 -->
-          <departmentVue ref="departExpose" />
+    <p>
+      <CourseTableVue :courses="courses">
+        <template #title>
+          <th>操作</th>
         </template>
-        <template #fallback>
-          <loadingVue />
+        <template #action="row">
+          <td><button @click="selectCourseR = row.course">EDIT</button></td>
         </template>
-      </suspense>
-    </div>
+      </CourseTableVue>
+    </p>
+    <p>
+      <CourseTableVue :courses="courses" />
+    </p>
   </div>
 </template>

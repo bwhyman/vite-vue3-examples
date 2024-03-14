@@ -192,11 +192,7 @@ const routes: RouteRecordRaw[] = [
       }
     ]
   },
-  {
-    props: true,
-    path: '/homework01',
-    component: () => import('@/views/homework01/Homework01View.vue')
-  },
+
   {
     props: true,
     path: '/example15',
@@ -220,46 +216,51 @@ const routes: RouteRecordRaw[] = [
   // -------------- homework
   {
     props: true,
-    path: '/homework02',
-    component: () => import('@/views/homework02/HomeView.vue'),
+    path: '/exp02',
+    component: () => import('@/views/exp02/IndexView.vue')
+  },
+  {
+    props: true,
+    path: '/exp03',
+    component: () => import('@/views/exp03/HomeView.vue'),
     children: [
       {
         props: true,
         path: 'location',
-        component: () => import('@/views/homework02/LocationView.vue')
+        component: () => import('@/views/exp03/LocationView.vue')
       },
       {
         props: true,
         name: 'foods',
         path: 'foods',
-        component: () => import('@/views/homework02/FoodsView.vue')
+        component: () => import('@/views/exp03/FoodsView.vue')
       },
       {
         props: true,
         path: 'shops/:sid',
-        component: () => import('@/views/homework02/ShopView.vue')
+        component: () => import('@/views/exp03/ShopView.vue')
       },
       {
         props: true,
         path: 'orders',
-        component: () => import('@/views/homework02/OrderView.vue')
+        component: () => import('@/views/exp03/OrderView.vue')
       }
     ]
   },
   {
     props: true,
+    path: '/homework01',
+    component: () => import('@/views/homework01/IndexView.vue')
+  },
+  {
+    props: true,
+    path: '/homework02',
+    component: () => import('@/views/homework02/IndexView.vue')
+  },
+  {
+    props: true,
     path: '/homework03',
     component: () => import('@/views/homework03/IndexView.vue')
-  },
-  {
-    props: true,
-    path: '/homework04',
-    component: () => import('@/views/homework04/IndexView.vue')
-  },
-  {
-    props: true,
-    path: '/homework05',
-    component: () => import('@/views/homework05/IndexView.vue')
   }
 ]
 

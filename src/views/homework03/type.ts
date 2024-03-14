@@ -1,10 +1,4 @@
-export interface Department {
+export interface Course {
   id?: string
-  name?: string
-}
-
-export interface Teacher {
-  id?: string
-  depId?: string
   name?: string
 }

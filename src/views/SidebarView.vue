@@ -137,19 +137,20 @@
     <h3>Homwork</h3>
     <ul>
       <li>
-        <router-link to="/homework01">Homework01 - 响应式数据</router-link>
+        <router-link to="/exp02">Experiment02 - Vue双向绑定实验</router-link>
       </li>
       <li>
-        <router-link to="/homework05">Homework05 - 组件动态切换</router-link>
+        <router-link to="/exp03">Experiment03 - 单一数据源实验</router-link>
       </li>
       <li>
-        <router-link to="/homework02">Homework02 - 综合</router-link>
+        <router-link to="/homework01">Homework01 - 组件动态切换</router-link>
+      </li>
+
+      <li>
+        <router-link to="/homework02">Homework02 - 组件封装与暴露属性</router-link>
       </li>
       <li>
-        <router-link to="/homework03">Homework03 - 组件封装与暴露属性</router-link>
-      </li>
-      <li>
-        <router-link to="/homework04">Homework04 - 基于Slot的组件内容扩展</router-link>
+        <router-link to="/homework03">Homework03 - 基于Slot的组件内容扩展</router-link>
       </li>
     </ul>
   </div>

@@ -38,7 +38,7 @@ https://vue3js.cn/docs/zh/guide/class-and-style.html#对象语法-2
 返回的课程不是按学期排序，加入选择数组也是按选择顺序而非学期，体验不好  
 按学期排序显式；右侧显式选择的课程也动态按学期排序。不要在视图实现排序  
 查询数组排序sort()函数  
-![Screenshot](./assets/point.gif)
+![Screenshot](./assets/exp02.gif)
 
 ### 实验三 单一数据源实验
 
@@ -62,7 +62,7 @@ foods组件，加载shop列表，每个shop是一个路由导航，点击时路�
 shop组件，基于传入的参数加载shop全部item，循环渲染  
 
 需求+1  
-orders包含若干order，每个order包含选定的item以及对应的数量；orders数组保存在vuex  
+orders包含若干order，每个order包含选定的item以及对应的数量；orders数组保存在store  
 shop组件，声明add函数，获取orders判断是否包含当前渲染的item，有则修改其数量，没有则创建新order对象加入orders数组  
 声明remove函数，获取orders基于当前渲染的item减少order中数量，0则从orders数组移除对应的item  
 可在组件内直接操作orders数组中元素，仅替换整合数组引用时使用同步/异步事件  
@@ -79,7 +79,7 @@ Store state声明shopList，foods中shop列表绑定shopList
 路由到foods组件时，执行异步事件拉取shoplist，加载时先判断如果state已经存在则不执行加载，没有则加载  
 同理，Store声明shopCache，用于缓存已经拉取的shop详细信息  
 进入shop组件时，异步加载shop详细信息，当shopCache中已经包含，即曾经加载过，则直接使用；没有则加载，并置于shopcache中  
-![Screenshot](./assets/homework02.gif)
+![Screenshot](./assets/exp03.gif)
 
 ### 实验四 网络请求实验
 
