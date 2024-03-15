@@ -22,13 +22,11 @@ import { computed, ref } from 'vue'
 import type { Item, Shop } from './data/homework02'
 import { useH2Store } from './store'
 import { getShopService } from './service'
-interface Props {
-  sid: string
-}
-const props = defineProps<Props>()
+import { useRoute } from 'vue-router'
+const params = useRoute().params
 const shop = ref<Shop>()
 
-getShopService(Number.parseInt(props.sid)).then((sh) => {
+getShopService(Number.parseInt(params.sid as string)).then((sh) => {
   shop.value = sh
 })
 const store = useH2Store()

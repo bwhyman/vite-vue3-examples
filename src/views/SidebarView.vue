@@ -21,12 +21,12 @@
     <ul>
       <li>
         <router-link to="/example03-1/students/45/homeworks/23">
-          students/45/homeworks/23
+          useRoute(): students/45/homeworks/23
         </router-link>
       </li>
       <li>
         <router-link to="/example03-1/students/18/homeworks/18">
-          students/18/homeworks/18
+          useRoute(): students/18/homeworks/18
         </router-link>
       </li>
     </ul>
