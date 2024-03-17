@@ -17,7 +17,7 @@
         <router-link to="/example02-3">reactive()</router-link>
       </li>
     </ul>
-    <h3>Props, route with params</h3>
+    <h3>Route With Params</h3>
     <ul>
       <li>
         <router-link to="/example03-1/students/45/homeworks/23">

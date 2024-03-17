@@ -26,7 +26,7 @@ const user: User = {
   id: 45,
   name: 'BO',
   address: { id: 1 },
-  addresses: [{ id: 1 }],
+  addresses: [{ id: 1 }]
 }
 console.log(user.address?.id)
 // 解构
@@ -77,18 +77,22 @@ new Promise((resolve, reject) => {
 }).catch((error) => console.log(error))
 
 function getPromise() {
-  return new Promise((resolve, reject) => {
+  return new Promise<string>((resolve) => {
     setTimeout(() => {
       console.log('in')
-      reject('error')
+      resolve('done')
     }, 1000)
   })
 }
 
 const get = async () => {
-  const result = await getPromise()
-  console.log('get')
-  console.log(result)
+  try {
+    const result = await getPromise()
+    console.log('get')
+    console.log(result)
+  } catch (error) {
+    console.log(error)
+  }
 }
 get()
 console.log('after get')
