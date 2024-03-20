@@ -8,7 +8,7 @@ const departExpose = ref<{ teacher: Teacher }>()
 </script>
 <template>
   <div>
-    <h1>Homework03 - 封装暴露组件数据对象</h1>
+    <h1>Homework - 封装暴露组件数据对象</h1>
     <p>
       选择的教师：
       <span v-if="departExpose?.teacher.id">

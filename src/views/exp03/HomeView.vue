@@ -1,7 +1,8 @@
 <template>
   <div>
+    <h1>Experiment</h1>
     <div>
-      <!-- 基于名称的路由，等效于/homework02/foods -->
+      <!-- 基于名称的路由，等效于/exp03/foods -->
       <router-link :to="{ name: 'foods' }" style="text-decoration: none">美食</router-link>
       |
       <router-link to="/exp03/location" style="text-decoration: none">本地</router-link>

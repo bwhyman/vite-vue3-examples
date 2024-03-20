@@ -8,7 +8,7 @@ const selectCourseR = ref<Course>()
 </script>
 <template>
   <div>
-    <h1>Homework04 - Slot插槽</h1>
+    <h1>Homework - Slot插槽</h1>
     <p>
       选择的课程：
       <span style="color: red; font-weight: bold">{{ selectCourseR?.name }}</span>

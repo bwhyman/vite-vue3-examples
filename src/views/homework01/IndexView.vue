@@ -29,6 +29,7 @@ const activeStyleC = computed(
 </script>
 <template>
   <div>
+    <h1>Homework - 组件动态切换</h1>
     <p>无需路由的动态加载组件。切换组件时获取组件索引，更新加载组件以及功能描述文字样式。</p>
     <p>
       <span

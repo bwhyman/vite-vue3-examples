@@ -1,4 +1,5 @@
 # Homework
+尝试基于需求实现。示例在`src/views/homework+`
 
 ### Homework-01
 <img src="./assets/homework01.gif" width=224 height=71 />

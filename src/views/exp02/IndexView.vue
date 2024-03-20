@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Homework01</h1>
+    <h1>Experiment</h1>
     <p style="font-weight: bold">
       <span :style="{ color: point >= requiredPoint ? 'green' : 'red' }">
         {{ point }}

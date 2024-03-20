@@ -1,4 +1,5 @@
 # Experiments
+尝试基于需求实现。示例在`src/views/exp+`
 
 ### 实验一 Vue组件与路由实验
 
@@ -32,7 +33,7 @@
 在右侧，动态显式选中的课程  
 未达到条件时，累加学分显式红色，达到显式绿色  
 由于较简单，不使用讲过的动态绑定class，尝试动态绑定style  
-https://vue3js.cn/docs/zh/guide/class-and-style.html#对象语法-2  
+https://cn.vuejs.org/guide/essentials/class-and-style.html#binding-inline-styles  
 
 需求+1  
 返回的课程不是按学期排序，加入选择数组也是按选择顺序而非学期，体验不好  

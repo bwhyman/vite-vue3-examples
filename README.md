@@ -29,6 +29,10 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 
 [在线课程](https://mooc1-1.chaoxing.com/course/208931964.html)
 
+### Homeworks & Experiments
+[Homeworks](./homework.md)  
+[Experiments](./experiments.md) 
+
 ### Related Courses
 
 - https://github.com/bwhyman/java-course
