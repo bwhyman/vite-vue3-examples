@@ -27,7 +27,7 @@
     </table>
 
     <p>{{ courseEditedNameR }}</p>
-    <editbutton4 v-if="activeR" :course="courseEditR" :close="closeItem" :submit="submitItem" />
+    <editdialog v-if="activeR" :course="courseEditR" :close="closeItem" :submit="submitItem" />
   </div>
 </template>
 <script lang="ts" setup>
@@ -35,7 +35,7 @@ import type { Course } from '@/type'
 import { defineAsyncComponent, ref } from 'vue'
 import { listCoursesService2 } from './Example09Service'
 
-const editbutton4 = defineAsyncComponent(() => import('./EditButton4.vue'))
+const editdialog = defineAsyncComponent(() => import('./EditDialog4.vue'))
 const coursesR = ref<Course[]>([])
 listCoursesService2().then((cs) => (coursesR.value = cs))
 const activeR = ref(false)

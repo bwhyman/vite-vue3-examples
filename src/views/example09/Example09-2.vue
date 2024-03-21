@@ -28,7 +28,7 @@
     </table>
 
     <p>{{ courseEditedNameR }}</p>
-    <editbutton2
+    <editdialog
       v-if="activeR"
       :course="courseEditR"
       @emitClose="activeR = false"
@@ -39,7 +39,7 @@
 import type { Course } from '@/type'
 import { defineAsyncComponent, ref } from 'vue'
 import { listCoursesService2 } from './Example09Service'
-const editbutton2 = defineAsyncComponent(() => import('./EditButton2.vue'))
+const editdialog = defineAsyncComponent(() => import('./EditDialog2.vue'))
 // 响应式数据，用于当业务逻辑异步返回数据后，更新组件数据
 const coursesR = ref<Course[]>([])
 // 获取异步返回数据并响应式更新数据

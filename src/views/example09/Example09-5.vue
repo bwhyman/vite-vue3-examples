@@ -3,7 +3,7 @@ import type { Course } from '@/type'
 import { defineAsyncComponent, ref } from 'vue'
 import { listCoursesService2 } from './Example09Service'
 
-const editbutton5 = defineAsyncComponent(() => import('./EditButton5.vue'))
+const editdialog = defineAsyncComponent(() => import('./EditDialog5.vue'))
 const coursesR = ref<Course[]>([])
 listCoursesService2().then((cs) => (coursesR.value = cs))
 const activeR = ref(false)
@@ -34,7 +34,7 @@ const countR = ref(10)
       </tr>
     </table>
     <p>{{ countR }} / {{ courseEditedNameR }}</p>
-    <editbutton5
+    <editdialog
       v-if="activeR"
       :course="courseEditR"
       v-model:active="activeR"

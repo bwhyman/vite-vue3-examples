@@ -1,14 +1,14 @@
 # Homework
 尝试基于需求实现。示例在`src/views/homework+`
 
-### Homework-01
+### 组件动态切换
 <img src="./assets/homework01.gif" width=224 height=71 />
 
 #### 需求0
 在视图组件内，无需配置路由实现功能组件的切换。  
 将组件功能名称以可点击的上导航渲染，当点击指定功能时切换组件，并特殊显式当前激活组件名称。
 
-### Homework-02
+### 组件封装与暴露属性
 <img src="./assets/homework02.gif" width=253 height=170 />  
 
 #### 需求0
@@ -19,7 +19,7 @@
 当选择教师时，组件将该教师数据对象暴露供外部父组件使用。  
 从而，独立子组件封装独立功能，无需关心父组件如何使用返回的数据对象。  
 
-### Homework-03
+### 基于Slot的组件内容扩展
 <img src="./assets/homework03.gif" width=225 height=304 />  
 
 #### 需求0

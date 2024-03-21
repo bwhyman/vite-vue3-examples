@@ -42,7 +42,7 @@
     </ul>
     <h3>Form Input Bindings</h3>
     <ul>
-      <li><router-link to="/example07-1">v-module</router-link></li>
+      <li><router-link to="/example07-1">v-model</router-link></li>
       <li><router-link to="/example07-2">Examples</router-link></li>
     </ul>
     <h3>Component</h3>

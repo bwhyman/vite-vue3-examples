@@ -11,11 +11,11 @@
       <br />
       <button @click="changeItemF">changeItem</button>
     </p>
-    <item v-for="(c, index) of coursesR" :key="index" :course="c" />
+    <courseitem v-for="(c, index) of coursesR" :key="index" :course="c" />
   </div>
 </template>
 <script lang="ts" setup>
-import item from './Item.vue'
+import courseitem from './CourseItem1.vue'
 import { useExample09Store } from './Example09Store'
 import { listCoursesService } from './Example09Service'
 // 组件发起业务处理请求

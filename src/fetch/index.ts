@@ -38,29 +38,29 @@ const useFetch = createFetch({
 //
 // 默认execute()函数通过throwOnFailed属性阻止抛出异常
 // 欲支持全局异常处理，必须结合immediate/throwOnFailed
-export async function useGet<T>(url: string) {
+export const useGet = async <T>(url: string) => {
   const resp = useFetch(url, { immediate: false }).get().json<ResultVO<T>>()
   await resp.execute(true)
   return resp
 }
 
-export async function usePost<T>(url: string, data: unknown) {
+export const usePost = async <T>(url: string, data: unknown) => {
   const resp = useFetch(url, { immediate: false }).post(data).json<ResultVO<T>>()
   await resp.execute(true)
   return resp
 }
 
-export async function usePut<T>(url: string) {
+export const usePut = async <T>(url: string) => {
   const resp = useFetch(url, { immediate: false }).put().json<ResultVO<T>>()
   await resp.execute(true)
   return resp
 }
-export async function usePatch<T>(url: string, data: unknown) {
+export const usePatch = async <T>(url: string, data: unknown) => {
   const resp = useFetch(url, { immediate: false }).patch(data).json<ResultVO<T>>()
   await resp.execute(true)
   return resp
 }
-export async function useDelete<T>(url: string) {
+export const useDelete = async <T>(url: string) => {
   const resp = useFetch(url, { immediate: false }).delete().json<ResultVO<T>>()
   await resp.execute(true)
   return resp
