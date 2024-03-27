@@ -146,13 +146,16 @@
         <router-link to="/homework01">Homework - 组件动态切换</router-link>
       </li>
       <li>
-        <router-link to="/homework04">Homework - Checkbox双向绑定</router-link>
+        <router-link to="/homework04">Homework - Checkbox双向互交绑定</router-link>
       </li>
       <li>
         <router-link to="/homework02">Homework - 组件封装与暴露属性</router-link>
       </li>
       <li>
         <router-link to="/homework03">Homework - 基于Slot的组件内容扩展</router-link>
+      </li>
+      <li>
+        <router-link to="/homework05">Homework - 函数式全屏Loading遮罩组件</router-link>
       </li>
     </ul>
   </div>

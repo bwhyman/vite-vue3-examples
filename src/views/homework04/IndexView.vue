@@ -37,7 +37,7 @@ const changeDateF = () => {
 </script>
 <template>
   <div>
-    <h1>Homework - Checkbox双向绑定</h1>
+    <h1>Homework - Checkbox双向互交绑定</h1>
     <p>
       快捷选择，与单独选择联动，快捷选择优先级高于单独选择。
       <br />

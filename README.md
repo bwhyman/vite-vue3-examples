@@ -16,7 +16,7 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 
 - VS Code
 - Node.js ^20
-- Vue ^3
+- Vue ^3.4
 - VueUse ^10 (替代Pinia/Axios)
 
 ### Documents
@@ -41,6 +41,9 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 - https://github.com/bwhyman/flutter_examples
 
 ### Update
+#### 2024.03.27
+作业：Checkbox双向互交绑定；函数式全屏Loading遮罩组件
+
 #### 2024.03.04
 必须安装Node ^20。   
 vue更新至3.4。  

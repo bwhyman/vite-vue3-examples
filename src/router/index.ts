@@ -221,6 +221,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/homework04',
     component: () => import('@/views/homework04/IndexView.vue')
+  },
+  {
+    path: '/homework05',
+    component: () => import('@/views/homework05/IndexView.vue')
   }
 ]
 
@@ -240,6 +244,8 @@ router.beforeEach((to, from) => {
 
   if (to.meta.role != sessionStorage.getItem('role')) {
     createAlertDialog('无权限')
+    // 直接返回路由地址
+    // return '/example13/login'
     // 支持返回路由对象
     return { name: 'login-g' }
   }
