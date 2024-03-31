@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { Course } from '@/type'
-import { listCoursesService } from './CourseService'
+import type { Course } from './type'
+import { listCoursesService } from './service'
 import { createLoading } from './loading'
 const coursesR = ref<Course[]>([])
 const listCoursesF = async () => {
@@ -27,8 +27,11 @@ const listCoursesF = async () => {
     <p>
       全局模态框组件由事件激活卸载(点击关闭)，而Loading组件是随函数的执行(响应数据返回)而卸载，因此需提供卸载函数在合适位置调用执行。
     </p>
-    <p>
+    <div>
       <button @click="listCoursesF">异步请求数据，4s响应后自动关闭全屏Loading遮罩</button>
-    </p>
+      <ul>
+        <li v-for="(c, index) of coursesR" :key="index">{{ c.name }}</li>
+      </ul>
+    </div>
   </div>
 </template>

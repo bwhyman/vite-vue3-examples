@@ -37,7 +37,7 @@
 模拟学生组件使用Table子组件。没有渲染操作功能。  
 
 ###  函数式全屏Loading遮罩组件
-<img src="./assets/homework05.gif" width=355 height=152 />  
+<img src="./assets/homework05.gif" width=320 height=117 />  
 
 #### 需求0
 网络异步数据请求时，无法确定数据响应时间，在没有提示的情况下会影响用户操作体验，甚至可能发生用户反复提交数据致使操作错误。因此，应设计友好的互交反馈指引用户操作。

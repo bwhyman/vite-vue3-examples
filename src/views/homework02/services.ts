@@ -1,7 +1,7 @@
 import type { Department, Teacher } from './type'
 
 // 模拟异步获取全部部门
-export const listDepartmentsService = async () => {
+export const listDepartmentsService = () => {
   return new Promise<Department[]>((resolve) => {
     setTimeout(() => {
       resolve(deps)
