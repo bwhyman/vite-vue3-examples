@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
+
+onMounted(() => (document.body.style.overflow = 'hidden'))
+onUnmounted(() => (document.body.style.overflow = ''))
+</script>
 <template>
   <div class="loading">
     <img style="margin: 200px auto; display: block" src="@/assets/loading.gif" alt="" />

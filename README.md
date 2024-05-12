@@ -41,6 +41,10 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 - https://github.com/bwhyman/flutter_examples
 
 ### Update
+#### 2024.05.12
+避免页面出现y轴滚动条时使主区域`左移`。  
+全屏loading遮罩下禁止滚动。
+
 #### 2024.03.27
 作业：Checkbox双向互交绑定；函数式全屏Loading遮罩组件
 

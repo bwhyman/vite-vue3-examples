@@ -6,9 +6,16 @@ import SidebarView from '@/views/SidebarView.vue'
   <RouterView id="router" />
 </template>
 <style>
+/* 最宽为全屏-y轴滚动条宽度 */
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  max-width: calc(100vw - 17px);
+}
 #app {
   display: flex;
-  width: 1200px;
+  max-width: 1200px;
   margin: 10px auto;
 }
 
