@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { render } from 'vue'
 // 接收信息数据，以及当关闭模态框时的执行函数
+// 可选参数，关闭回调函数
 const props = defineProps<{ msg: string; close?: () => {} }>()
 //
 const close = () => {

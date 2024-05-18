@@ -1,4 +1,3 @@
-import { createAlertDialog } from '@/components/message'
 import type { ResultVO } from '@/type'
 import { createFetch } from '@vueuse/core'
 
@@ -29,8 +28,8 @@ const useFetch = createFetch({
     },
     // 全局处理异常信息。http状态码不是200。
     // 以及afterFetch拒绝后的处理
+    // 未捕获异常，传递给全局异常处理
     onFetchError: (ctx) => {
-      ctx.error && createAlertDialog(ctx.error)
       return Promise.reject(ctx.error)
     }
   }

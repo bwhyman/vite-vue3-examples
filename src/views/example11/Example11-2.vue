@@ -52,6 +52,10 @@ const getHome = async () => {
 }
 
 const loginF = async () => {
+  if (userForm.value.number.length == 0 || userForm.value.password.length == 0) {
+    // 抛出后由统一异常处理程序处理
+    throw '账号密码不能为空！'
+  }
   const user: User = {
     number: userForm.value.number,
     password: userForm.value.password
