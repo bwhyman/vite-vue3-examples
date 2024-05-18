@@ -10,52 +10,52 @@
     </p>
     <form>
       <label>
-        <input type="checkbox" v-model="agreedRef" />
+        <input type="checkbox" v-model="agreedR" />
         同意条款
       </label>
       <br />
       <template v-for="(c, index) in courses" :key="index">
         <label>
-          <input ref="checkboxs" type="checkbox" v-model="sCoursesRef" :value="{ id: c.id }" />
+          <input
+            ref="checkboxsR"
+            type="checkbox"
+            v-model="coursesR"
+            :value="{ id: c.id }"
+            :disabled="checkboxDisabledC(index)" />
           {{ c.name }}
         </label>
         <br />
       </template>
       <br />
-      <button type="button" :disabled="!agreedRef || sCoursesRef.length < amount">submit</button>
+      <button type="button" :disabled="buttonDisabledC">submit</button>
     </form>
-    <p>{{ sCoursesRef }}</p>
+    <p>{{ coursesR }}</p>
   </div>
 </template>
 <script lang="ts" setup>
 import { listCourses } from '@/datasource/DataSource'
 import type { Course } from '@/type'
-import { onMounted, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
+// 同意
+const agreedR = ref(false)
+// 仅渲染，无需响应式
+const courses = listCourses()
 // 模拟曾经选中的数据
 const selectedCourses: Course[] = [{ id: 7 }]
-// 将所有动态创建的checkbox元素装入数组
-const checkboxs: HTMLInputElement[] = []
+// 将所有动态创建的checkbox元素装入响应式数组
+const checkboxsR = ref<HTMLInputElement[]>([])
 // 模拟总数
 const amount = 2
 // 将拉取的曾选中数据转为响应式
-const sCoursesRef = ref<Course[]>(selectedCourses)
-// 同意
-const agreedRef = ref(false)
-// 仅渲染，无需响应式
-const courses = listCourses()
+const coursesR = ref<Course[]>(selectedCourses)
 
-// 在挂载到DOM节点后监听，确保checkboxs已绑定ref属性
-onMounted(() => {
-  // 支持同时监听多个响应式数据
-  watch(
-    [agreedRef, sCoursesRef],
-    () => {
-      checkboxs.forEach(
-        (c) => (c.disabled = !agreedRef.value || (sCoursesRef.value.length >= amount && !c.checked))
-      )
-    },
-    { immediate: true }
-  )
-})
+// 每一次改变，均需针对每一个checkbox状态判断
+// 每一个checkbox disabled值，由agree/被选数量/当前选择状态，决定
+const checkboxDisabledC = computed(
+  () => (index: number) =>
+    !agreedR.value || (coursesR.value.length >= amount && !checkboxsR.value[index].checked)
+)
+
+const buttonDisabledC = computed(() => !agreedR.value || coursesR.value.length < amount)
 </script>

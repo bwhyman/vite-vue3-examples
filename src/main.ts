@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import.meta.env.DEV && (await import('@/mock/index'))
+// import.meta.env.DEV && (await import('@/mock/index'))
+import('@/mock/index')
 import { createAlertDialog } from '@/components/message'
 
 const app = createApp(App)
