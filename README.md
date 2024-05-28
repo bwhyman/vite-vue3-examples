@@ -8,7 +8,7 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 主讲教师：王波老师
 
 课程前部分，基于Vite/Vue3框架的前端MVVM设计模式、组件化设计与单页面开发技术。  
-课程后部分，基于springboot/spring-cloud框架的后端微服务架构、设计思想与实现技术。  
+课程后部分，基于springboot/spring-cloud框架的后端微服务架构、设计思想与实现技术。
 
 ### Development Environments
 
@@ -30,8 +30,9 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 [在线课程](https://mooc1-1.chaoxing.com/course/208931964.html)
 
 ### Homeworks & Experiments
+
 [Homeworks](./homework.md)  
-[Experiments](./experiments.md) 
+[Experiments](./experiments.md)
 
 ### Related Courses
 
@@ -41,33 +42,45 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 - https://github.com/bwhyman/flutter_examples
 
 ### Update
+
+#### 2024.05.28
+
+修改为官方推荐开发环境配置，`Vue - Official/eslint/prettier`插件。
+
 #### 2024.05.18
+
 统一异常处理及弹出模态框。
 
 #### 2024.05.12
+
 避免页面出现y轴滚动条时使主区域`左移`。  
 全屏loading遮罩下禁止滚动。
 
 #### 2024.03.27
+
 作业：Checkbox双向互交绑定；函数式全屏Loading遮罩组件
 
 #### 2024.03.04
-必须安装Node ^20。   
+
+必须安装Node ^20。  
 vue更新至3.4。  
 更新vs code插件及配置。vue引入最新vs code插件`vue-official`替代`volar`，取消了TS的take over接管模式以提高性能。
 
 #### 2024.01.22
+
 重构。引入VueUse替代Pinia/Axios。
-基于useFetch()函数的全局异常处理比axios麻烦，需要封装。      
-几乎所有数据对象都是响应式的，会不会太重没必要？  
+基于useFetch()函数的全局异常处理比axios麻烦，需要封装。  
+几乎所有数据对象都是响应式的，会不会太重没必要？
 
 #### 2024.01.13
-store仅用于响应式数据缓存，创建service封装包含网络请求的业务处理。   
+
+store仅用于响应式数据缓存，创建service封装包含网络请求的业务处理。  
 更新依赖。  
-Homework03，组件封装与暴露属性。    
-Homework04，基于Slot的组件内容扩展。  
+Homework03，组件封装与暴露属性。  
+Homework04，基于Slot的组件内容扩展。
 
 #### 2023.06.23 API Mocking
+
 API Mocking移植到mriage
 
 比较了几款API Mocking方案。目的，前端独立开发时模拟后端API请求数据，使用简单学习曲线平缓。
@@ -98,10 +111,10 @@ Pinia按组合式重构，像一个全局的响应式的没有视图Vue组件
 
 #### 2022.05.06
 
-基于vue新项目构建方法重构  
+基于vue新项目构建方法重构
 
 路由基于createWebHistory()函数构建的history在生产环境下需要web容器配置  
-使用基于createWebHashHistory()函数带#符号的路径解决问题  
+使用基于createWebHashHistory()函数带#符号的路径解决问题
 
 #### 2022.05.04
 
@@ -113,7 +126,7 @@ Pinia按组合式重构，像一个全局的响应式的没有视图Vue组件
 
 #### 2021.12.13
 
-使用原生JS+HTML+Proxy代理类，模拟实现视图响应式更新  
+使用原生JS+HTML+Proxy代理类，模拟实现视图响应式更新
 
 #### 2021.11.15
 

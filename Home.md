@@ -2,13 +2,13 @@
 
 ### Video
 
+**由于版本变更频繁，以文档内容为准**
+
 [配置视频](https://mooc1.chaoxing.com/nodedetailcontroller/visitnodedetail?courseId=208931964&knowledgeId=569788774)
 
 ### Node.js
 
 即使曾经安装过也使用最新版node.js重新安装，自动覆盖。修改到合适分区位置，例如D:\Program Files\nodejs。其他全部默认，无需安装Chocolatey。
-
-**windows中文用户名可能会影响NPM命令的执行**
 
 ### Workspace
 
@@ -20,16 +20,16 @@ https://staging-cn.vuejs.org/guide/quick-start.html#with-build-tools
 
 #### NPM Settings
 
-设置npm服务器使用aliyun镜像。复制以下命令，在控制台鼠标右键直接粘帖，回车执行。
-
-```shell
-npm config set registry http://registry.npmmirror.com
-```
-
-或tencent镜像
+设置npm服务器使用tencent镜像。复制以下命令，在控制台鼠标右键直接粘帖，回车执行。
 
 ```shell
 npm config set registry http://mirrors.cloud.tencent.com/npm/
+```
+
+或ali镜像
+
+```shell
+npm config set registry http://registry.npmmirror.com
 ```
 
 ### Vite Project
@@ -56,13 +56,13 @@ npm init vue@latest
 
 ### VS Vode
 
-下载压缩版vscode，解压运行。
+下载压缩版vscode，解压到合适位置运行。
 
-安装`Vue - Official/eslint`插件，重启vs code。
+vs code打开项目目录，右下角按项目模板建议安装`Vue - Official/eslint/prettier`3个插件。
 
 2024.03.04. vue引入最新vs code插件`vue-official`替代`volar`，取消了TS的take over接管模式以提高性能。
 
-vs code打开项目目录，crtl+`，打开vs code控制台。
+`ctrl + ~`打开vs code控制台。
 
 在控制台视图(默认即是当前项目路径下)，安装依赖。由于配置了国内镜像，下载速度会很快。依赖在100M以上
 
@@ -86,21 +86,19 @@ ctrl+c
 
 以eslint检查代码规范，以prettier统一代码风格，并在保存文件时自动修复错误
 
-修改.prettierrc.json。追加配置，忽略Windows/Linux行结束符`CRLF/LF`的差异；关闭闭合标签单行等。
+修改.prettierrc.json。忽略Windows/Linux行结束符`CRLF/LF`的差异；关闭闭合标签单行等。
 
 ```json
 {
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "semi": false,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "printWidth": 100,
+  "trailingComma": "none",
   "endOfLine": "auto",
   "htmlWhitespaceSensitivity": "ignore",
   "bracketSameLine": true
-}
-```
-
-修改.esintrc.cjs`@vue/eslint-config-prettier/skip-formatting`为以下配置，支持自动格式化
-
-```json
-{
-    '@vue/eslint-config-prettier'
 }
 ```
 
@@ -110,17 +108,16 @@ ctrl+c
 {
   "editor.fontSize": 16,
   "window.zoomLevel": 1.0,
-  "editor.wordWrap": "on", 
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": explicit,
-  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.wordWrap": "on",
   "git.enableSmartCommit": true,
   "workbench.colorTheme": "Default Light+",
   "vue.updateImportsOnFileMove.enabled": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "editor.suggest.snippetsPreventQuickSuggestions": false
-} 
+}
 ```
 
 #### Vue Snippet
