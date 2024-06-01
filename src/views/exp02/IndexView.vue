@@ -1,26 +1,30 @@
 <template>
   <div>
     <h1>Experiment</h1>
+    <p>专业选修课学分计算</p>
     <p style="font-weight: bold">
-      <span :style="{ color: point >= requiredPoint ? 'green' : 'red' }">
-        {{ point }}
+      <span :style="{ color: pointR >= requiredPoint ? 'green' : 'red' }">
+        {{ pointR }}
       </span>
-      /{{ requiredPoint }}
+      /{{ requiredPoint }}学分
     </p>
     <div class="course">
-      <template v-for="(c, index) of courses" :key="index">
+      <template v-for="(c, index) of coursesR" :key="index">
         <label>
-          <input type="checkbox" v-model="courseSelects" :value="c" />
-          {{ c.name }} - {{ c.point }} ({{ c.term }})
+          <input type="checkbox" v-model="selectedCoursesR" :value="c" />
+          {{ c.term }}学期 / {{ c.point }}学分 / {{ c.name }}
         </label>
         <br />
       </template>
     </div>
     <div class="course">
-      <template v-for="(c, index) of courseSelects" :key="index">
-        {{ c.name }} - {{ c.point }} ({{ c.term }})
+      <template v-for="(c, index) of selectedCoursesR" :key="index">
+        {{ c.term }}学期 / {{ c.point }}学分 / {{ c.name }}
         <br />
       </template>
+    </div>
+    <div>
+      <button @click="clearSelectedF">Reset</button>
     </div>
   </div>
 </template>
@@ -29,17 +33,17 @@ import { listCourses, type Course } from './services'
 import { ref, watch } from 'vue'
 
 const requiredPoint = 12
-const point = ref(0)
+const pointR = ref(0)
 const c2 = listCourses().sort((a, b) => a.term - b.term)
-const courses = ref<Course[]>(c2)
-const courseSelects = ref<Course[]>([])
-watch(courseSelects, () => {
-  let count = 0
-  courseSelects.value.forEach((c) => {
-    count = count + c.point
+const coursesR = ref<Course[]>(c2)
+const selectedCoursesR = ref<Course[]>([])
+const clearSelectedF = () => (selectedCoursesR.value.length = 0)
+watch(selectedCoursesR, () => {
+  pointR.value = 0
+  selectedCoursesR.value.forEach((c) => {
+    pointR.value += c.point
   })
-  point.value = count
-  courseSelects.value.sort((a, b) => a.term - b.term)
+  selectedCoursesR.value.sort((a, b) => a.term - b.term)
 })
 </script>
 <style scoped>
