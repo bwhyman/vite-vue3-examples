@@ -54,4 +54,3 @@ watch(selectedCoursesR, () => {
   vertical-align: top;
 }
 </style>
-./exp01 ./services

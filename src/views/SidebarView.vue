@@ -14,6 +14,9 @@
         <router-link to="/example02-2">Reactive-02</router-link>
       </li>
       <li>
+        <router-link to="/example02-4">shallowRef()</router-link>
+      </li>
+      <li>
         <router-link to="/example02-3">reactive()</router-link>
       </li>
     </ul>
