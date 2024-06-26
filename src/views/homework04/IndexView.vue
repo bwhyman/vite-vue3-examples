@@ -19,20 +19,8 @@ const changeShortDateF = () => {
 }
 // 当单独选择
 const changeDateF = () => {
-  let exist = true
-  // 判断当前选择是否包含完整的工作日
-  // 一但不包含某工作日停止遍历
-  for (const date of wDates) {
-    exist = datesR.value.includes(date)
-    if (!exist) break
-  }
-  dayCheckR.value.wDate = exist
-  //
-  for (const date of eDates) {
-    exist = datesR.value.includes(date)
-    if (!exist) break
-  }
-  dayCheckR.value.eDate = exist
+  dayCheckR.value.wDate = wDates.every((date) => datesR.value.includes(date))
+  dayCheckR.value.eDate = eDates.every((date) => datesR.value.includes(date))
 }
 </script>
 <template>
