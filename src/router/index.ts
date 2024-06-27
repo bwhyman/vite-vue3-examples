@@ -196,9 +196,8 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/exp03/LocationView.vue')
       },
       {
-        name: 'foods',
-        path: 'foods',
-        component: () => import('@/views/exp03/FoodsView.vue')
+        path: 'shoplist',
+        component: () => import('@/views/exp03/ShopListView.vue')
       },
       {
         path: 'shops/:sid',

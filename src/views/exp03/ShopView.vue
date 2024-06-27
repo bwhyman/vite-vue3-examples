@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h3 style="margin: 0">{{ shop?.name }}</h3>
-    <div style="padding: 5px" v-for="(item, index) of shop?.items" :key="index">
+    <h3 style="margin: 0">{{ shopR?.name }}</h3>
+    <div style="padding: 5px" v-for="(item, index) of shopR?.items" :key="index">
       <img :src="item.url" alt="" style="width: 200px; padding: 5px" />
       <div class="card">
         {{ item.name }}
@@ -20,40 +20,38 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import type { Item, Shop } from './data/homework02'
-import { useH2Store } from './store'
-import { getShopService } from './service'
+import { getOrdersService, getShopService } from './service'
 import { useRoute } from 'vue-router'
 const params = useRoute().params
-const shop = ref<Shop>()
+const shopR = ref<Shop>()
 
-getShopService(Number.parseInt(params.sid as string)).then((sh) => {
-  shop.value = sh
+getShopService(params.sid as string).then((sh) => {
+  shopR.value = sh
 })
-const store = useH2Store()
-// orders数组对象是响应式，添加移除元素是响应式
-const orders = store.ordersS
+
+const orderS = getOrdersService()
+//
 const add = (item: Item) => {
-  let order = orders.value.find((o) => o.item.id == item.id)
+  let order = orderS.value.find((o) => o.item.id == item.id)
   if (order) {
     order.quantity++
   } else {
     // 对应item的order不存在，创建订单对象，加入订单列表
     // 由于没有修改orders数组对象本身，可以不通过vuex事件
     order = { quantity: 1, item: item }
-    orders.value.push(order)
+    orderS.value.push(order)
   }
 }
 const remove = (item: Item) => {
-  const order = orders.value.find((o) => o.item.id == item.id)
+  const order = orderS.value.find((o) => o.item.id == item.id)
   if (order) {
-    const q = order.quantity--
-    if (q == 0) {
-      orders.value.splice(orders.value.indexOf(order), 1)
+    if (--order.quantity == 0) {
+      orderS.value.splice(orderS.value.indexOf(order), 1)
     }
   }
 }
 const orderQ = computed(() => (item: Item) => {
-  const o = orders.value.find((o) => o.item.id == item.id)
+  const o = orderS.value.find((o) => o.item.id == item.id)
   return o?.quantity ?? 0
 })
 </script>

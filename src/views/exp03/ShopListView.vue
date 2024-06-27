@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>附近的美食</p>
-    <div v-for="(shop, index) of shopList" :key="index" style="min-width: 150px">
+    <div v-for="(shop, index) of shopListR" :key="index" style="min-width: 150px">
       <router-link :to="`/exp03/shops/${shop.id}`" class="router">
         <div class="card">
           <h4>{{ shop.name }}</h4>
@@ -13,11 +13,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useH2Store } from './store'
+import { ref } from 'vue'
+import type { Shop } from './data/homework02'
 import { listShopsService } from './service/index'
-
-listShopsService()
-const shopList = useH2Store().shopListS
+const shopListR = ref<Shop[]>([])
+// 后期使用阻塞方式更简洁
+listShopsService().then((r) => (shopListR.value = r.value))
 </script>
 <style scoped>
 * {
