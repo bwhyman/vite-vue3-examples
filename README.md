@@ -37,11 +37,16 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 ### Related Courses
 
 - https://github.com/bwhyman/java-course
+- https://github.com/bwhyman/web-course
 - https://github.com/bwhyman/springboot-course
 - https://github.com/bwhyman/vite-vue3-examples
 - https://github.com/bwhyman/flutter_examples
 
 ### Update
+
+#### 2024.07.02
+
+添加自定义全局响应式数据源实现。
 
 #### 2024.05.28
 

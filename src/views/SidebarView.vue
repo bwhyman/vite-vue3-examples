@@ -64,6 +64,9 @@
       <li>
         <router-link to="/example08-3">Getters</router-link>
       </li>
+      <li>
+        <router-link to="/example08-4">Define Custom Global Store</router-link>
+      </li>
     </ul>
     <h3>Passing Data to Child Component</h3>
     <ul>
