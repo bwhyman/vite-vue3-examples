@@ -134,6 +134,12 @@
         <router-link to="/example17">Functional Components</router-link>
       </li>
     </ul>
+    <h3>Decorators</h3>
+    <ul>
+      <li>
+        <router-link to="/example18">Decorators</router-link>
+      </li>
+    </ul>
     <h3>Proxy</h3>
     <ul>
       <li>
