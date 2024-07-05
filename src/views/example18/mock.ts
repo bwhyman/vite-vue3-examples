@@ -17,3 +17,11 @@ export const getUserMock = async (): Promise<User> => {
     }, 1000)
   })
 }
+
+export const getCourseMock = async (cid: string, pid: string): Promise<Course> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(listCourses()[0])
+    }, 1000)
+  })
+}
