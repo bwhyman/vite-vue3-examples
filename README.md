@@ -56,7 +56,7 @@ Web系统框架，是东北林业大学软件工程专业第6学期的一门专�
 
 tsconfig.app.json需添加配置支持
 
-```json
+```sh
 compilerOptions {
     ...,
     "experimentalDecorators": true,

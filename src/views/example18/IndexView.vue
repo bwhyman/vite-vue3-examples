@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { UserService } from './service'
 import type { Course, User } from '@/type'
+import { useExample18Store } from './store'
 const coursesR = ref<Course[]>([])
 const userR = ref<User>()
 const courseR = ref<Course>()
@@ -22,6 +23,13 @@ const getCourseF = async () => {
   console.log(course)
   courseR.value = course
 }
+const clearF = async () => {
+  await UserService.delCourseService()
+  const store = useExample18Store()
+  console.log(store.coursesS)
+  console.log(store.userS)
+  console.log(store.courseMapS)
+}
 </script>
 <template>
   <div>
@@ -41,6 +49,8 @@ const getCourseF = async () => {
       <button @click="getUserF">getUserF</button>
       &
       <button @click="getCourseF">getCourseF</button>
+      &
+      <button @click="clearF">clearF</button>
       <br />
       {{ userR?.name }}
       <br />
