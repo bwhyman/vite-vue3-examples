@@ -188,7 +188,13 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/example18',
-    component: () => import('@/views/example18/IndexView.vue')
+    component: () => import('@/views/example18/IndexView.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/example18/Example18-1.vue')
+      }
+    ]
   },
   // -------------- homework
   {

@@ -29,16 +29,21 @@ export class UserService {
     return (await getUserMock()) as unknown as Ref<User>
   }
 
-  @StoreMapCache(store.courseMapS, [0, 1])
-  static async getCourseService(cid: string, pid: string) {
+  @StoreMapCache(store.courseMapS)
+  static async getCourseService(cid: number) {
     console.log('call from getCourseService(cid: string)')
-    return (await getCourseMock(cid, pid)) as unknown as Course
+    return await getCourseMock(cid)
   }
-  @StoreClear(store.clear)
-  @StoreCache(store.coursesS)
-  static async delCourseService() {
+
+  // 执行目标方法，替换缓存为返回结果
+  @StoreCache(store.coursesS, true)
+  static async delCourseService(cid: number) {
     console.log('call from delCourseService()')
-    await delCourseMock()
-    return (await listCoursesMock()) as unknown as Ref<Course[]>
+    const courses = await delCourseMock(cid)
+    // 模拟从后端返回的新数组
+    return JSON.parse(JSON.stringify(courses)) as unknown as Ref<Course[]>
   }
+
+  @StoreClear(store.clear)
+  static async resetService() {}
 }

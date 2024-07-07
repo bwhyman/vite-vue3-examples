@@ -18,18 +18,24 @@ export const getUserMock = async (): Promise<User> => {
   })
 }
 
-export const getCourseMock = async (cid: string, pid: string): Promise<Course> => {
+export const getCourseMock = async (cid: number): Promise<Course> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(listCourses()[0])
+      const course = listCourses().find((c) => c.id === cid)
+      resolve(course!)
     }, 1000)
   })
 }
 
-export const delCourseMock = async () => {
+export const delCourseMock = async (cid: number): Promise<Course[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(0)
+      const courses = listCourses()
+      const c = courses.find((cs) => cs.id === cid)
+      let index = 0
+      c && (index = courses.indexOf(c))
+      courses.splice(index, 1)
+      resolve(courses)
     }, 1000)
   })
 }
