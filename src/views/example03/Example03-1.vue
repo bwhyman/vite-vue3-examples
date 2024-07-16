@@ -3,12 +3,20 @@ import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 watch(
-  route,
-  () => {
-    console.log(route.params)
+  () => route.params,
+  (newValue) => {
+    console.log(newValue)
   },
   { immediate: true }
 )
+// 效果相同
+// watch(
+//   route,
+//   () => {
+//     console.log(route.params)
+//   },
+//   { immediate: true }
+// )
 </script>
 <template>
   <div>

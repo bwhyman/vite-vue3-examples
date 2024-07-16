@@ -37,7 +37,7 @@
 </template>
 <script lang="ts" setup>
 import type { User } from '@/type'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 // 初始化组件数据
 const user: User = {
   name: 'BO',
@@ -48,7 +48,16 @@ const userRef = ref(user)
 
 const changeAddress = () => {
   userRef.value.address = (Math.random() * 1000).toFixed(0)
+  userRef.value.name = 'SUN'
 }
+// 通过函数，可监听响应式数据中数据的改变
+watch(
+  () => userRef.value.name,
+  () => {
+    console.log(userRef.value)
+  }
+)
+
 // 计算属性，返回的不是值，而是函数
 const formatDateFunc = computed(() => (data: string) => data.replace('T', ' '))
 
