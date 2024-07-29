@@ -108,6 +108,10 @@ ctrl+c
 {
   "editor.fontSize": 16,
   "window.zoomLevel": 1.0,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
+  },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.wordWrap": "on",
