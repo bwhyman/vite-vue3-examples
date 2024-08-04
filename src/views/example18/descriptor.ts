@@ -18,7 +18,7 @@ export function StoreCache(dataR: Ref<any>, replace = false) {
           Object.prototype.toString.call(val) === '[object Object]')
       ) {
         console.log('call from store')
-        return Promise.resolve(dataR)
+        return dataR
       }
       console.log('call from method')
       // 异步执行目标方法并将结果置于store
@@ -51,9 +51,9 @@ export function StoreMapCache(dataR: Ref<Map<any, any>>, indexs?: number[]) {
       }
       const mapValue = val.get(mapKey)
       // 响应式对象存在，直接返回
-      if (Object.prototype.toString.call(val) === '[object Map]' && mapValue) {
+      if (Object.prototype.toString.call(val) === '[object Map]' && mapValue != null) {
         console.log('call store')
-        return Promise.resolve(mapValue)
+        return mapValue
       }
       console.log('call method')
       // 响应式对象不存在。异步执行目标方法并将结果置于store
