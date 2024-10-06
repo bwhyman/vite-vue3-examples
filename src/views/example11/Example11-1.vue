@@ -19,15 +19,15 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { useGet } from '@/fetch'
 import type { Course, User } from '@/type'
 import { ref } from 'vue'
 import { listCoursesService } from './Example11Service'
-import { useGet } from '@/fetch'
 
 const userR = ref<User>({})
 // 发出异步请求，获取结果。没有置于state
-useGet<{ user: User }>('users/12').then((resp) => {
-  resp.data.value?.data.user && (userR.value = resp.data.value?.data.user)
+useGet<User>('users/12').then((data) => {
+  data && (userR.value = data)
 })
 
 const coursesR = ref<Course[]>([])
