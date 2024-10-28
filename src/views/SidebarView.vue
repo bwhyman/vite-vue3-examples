@@ -169,6 +169,9 @@
       <li>
         <router-link to="/homework05">Homework - 函数式全屏Loading遮罩组件</router-link>
       </li>
+      <li>
+        <router-link to="/homework06">Homework - 布拉格的行程安排</router-link>
+      </li>
     </ul>
   </div>
 </template>

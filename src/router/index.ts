@@ -1,6 +1,6 @@
-import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
-import * as consty from '@/datasource/Const'
 import { createAlertDialog } from '@/components/message'
+import * as consty from '@/datasource/Const'
+import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -242,6 +242,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/homework05',
     component: () => import('@/views/homework05/IndexView.vue')
+  },
+  {
+    path: '/homework06',
+    component: () => import('@/views/homework06/IndexView.vue')
   }
 ]
 
