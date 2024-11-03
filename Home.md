@@ -1,5 +1,19 @@
 # Vite-Project
 
+### Update
+
+#### 2024-11-03
+
+vite:5.4+vue:3.5创建项目配置更新。  
+引入了vs code `explorer.fileNesting` 配置。支持资源管理器将指定的相关文件收缩在一个文件下，展示效果更简洁。  
+引入了 `EditorConfig` 插件。约束编辑器的缩进/空格等，和 `prettier` 功能有重叠。  
+引入的`eslint`默认规则禁用了仅执行而未赋值的短路表达式，等。感觉强制规范越来越像Java而限制了JS的灵活性。可以手动修改配置规则。
+
+```js
+// 以下表达式仅执行了函数而没有将结果赋值，算错误
+user && users.push(user)
+```
+
 ### Video
 
 **由于版本变更频繁，以文档内容为准**
@@ -60,7 +74,7 @@ npm init vue@latest
 
 vs code打开项目目录，右下角按项目模板建议安装`Vue - Official/eslint/prettier`3个插件。
 
-2024.03.04. vue引入最新vs code插件`vue-official`替代`volar`，取消了TS的take over接管模式以提高性能。
+2024-03-04. vue引入最新vs code插件`vue-official`替代`volar`，取消了TS的take over接管模式以提高性能。
 
 `ctrl + ~`打开vs code控制台。
 
@@ -84,16 +98,27 @@ ctrl+c
 
 ### eslint/prettier
 
-以eslint检查代码规范，以prettier统一代码风格，并在保存文件时自动修复错误
+2024-11-03. 引入editorconfig共同检测代码规范。
 
-修改.prettierrc.json。忽略Windows/Linux行结束符`CRLF/LF`的差异；关闭闭合标签单行等。
+以eslint检查代码规范，以prettier统一代码风格，并在保存文件时自动修复错误，修改 `eslint.config.js`，追加短路操作宽松规范。
+
+```js
+files: ['**/*.{ts,mts,tsx,vue}'],
+    rules: {
+      'no-unused-expressions': {
+        allowShortCircuit: true
+      }
+    }
+```
+
+修改`.prettierrc.json`。忽略Windows/Linux行结束符`CRLF/LF`的差异；关闭闭合标签单行等。
 
 ```json
 {
   "$schema": "https://json.schemastore.org/prettierrc",
   "semi": false,
-  "tabWidth": 2,
   "singleQuote": true,
+  "arrowParens": "avoid",
   "printWidth": 100,
   "trailingComma": "none",
   "endOfLine": "auto",
@@ -106,21 +131,23 @@ ctrl+c
 
 ```json
 {
-  "editor.fontSize": 16,
-  "window.zoomLevel": 1.0,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json, env.d.ts",
+    "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig"
+  },
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.wordWrap": "on",
-  "git.enableSmartCommit": true,
+  "editor.fontSize": 16,
+  "window.zoomLevel": 1.0,
   "workbench.colorTheme": "Default Light+",
-  "vue.updateImportsOnFileMove.enabled": true,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "editor.suggest.snippetsPreventQuickSuggestions": false
+  "editor.wordWrap": "on",
+  "editor.linkedEditing": true
 }
 ```
 

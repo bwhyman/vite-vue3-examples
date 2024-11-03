@@ -1,17 +1,19 @@
 {
-  "editor.fontSize": 16,
-  "window.zoomLevel": 1.0,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json, env.d.ts",
+    "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig"
+  },
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.wordWrap": "on",
-  "git.enableSmartCommit": true,
+  "editor.fontSize": 16,
+  "window.zoomLevel": 1.0,
   "workbench.colorTheme": "Default Light+",
-  "vue.updateImportsOnFileMove.enabled": true,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "editor.suggest.snippetsPreventQuickSuggestions": false
+  "editor.wordWrap": "on",
+  "editor.linkedEditing": true
 }
