@@ -14,7 +14,8 @@ const addTaskF = () => {
   if (!newTaskNameR.value) {
     return
   }
-  tasksR.value.push({ id: tasksR.value.length, text: newTaskNameR.value, done: false })
+  const newId = tasksR.value[tasksR.value.length - 1].id + 1
+  tasksR.value.push({ id: newId, text: newTaskNameR.value, done: false })
 }
 
 const editF = (index: number) => {
