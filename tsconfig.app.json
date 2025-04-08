@@ -4,7 +4,6 @@
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "experimentalDecorators": true,
-    "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 
     "baseUrl": ".",

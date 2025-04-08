@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { defineAsyncComponent, type Component, ref, computed } from 'vue'
+import { defineAsyncComponent, ref, shallowRef, watch, type Component } from 'vue'
+
+interface LabelStyle {
+  color: string
+  'text-decoration': string
+}
 
 const components: { name: string; component: Component }[] = [
   {
@@ -15,16 +20,27 @@ const components: { name: string; component: Component }[] = [
     component: defineAsyncComponent(() => import('./UpdateUser.vue'))
   }
 ]
-// 加载组件索引
-const currentIndexR = ref(0)
-// 基于索引动态加载组件
-const currentComponentC = computed(() => components[currentIndexR.value]?.component)
-// 激活状态组件文字颜色
-const activeStyleC = computed(
-  () => (index: number) =>
-    index == currentIndexR.value
-      ? { color: 'red', dec: 'underline' }
-      : { color: 'black', dec: 'none' }
+const defaultIndex = 0
+// 当前加载组件索引
+const currentIndexR = ref(defaultIndex)
+// 当前加载组件
+const currentComponentR = shallowRef(components[defaultIndex].component)
+//
+const styles: LabelStyle[] = []
+const activeStyle: LabelStyle = { color: 'red', 'text-decoration': 'underline' }
+const inactiveStyle: LabelStyle = { color: 'black', 'text-decoration': 'none' }
+watch(
+  currentIndexR,
+  cIndex => {
+    components.forEach((c, index) => {
+      styles[index] = inactiveStyle
+      if (cIndex === index) {
+        currentComponentR.value = components[cIndex].component
+        styles[index] = activeStyle
+      }
+    })
+  },
+  { immediate: true }
 )
 </script>
 <template>
@@ -36,17 +52,17 @@ const activeStyleC = computed(
         v-for="(c, index) of components"
         :key="index"
         @click="currentIndexR = index"
-        :style="{
-          color: activeStyleC(index).color,
-          'text-decoration': activeStyleC(index).dec,
-          cursor: 'pointer',
-          'margin-right': '10px'
-        }">
+        class="label"
+        :style="{ ...styles[index] }">
         {{ c.name }}
       </span>
     </p>
-    <p>
-      <component :is="currentComponentC" />
-    </p>
+    <component :is="currentComponentR" />
   </div>
 </template>
+<style scoped>
+.label {
+  cursor: pointer;
+  margin-right: 10px;
+}
+</style>
