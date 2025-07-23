@@ -51,7 +51,7 @@ npm config set registry http://registry.npmmirror.com
 在控制台，执行项目初始化命令。
 
 ```shell
-npm init vue@latest
+npm create vue@latest
 ```
 
 选择安装以下配置：TypeScript/router/eslint/prettier。后期引入VueUse，因此无需安装Pinia。
@@ -105,9 +105,7 @@ ctrl+c
 ```js
 files: ['**/*.{ts,mts,tsx,vue}'],
     rules: {
-      'no-unused-expressions': {
-        allowShortCircuit: true
-      }
+      'no-unused-expressions': ['error', { allowShortCircuit: true }]
     }
 ```
 
