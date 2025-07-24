@@ -1,16 +1,16 @@
 import { createGlobalState } from '@vueuse/core'
+import { ref, shallowRef } from 'vue'
 import type { Order, Shop } from '../data/homework02'
-import { ref } from 'vue'
 
 export const useH2Store = createGlobalState(() => {
   // 缓存包含基本信息的shop列表
-  const shopListS = ref<Shop[]>([])
+  const shopListS = shallowRef<Shop[]>([])
   // 缓存shop下商品列表
-  const shopMapS = ref<Map<string, Shop>>(new Map<string, Shop>())
+  const shopMap = new Map<string, Shop>()
   const ordersS = ref<Order[]>([])
   return {
     shopListS,
-    shopMapS,
+    shopMap,
     ordersS
   }
 })

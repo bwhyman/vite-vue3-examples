@@ -13,12 +13,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 import type { Shop } from './data/homework02'
 import { listShopsService } from './service/index'
-const shopListR = ref<Shop[]>([])
+const shopListR = shallowRef<Shop[]>([])
 // 后期使用阻塞方式更简洁
-listShopsService().then((r) => (shopListR.value = r.value))
+listShopsService().then(r => (shopListR.value = r.value))
 </script>
 <style scoped>
 * {
